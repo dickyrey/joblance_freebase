@@ -1,5 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:data_connection_checker/data_connection_checker.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:get_it/get_it.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:http/http.dart' as http;
+import 'package:joblance_firebase/src/common/network_info.dart';
 import 'package:joblance_firebase/src/data/datasources/applicant_remote_data_source.dart';
 import 'package:joblance_firebase/src/data/datasources/auth_remote_data_source.dart';
 import 'package:joblance_firebase/src/data/datasources/category_remote_data_source.dart';
@@ -63,13 +69,42 @@ final locator = GetIt.instance;
 void init() {
   // External
 
+  final networkInfo = NetworkInfoImpl(locator());
+  locator.registerLazySingleton<NetworkInfo>(
+    () => networkInfo,
+  );
+  
+  final dataConnectionChecker = DataConnectionChecker();
+  locator.registerLazySingleton(
+    () => dataConnectionChecker,
+  );
+
+  final firebaseAuth = FirebaseAuth.instance;
+  locator.registerLazySingleton(
+    () => firebaseAuth,
+  );
+
+  final googleSignIn = GoogleSignIn();
+  locator.registerLazySingleton(
+    () => googleSignIn,
+  );
+
+  final firebaseFirestore = FirebaseFirestore.instance;
+  locator.registerLazySingleton(
+    () => firebaseFirestore,
+  );
+  
+  final firebaseStorage = FirebaseStorage.instance;
+  locator.registerLazySingleton(
+    () => firebaseStorage,
+  );
+
   final httpExternal = http.Client();
   locator.registerLazySingleton(
     () => httpExternal,
   );
 
   // Data Sources
-
   final applicantDataSource = ApplicantRemoteDataSourceImpl();
   locator.registerLazySingleton<ApplicantRemoteDataSource>(
     () => applicantDataSource,

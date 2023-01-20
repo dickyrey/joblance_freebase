@@ -9,10 +9,18 @@ environment:
 dependencies:
   advance_notification: ^1.0.6
   cached_network_image: ^3.2.3
+  cloud_firestore: ^4.3.1
   cupertino_icons: ^1.0.5
   dartz: ^0.10.1
+  data_connection_checker:
+    git:
+      url: https://github.com/chornthorn/data_connection_checker.git
+      ref: master
   dots_indicator: ^2.1.0
   equatable: ^2.0.5
+  firebase_auth: ^4.2.5
+  firebase_core: ^2.4.1
+  firebase_storage: ^11.0.10
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.1
@@ -28,6 +36,7 @@ dependencies:
   freezed_annotation: ^2.2.0
   get_it: ^7.2.0
   google_fonts: ^3.0.1
+  google_sign_in: ^5.4.3
   http: ^0.13.5
   image_cropper: ^3.0.1
   image_picker: ^0.8.6
