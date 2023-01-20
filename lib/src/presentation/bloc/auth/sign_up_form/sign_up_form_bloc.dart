@@ -1,23 +1,36 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:joblance_firebase/src/common/const.dart';
 import 'package:joblance_firebase/src/common/enums.dart';
-import 'package:joblance_firebase/src/domain/usecases/register_with_email_and_password.dart';
+import 'package:joblance_firebase/src/domain/entities/profile.dart';
+import 'package:joblance_firebase/src/domain/usecases/auth/create_user.dart';
 
+part 'sign_up_form_bloc.freezed.dart';
 part 'sign_up_form_event.dart';
 part 'sign_up_form_state.dart';
-part 'sign_up_form_bloc.freezed.dart';
 
 class SignUpFormBloc extends Bloc<SignUpFormEvent, SignUpFormState> {
-  SignUpFormBloc(this._register) : super(SignUpFormState.initial()) {
+  SignUpFormBloc(this._createUser) : super(SignUpFormState.initial()) {
     on<SignUpFormEvent>((event, emit) async {
       await event.map(
         signUpPressed: (event) async {
           emit(state.copyWith(state: RequestState.loading));
-          final result = await _register.execute(
-            state.username,
-            state.email,
-            state.phone,
-            state.password,
+          final result = await _createUser.execute(
+            profile: Profile(
+              id: '',
+              email: state.email,
+              fullName: state.fullName,
+              image: Const.profileImage,
+              phoneNumber: state.phoneNumber,
+              position: '',
+              company: '',
+              location: '',
+              about: '',
+              birthday: Timestamp.now(),
+              createdAt: Timestamp.now(),
+            ),
+            password: state.password,
           );
           result.fold(
             (failure) => emit(
@@ -26,23 +39,25 @@ class SignUpFormBloc extends Bloc<SignUpFormEvent, SignUpFormState> {
                 message: failure.message,
               ),
             ),
-            (data) {
-              emit(state.copyWith(state: RequestState.loaded));
-            },
+            (data) => emit(
+              state.copyWith(
+                state: RequestState.loaded,
+              ),
+            ),
           );
         },
-        usernameOnChanged: (event) {
+        fullNameOnChanged: (event) {
           emit(
             state.copyWith(
-              username: event.username,
+              fullName: event.fullName,
               state: RequestState.empty,
             ),
           );
         },
-        phoneOnChanged: (event) {
+        phoneNumberOnChanged: (event) {
           emit(
             state.copyWith(
-              phone: event.phone,
+              phoneNumber: event.phoneNumber,
               state: RequestState.empty,
             ),
           );
@@ -66,5 +81,5 @@ class SignUpFormBloc extends Bloc<SignUpFormEvent, SignUpFormState> {
       );
     });
   }
-  final RegisterWithEmailAndPassword _register;
+  final CreateUserWithEmail _createUser;
 }

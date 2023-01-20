@@ -1,0 +1,137 @@
+{
+  "project_info": {
+    "project_number": "508162768663",
+    "project_id": "joblance-firebase",
+    "storage_bucket": "joblance-firebase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:508162768663:android:d3b3f1ed317fcdb290c152",
+        "android_client_info": {
+          "package_name": "com.byneetdev.job_lance_firebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "508162768663-cvugalk9o42buacmme2qfgg8uf22osi8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.byneetdev.job_lance_firebase",
+            "certificate_hash": "251442312103e5cacff22bd3cfed26c036590940"
+          }
+        },
+        {
+          "client_id": "508162768663-j1hmd6d0oocfk8t0dl5js5bfts76hequ.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.byneetdev.job_lance_firebase",
+            "certificate_hash": "24acc506275ad299dd06f05d8d69f1b146849933"
+          }
+        },
+        {
+          "client_id": "508162768663-8dqlmot73ovd2evtp4omkclcmgdjacg7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD19RFdyApC0CTgdm_mFL3EdX7Sq-yzJlo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "508162768663-8dqlmot73ovd2evtp4omkclcmgdjacg7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:508162768663:android:d62320d4b525d6bc90c152",
+        "android_client_info": {
+          "package_name": "com.byneetdev.job_lance_recruiter_firebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "508162768663-c9dl9jqb7jvkkrprm1s61df2cgt5o532.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.byneetdev.job_lance_recruiter_firebase",
+            "certificate_hash": "251442312103e5cacff22bd3cfed26c036590940"
+          }
+        },
+        {
+          "client_id": "508162768663-puaqo98dcd1i83aunebvqj75bo8man43.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.byneetdev.job_lance_recruiter_firebase",
+            "certificate_hash": "24acc506275ad299dd06f05d8d69f1b146849933"
+          }
+        },
+        {
+          "client_id": "508162768663-8dqlmot73ovd2evtp4omkclcmgdjacg7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD19RFdyApC0CTgdm_mFL3EdX7Sq-yzJlo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "508162768663-8dqlmot73ovd2evtp4omkclcmgdjacg7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:508162768663:android:8f772d940bd959a390c152",
+        "android_client_info": {
+          "package_name": "com.byneetdev.joblance_firebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "508162768663-knilrssk7ndn3lf2eien3nv59aq6d1hj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.byneetdev.joblance_firebase",
+            "certificate_hash": "24acc506275ad299dd06f05d8d69f1b146849933"
+          }
+        },
+        {
+          "client_id": "508162768663-8dqlmot73ovd2evtp4omkclcmgdjacg7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD19RFdyApC0CTgdm_mFL3EdX7Sq-yzJlo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "508162768663-8dqlmot73ovd2evtp4omkclcmgdjacg7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -7,26 +7,30 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:http/http.dart' as http;
 import 'package:joblance_firebase/src/common/network_info.dart';
 import 'package:joblance_firebase/src/data/datasources/applicant_remote_data_source.dart';
-import 'package:joblance_firebase/src/data/datasources/auth_remote_data_source.dart';
+import 'package:joblance_firebase/src/data/datasources/authentication_remote_data_source.dart';
 import 'package:joblance_firebase/src/data/datasources/category_remote_data_source.dart';
 import 'package:joblance_firebase/src/data/datasources/client_remote_data_source.dart';
 import 'package:joblance_firebase/src/data/datasources/job_remote_data_source.dart';
 import 'package:joblance_firebase/src/data/datasources/message_remote_data_source.dart';
 import 'package:joblance_firebase/src/data/datasources/notifications_remote_data_source.dart';
 import 'package:joblance_firebase/src/data/repositories/applicant_repository_impl.dart';
-import 'package:joblance_firebase/src/data/repositories/auth_repository_impl.dart';
+import 'package:joblance_firebase/src/data/repositories/authentication_repository_impl.dart';
 import 'package:joblance_firebase/src/data/repositories/category_repository_impl.dart';
 import 'package:joblance_firebase/src/data/repositories/client_repository_impl.dart';
 import 'package:joblance_firebase/src/data/repositories/job_repository_impl.dart';
 import 'package:joblance_firebase/src/data/repositories/message_repository_impl.dart';
 import 'package:joblance_firebase/src/data/repositories/notifications_repository_impl.dart';
 import 'package:joblance_firebase/src/domain/repositories/applicant_repository.dart';
-import 'package:joblance_firebase/src/domain/repositories/auth_repository.dart';
+import 'package:joblance_firebase/src/domain/repositories/authentication_repository.dart';
 import 'package:joblance_firebase/src/domain/repositories/category_repository.dart';
 import 'package:joblance_firebase/src/domain/repositories/client_repository.dart';
 import 'package:joblance_firebase/src/domain/repositories/job_repository.dart';
 import 'package:joblance_firebase/src/domain/repositories/message_repository.dart';
 import 'package:joblance_firebase/src/domain/repositories/notifications_repository.dart';
+import 'package:joblance_firebase/src/domain/usecases/auth/create_user.dart';
+import 'package:joblance_firebase/src/domain/usecases/auth/sign_in_google.dart';
+import 'package:joblance_firebase/src/domain/usecases/auth/sign_in_user.dart';
+import 'package:joblance_firebase/src/domain/usecases/auth/sign_out_user.dart';
 import 'package:joblance_firebase/src/domain/usecases/get_active_jobs.dart';
 import 'package:joblance_firebase/src/domain/usecases/get_applicants.dart';
 import 'package:joblance_firebase/src/domain/usecases/get_browse_jobs.dart';
@@ -39,9 +43,7 @@ import 'package:joblance_firebase/src/domain/usecases/get_notifications.dart';
 import 'package:joblance_firebase/src/domain/usecases/get_popular_jobs.dart';
 import 'package:joblance_firebase/src/domain/usecases/get_recently_added_jobs.dart';
 import 'package:joblance_firebase/src/domain/usecases/get_saved_jobs.dart';
-import 'package:joblance_firebase/src/domain/usecases/register_with_email_and_password.dart';
-import 'package:joblance_firebase/src/domain/usecases/sign_in_with_email_and_password.dart';
-import 'package:joblance_firebase/src/domain/usecases/sign_out.dart';
+import 'package:joblance_firebase/src/domain/usecases/profile/get_profile.dart';
 import 'package:joblance_firebase/src/presentation/bloc/applicant/applicant_watcher/applicant_watcher_bloc.dart';
 import 'package:joblance_firebase/src/presentation/bloc/auth/auth_watcher/auth_watcher_bloc.dart';
 import 'package:joblance_firebase/src/presentation/bloc/auth/sign_in_form/sign_in_form_bloc.dart';
@@ -62,6 +64,7 @@ import 'package:joblance_firebase/src/presentation/bloc/language/language_form_b
 import 'package:joblance_firebase/src/presentation/bloc/message/message_recruiter_watcher/message_recruiter_watcher_bloc.dart';
 import 'package:joblance_firebase/src/presentation/bloc/message/message_watcher/message_watcher_bloc.dart';
 import 'package:joblance_firebase/src/presentation/bloc/notifications/notifications_watcher/notifications_watcher_bloc.dart';
+import 'package:joblance_firebase/src/presentation/bloc/profile/profile_watcher/profile_watcher_bloc.dart';
 import 'package:joblance_firebase/src/presentation/cubit/theme_cubit.dart';
 
 final locator = GetIt.instance;
@@ -69,14 +72,14 @@ final locator = GetIt.instance;
 void init() {
   // External
 
-  final networkInfo = NetworkInfoImpl(locator());
-  locator.registerLazySingleton<NetworkInfo>(
-    () => networkInfo,
-  );
-  
   final dataConnectionChecker = DataConnectionChecker();
   locator.registerLazySingleton(
     () => dataConnectionChecker,
+  );
+
+  final networkInfo = NetworkInfoImpl(locator());
+  locator.registerLazySingleton<NetworkInfo>(
+    () => networkInfo,
   );
 
   final firebaseAuth = FirebaseAuth.instance;
@@ -93,7 +96,7 @@ void init() {
   locator.registerLazySingleton(
     () => firebaseFirestore,
   );
-  
+
   final firebaseStorage = FirebaseStorage.instance;
   locator.registerLazySingleton(
     () => firebaseStorage,
@@ -104,15 +107,19 @@ void init() {
     () => httpExternal,
   );
 
-  // Data Sources
+  /// List of [Data Sources] Class from folder [Data] & [Domain]
+  ///
   final applicantDataSource = ApplicantRemoteDataSourceImpl();
   locator.registerLazySingleton<ApplicantRemoteDataSource>(
     () => applicantDataSource,
   );
-
-  final authRemoteDataSource = AuthRemoteDataSourceImpl();
-  locator.registerLazySingleton<AuthRemoteDataSource>(
-    () => authRemoteDataSource,
+  final authDataSource = AuthenticationRemoteDataSourceImpl(
+    firebaseAuth: locator(),
+    firestore: locator(),
+    googleSignIn: locator(),
+  );
+  locator.registerLazySingleton<AuthenticationRemoteDataSource>(
+    () => authDataSource,
   );
 
   final categoryRemoteDataSource = CategoryRemoteDataSourceImpl();
@@ -140,16 +147,17 @@ void init() {
     () => notificationsRemoteDataSource,
   );
 
-  // Repositories
-
+  /// List of [Repositories] Class from folder [Data] & [Domain]
+  ///
   final applicantRepository = ApplicantRepositoryImpl(dataSource: locator());
   locator.registerLazySingleton<ApplicantRepository>(
     () => applicantRepository,
   );
 
-  final authRepository = AuthRepositoryImpl(dataSource: locator());
-  locator.registerLazySingleton<AuthRepository>(
-    () => authRepository,
+  final authenticationRepository =
+      AuthenticationRepositoryImpl(dataSource: locator());
+  locator.registerLazySingleton<AuthenticationRepository>(
+    () => authenticationRepository,
   );
 
   final categoryRepository = CategoryRepositoryImpl(dataSource: locator());
@@ -178,7 +186,35 @@ void init() {
     () => notificationsRepository,
   );
 
-  // Usecases
+  /// [Usecases] allow class to parse data into [BLoC]
+  ///
+  ///
+
+  /// [Auth] Folder
+  ///
+  final createUserWithEmailUseCase = CreateUserWithEmail(locator());
+  locator.registerLazySingleton(
+    () => createUserWithEmailUseCase,
+  );
+  final signInWithGoogleUseCase = SignInWithGoogle(locator());
+  locator.registerLazySingleton(
+    () => signInWithGoogleUseCase,
+  );
+  final signInWithEmailUseCase = SignInWithEmail(locator());
+  locator.registerLazySingleton(
+    () => signInWithEmailUseCase,
+  );
+  final signOutUserUseCase = SignOutUser(locator());
+  locator.registerLazySingleton(
+    () => signOutUserUseCase,
+  );
+
+  /// [Profile] Folder
+  ///
+  final getProfileUseCase = GetProfile(locator());
+  locator.registerLazySingleton(
+    () => getProfileUseCase,
+  );
 
   final getActiveJobsUseCase = GetActiveJobs(locator());
   locator.registerLazySingleton(
@@ -238,21 +274,6 @@ void init() {
   final getSavedJobsUseCase = GetSavedJobs(locator());
   locator.registerLazySingleton(
     () => getSavedJobsUseCase,
-  );
-
-  final registerEmailUseCase = RegisterWithEmailAndPassword(locator());
-  locator.registerLazySingleton(
-    () => registerEmailUseCase,
-  );
-
-  final signInEmailUseCase = SignInWithEmailAndPassword(locator());
-  locator.registerLazySingleton(
-    () => signInEmailUseCase,
-  );
-
-  final signOutUseCase = SignOut(locator());
-  locator.registerLazySingleton(
-    () => signOutUseCase,
   );
 
   // BLoCs
@@ -345,6 +366,11 @@ void init() {
   final notificationsWatcherBloc = NotificationsWatcherBloc(locator());
   locator.registerLazySingleton(
     () => notificationsWatcherBloc,
+  );
+
+  final profileWatcherBloc = ProfileWatcherBloc(locator());
+  locator.registerLazySingleton(
+    () => profileWatcherBloc,
   );
 
   final themeCubit = ThemeCubit();

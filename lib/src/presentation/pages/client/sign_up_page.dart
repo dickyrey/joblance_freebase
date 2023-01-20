@@ -29,6 +29,7 @@ class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final lang = AppLocalizations.of(context)!;
     final themeCubit = context.read<ThemeCubit>().state;
 
     return BlocListener<SignUpFormBloc, SignUpFormState>(
@@ -42,12 +43,12 @@ class _SignUpPageState extends State<SignUpPage> {
         } else if (state.state == RequestState.error) {
           if (state.message == ExceptionMessage.usernameOrPhoneAlreadyTaken) {
             AdvanceSnackBar(
-              message: AppLocalizations.of(context)!.email_already_in_use,
+              message: lang.email_already_in_use,
               bgColor: theme.errorColor,
             ).show(context);
           } else if (state.message == ExceptionMessage.internetNotConnected) {
             AdvanceSnackBar(
-              message: AppLocalizations.of(context)!.no_internet_connection,
+              message: lang.no_internet_connection,
               bgColor: theme.errorColor,
             ).show(context);
           }
@@ -67,7 +68,9 @@ class _SignUpPageState extends State<SignUpPage> {
                   const SizedBox(height: Const.space50),
                   Card(
                     elevation: 0,
-                    margin: const EdgeInsets.symmetric(horizontal: Const.margin),
+                    margin: const EdgeInsets.symmetric(
+                      horizontal: Const.margin,
+                    ),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(Const.radius),
                     ),
@@ -82,7 +85,9 @@ class _SignUpPageState extends State<SignUpPage> {
                         children: [
                           Center(
                             child: ClipRRect(
-                              borderRadius: BorderRadius.circular(Const.radius),
+                              borderRadius: BorderRadius.circular(
+                                Const.radius,
+                              ),
                               child: SvgPicture.asset(
                                 CustomIcons.joblanceIcon,
                                 width: 50,
@@ -93,53 +98,49 @@ class _SignUpPageState extends State<SignUpPage> {
                           const SizedBox(height: Const.space15),
                           Center(
                             child: Text(
-                              AppLocalizations.of(context)!
-                                  .register_to_joblance,
+                              lang.register_to_joblance,
                               style: theme.textTheme.headline3,
                               textAlign: TextAlign.center,
                             ),
                           ),
                           const SizedBox(height: Const.space25),
                           Text(
-                            AppLocalizations.of(context)!.username,
+                            lang.username,
                             style: theme.textTheme.subtitle2,
                           ),
                           const SizedBox(height: Const.space8),
                           CustomTextFormField(
-                            hintText: AppLocalizations.of(context)!
-                                .enter_your_username,
+                            hintText: lang.enter_your_username,
                             minLength: 5,
                             onChanged: (v) {
                               context
                                   .read<SignUpFormBloc>()
-                                  .add(SignUpFormEvent.usernameOnChanged(v));
+                                  .add(SignUpFormEvent.fullNameOnChanged(v));
                             },
                           ),
                           const SizedBox(height: Const.space25),
                           Text(
-                            AppLocalizations.of(context)!.mobile_number,
+                            lang.mobile_number,
                             style: theme.textTheme.subtitle2,
                           ),
                           const SizedBox(height: Const.space8),
                           CustomTextFormField(
-                            hintText: AppLocalizations.of(context)!
-                                .enter_your_mobile_number,
+                            hintText: lang.enter_your_mobile_number,
                             textFieldType: TextFieldType.phoneNumber,
                             onChanged: (v) {
                               context
                                   .read<SignUpFormBloc>()
-                                  .add(SignUpFormEvent.phoneOnChanged(v));
+                                  .add(SignUpFormEvent.phoneNumberOnChanged(v));
                             },
                           ),
                           const SizedBox(height: Const.space25),
                           Text(
-                            AppLocalizations.of(context)!.email_address,
+                            lang.email_address,
                             style: theme.textTheme.subtitle2,
                           ),
                           const SizedBox(height: Const.space8),
                           CustomTextFormField(
-                            hintText: AppLocalizations.of(context)!
-                                .enter_your_email_address,
+                            hintText: lang.enter_your_email_address,
                             textFieldType: TextFieldType.email,
                             onChanged: (v) {
                               context
@@ -149,13 +150,12 @@ class _SignUpPageState extends State<SignUpPage> {
                           ),
                           const SizedBox(height: Const.space25),
                           Text(
-                            AppLocalizations.of(context)!.password,
+                            lang.password,
                             style: theme.textTheme.subtitle2,
                           ),
                           const SizedBox(height: Const.space8),
                           CustomTextFormField(
-                            hintText: AppLocalizations.of(context)!
-                                .enter_your_password,
+                            hintText: lang.enter_your_password,
                             textFieldType: TextFieldType.password,
                             obscureText: _obscureText,
                             suffixIcon: IconButton(
@@ -189,22 +189,21 @@ class _SignUpPageState extends State<SignUpPage> {
                                 isLoading: (state.state == RequestState.loading)
                                     ? true
                                     : false,
-                                label: AppLocalizations.of(context)!.sign_up,
+                                label: lang.sign_up,
                               );
                             },
                           ),
                           const SizedBox(height: Const.space15),
                           Center(
                             child: Text(
-                              '--- ${AppLocalizations.of(context)!.or} ---',
+                              '--- ${lang.or} ---',
                               style: theme.textTheme.bodyText2,
                             ),
                           ),
                           const SizedBox(height: Const.space15),
                           CustomElevatedButton(
                             onTap: () => AdvanceSnackBar(
-                              message: AppLocalizations.of(context)!
-                                  .google_sign_in_clicked,
+                              message: lang.google_sign_in_clicked,
                               bgColor: theme.errorColor,
                             ).show(context),
                             color: (themeCubit is ThemeDark)
@@ -216,8 +215,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                 SvgPicture.asset(CustomIcons.google),
                                 const SizedBox(width: Const.space12),
                                 Text(
-                                  AppLocalizations.of(context)!
-                                      .continue_with_google,
+                                  lang.continue_with_google,
                                   style: theme.textTheme.button!.copyWith(
                                     color: (themeCubit is ThemeDark)
                                         ? ColorDark.fontTitle
@@ -232,13 +230,12 @@ class _SignUpPageState extends State<SignUpPage> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                AppLocalizations.of(context)!
-                                    .already_have_an_account,
+                                lang.already_have_an_account,
                                 style: theme.textTheme.subtitle1,
                               ),
                               CustomTextButton(
                                 onTap: () => Navigator.pop(context),
-                                label: AppLocalizations.of(context)!.sign_in,
+                                label: lang.sign_in,
                                 fontSize: 14,
                                 fontColor: theme.primaryColor,
                               )

@@ -19,8 +19,8 @@ mixin _$SignUpFormEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() signUpPressed,
-    required TResult Function(String username) usernameOnChanged,
-    required TResult Function(String phone) phoneOnChanged,
+    required TResult Function(String fullName) fullNameOnChanged,
+    required TResult Function(String phoneNumber) phoneNumberOnChanged,
     required TResult Function(String email) emailOnChanged,
     required TResult Function(String password) passwordOnChanged,
   }) =>
@@ -28,8 +28,8 @@ mixin _$SignUpFormEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? signUpPressed,
-    TResult? Function(String username)? usernameOnChanged,
-    TResult? Function(String phone)? phoneOnChanged,
+    TResult? Function(String fullName)? fullNameOnChanged,
+    TResult? Function(String phoneNumber)? phoneNumberOnChanged,
     TResult? Function(String email)? emailOnChanged,
     TResult? Function(String password)? passwordOnChanged,
   }) =>
@@ -37,8 +37,8 @@ mixin _$SignUpFormEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? signUpPressed,
-    TResult Function(String username)? usernameOnChanged,
-    TResult Function(String phone)? phoneOnChanged,
+    TResult Function(String fullName)? fullNameOnChanged,
+    TResult Function(String phoneNumber)? phoneNumberOnChanged,
     TResult Function(String email)? emailOnChanged,
     TResult Function(String password)? passwordOnChanged,
     required TResult orElse(),
@@ -47,8 +47,8 @@ mixin _$SignUpFormEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_SignUpPressed value) signUpPressed,
-    required TResult Function(_UsernameOnChanged value) usernameOnChanged,
-    required TResult Function(_PhoneOnChanged value) phoneOnChanged,
+    required TResult Function(_FullNameOnChanged value) fullNameOnChanged,
+    required TResult Function(_PhoneNumberOnChanged value) phoneNumberOnChanged,
     required TResult Function(_EmailOnChanged value) emailOnChanged,
     required TResult Function(_PasswordOnChanged value) passwordOnChanged,
   }) =>
@@ -56,8 +56,8 @@ mixin _$SignUpFormEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_SignUpPressed value)? signUpPressed,
-    TResult? Function(_UsernameOnChanged value)? usernameOnChanged,
-    TResult? Function(_PhoneOnChanged value)? phoneOnChanged,
+    TResult? Function(_FullNameOnChanged value)? fullNameOnChanged,
+    TResult? Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult? Function(_EmailOnChanged value)? emailOnChanged,
     TResult? Function(_PasswordOnChanged value)? passwordOnChanged,
   }) =>
@@ -65,8 +65,8 @@ mixin _$SignUpFormEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_SignUpPressed value)? signUpPressed,
-    TResult Function(_UsernameOnChanged value)? usernameOnChanged,
-    TResult Function(_PhoneOnChanged value)? phoneOnChanged,
+    TResult Function(_FullNameOnChanged value)? fullNameOnChanged,
+    TResult Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult Function(_EmailOnChanged value)? emailOnChanged,
     TResult Function(_PasswordOnChanged value)? passwordOnChanged,
     required TResult orElse(),
@@ -131,8 +131,8 @@ class _$_SignUpPressed implements _SignUpPressed {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() signUpPressed,
-    required TResult Function(String username) usernameOnChanged,
-    required TResult Function(String phone) phoneOnChanged,
+    required TResult Function(String fullName) fullNameOnChanged,
+    required TResult Function(String phoneNumber) phoneNumberOnChanged,
     required TResult Function(String email) emailOnChanged,
     required TResult Function(String password) passwordOnChanged,
   }) {
@@ -143,8 +143,8 @@ class _$_SignUpPressed implements _SignUpPressed {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? signUpPressed,
-    TResult? Function(String username)? usernameOnChanged,
-    TResult? Function(String phone)? phoneOnChanged,
+    TResult? Function(String fullName)? fullNameOnChanged,
+    TResult? Function(String phoneNumber)? phoneNumberOnChanged,
     TResult? Function(String email)? emailOnChanged,
     TResult? Function(String password)? passwordOnChanged,
   }) {
@@ -155,8 +155,8 @@ class _$_SignUpPressed implements _SignUpPressed {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? signUpPressed,
-    TResult Function(String username)? usernameOnChanged,
-    TResult Function(String phone)? phoneOnChanged,
+    TResult Function(String fullName)? fullNameOnChanged,
+    TResult Function(String phoneNumber)? phoneNumberOnChanged,
     TResult Function(String email)? emailOnChanged,
     TResult Function(String password)? passwordOnChanged,
     required TResult orElse(),
@@ -171,8 +171,8 @@ class _$_SignUpPressed implements _SignUpPressed {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_SignUpPressed value) signUpPressed,
-    required TResult Function(_UsernameOnChanged value) usernameOnChanged,
-    required TResult Function(_PhoneOnChanged value) phoneOnChanged,
+    required TResult Function(_FullNameOnChanged value) fullNameOnChanged,
+    required TResult Function(_PhoneNumberOnChanged value) phoneNumberOnChanged,
     required TResult Function(_EmailOnChanged value) emailOnChanged,
     required TResult Function(_PasswordOnChanged value) passwordOnChanged,
   }) {
@@ -183,8 +183,8 @@ class _$_SignUpPressed implements _SignUpPressed {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_SignUpPressed value)? signUpPressed,
-    TResult? Function(_UsernameOnChanged value)? usernameOnChanged,
-    TResult? Function(_PhoneOnChanged value)? phoneOnChanged,
+    TResult? Function(_FullNameOnChanged value)? fullNameOnChanged,
+    TResult? Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult? Function(_EmailOnChanged value)? emailOnChanged,
     TResult? Function(_PasswordOnChanged value)? passwordOnChanged,
   }) {
@@ -195,8 +195,8 @@ class _$_SignUpPressed implements _SignUpPressed {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_SignUpPressed value)? signUpPressed,
-    TResult Function(_UsernameOnChanged value)? usernameOnChanged,
-    TResult Function(_PhoneOnChanged value)? phoneOnChanged,
+    TResult Function(_FullNameOnChanged value)? fullNameOnChanged,
+    TResult Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult Function(_EmailOnChanged value)? emailOnChanged,
     TResult Function(_PasswordOnChanged value)? passwordOnChanged,
     required TResult orElse(),
@@ -213,31 +213,31 @@ abstract class _SignUpPressed implements SignUpFormEvent {
 }
 
 /// @nodoc
-abstract class _$$_UsernameOnChangedCopyWith<$Res> {
-  factory _$$_UsernameOnChangedCopyWith(_$_UsernameOnChanged value,
-          $Res Function(_$_UsernameOnChanged) then) =
-      __$$_UsernameOnChangedCopyWithImpl<$Res>;
+abstract class _$$_FullNameOnChangedCopyWith<$Res> {
+  factory _$$_FullNameOnChangedCopyWith(_$_FullNameOnChanged value,
+          $Res Function(_$_FullNameOnChanged) then) =
+      __$$_FullNameOnChangedCopyWithImpl<$Res>;
   @useResult
-  $Res call({String username});
+  $Res call({String fullName});
 }
 
 /// @nodoc
-class __$$_UsernameOnChangedCopyWithImpl<$Res>
-    extends _$SignUpFormEventCopyWithImpl<$Res, _$_UsernameOnChanged>
-    implements _$$_UsernameOnChangedCopyWith<$Res> {
-  __$$_UsernameOnChangedCopyWithImpl(
-      _$_UsernameOnChanged _value, $Res Function(_$_UsernameOnChanged) _then)
+class __$$_FullNameOnChangedCopyWithImpl<$Res>
+    extends _$SignUpFormEventCopyWithImpl<$Res, _$_FullNameOnChanged>
+    implements _$$_FullNameOnChangedCopyWith<$Res> {
+  __$$_FullNameOnChangedCopyWithImpl(
+      _$_FullNameOnChanged _value, $Res Function(_$_FullNameOnChanged) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? username = null,
+    Object? fullName = null,
   }) {
-    return _then(_$_UsernameOnChanged(
-      null == username
-          ? _value.username
-          : username // ignore: cast_nullable_to_non_nullable
+    return _then(_$_FullNameOnChanged(
+      null == fullName
+          ? _value.fullName
+          : fullName // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -245,72 +245,72 @@ class __$$_UsernameOnChangedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_UsernameOnChanged implements _UsernameOnChanged {
-  const _$_UsernameOnChanged(this.username);
+class _$_FullNameOnChanged implements _FullNameOnChanged {
+  const _$_FullNameOnChanged(this.fullName);
 
   @override
-  final String username;
+  final String fullName;
 
   @override
   String toString() {
-    return 'SignUpFormEvent.usernameOnChanged(username: $username)';
+    return 'SignUpFormEvent.fullNameOnChanged(fullName: $fullName)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UsernameOnChanged &&
-            (identical(other.username, username) ||
-                other.username == username));
+            other is _$_FullNameOnChanged &&
+            (identical(other.fullName, fullName) ||
+                other.fullName == fullName));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, username);
+  int get hashCode => Object.hash(runtimeType, fullName);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UsernameOnChangedCopyWith<_$_UsernameOnChanged> get copyWith =>
-      __$$_UsernameOnChangedCopyWithImpl<_$_UsernameOnChanged>(
+  _$$_FullNameOnChangedCopyWith<_$_FullNameOnChanged> get copyWith =>
+      __$$_FullNameOnChangedCopyWithImpl<_$_FullNameOnChanged>(
           this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() signUpPressed,
-    required TResult Function(String username) usernameOnChanged,
-    required TResult Function(String phone) phoneOnChanged,
+    required TResult Function(String fullName) fullNameOnChanged,
+    required TResult Function(String phoneNumber) phoneNumberOnChanged,
     required TResult Function(String email) emailOnChanged,
     required TResult Function(String password) passwordOnChanged,
   }) {
-    return usernameOnChanged(username);
+    return fullNameOnChanged(fullName);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? signUpPressed,
-    TResult? Function(String username)? usernameOnChanged,
-    TResult? Function(String phone)? phoneOnChanged,
+    TResult? Function(String fullName)? fullNameOnChanged,
+    TResult? Function(String phoneNumber)? phoneNumberOnChanged,
     TResult? Function(String email)? emailOnChanged,
     TResult? Function(String password)? passwordOnChanged,
   }) {
-    return usernameOnChanged?.call(username);
+    return fullNameOnChanged?.call(fullName);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? signUpPressed,
-    TResult Function(String username)? usernameOnChanged,
-    TResult Function(String phone)? phoneOnChanged,
+    TResult Function(String fullName)? fullNameOnChanged,
+    TResult Function(String phoneNumber)? phoneNumberOnChanged,
     TResult Function(String email)? emailOnChanged,
     TResult Function(String password)? passwordOnChanged,
     required TResult orElse(),
   }) {
-    if (usernameOnChanged != null) {
-      return usernameOnChanged(username);
+    if (fullNameOnChanged != null) {
+      return fullNameOnChanged(fullName);
     }
     return orElse();
   }
@@ -319,79 +319,79 @@ class _$_UsernameOnChanged implements _UsernameOnChanged {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_SignUpPressed value) signUpPressed,
-    required TResult Function(_UsernameOnChanged value) usernameOnChanged,
-    required TResult Function(_PhoneOnChanged value) phoneOnChanged,
+    required TResult Function(_FullNameOnChanged value) fullNameOnChanged,
+    required TResult Function(_PhoneNumberOnChanged value) phoneNumberOnChanged,
     required TResult Function(_EmailOnChanged value) emailOnChanged,
     required TResult Function(_PasswordOnChanged value) passwordOnChanged,
   }) {
-    return usernameOnChanged(this);
+    return fullNameOnChanged(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_SignUpPressed value)? signUpPressed,
-    TResult? Function(_UsernameOnChanged value)? usernameOnChanged,
-    TResult? Function(_PhoneOnChanged value)? phoneOnChanged,
+    TResult? Function(_FullNameOnChanged value)? fullNameOnChanged,
+    TResult? Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult? Function(_EmailOnChanged value)? emailOnChanged,
     TResult? Function(_PasswordOnChanged value)? passwordOnChanged,
   }) {
-    return usernameOnChanged?.call(this);
+    return fullNameOnChanged?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_SignUpPressed value)? signUpPressed,
-    TResult Function(_UsernameOnChanged value)? usernameOnChanged,
-    TResult Function(_PhoneOnChanged value)? phoneOnChanged,
+    TResult Function(_FullNameOnChanged value)? fullNameOnChanged,
+    TResult Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult Function(_EmailOnChanged value)? emailOnChanged,
     TResult Function(_PasswordOnChanged value)? passwordOnChanged,
     required TResult orElse(),
   }) {
-    if (usernameOnChanged != null) {
-      return usernameOnChanged(this);
+    if (fullNameOnChanged != null) {
+      return fullNameOnChanged(this);
     }
     return orElse();
   }
 }
 
-abstract class _UsernameOnChanged implements SignUpFormEvent {
-  const factory _UsernameOnChanged(final String username) =
-      _$_UsernameOnChanged;
+abstract class _FullNameOnChanged implements SignUpFormEvent {
+  const factory _FullNameOnChanged(final String fullName) =
+      _$_FullNameOnChanged;
 
-  String get username;
+  String get fullName;
   @JsonKey(ignore: true)
-  _$$_UsernameOnChangedCopyWith<_$_UsernameOnChanged> get copyWith =>
+  _$$_FullNameOnChangedCopyWith<_$_FullNameOnChanged> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_PhoneOnChangedCopyWith<$Res> {
-  factory _$$_PhoneOnChangedCopyWith(
-          _$_PhoneOnChanged value, $Res Function(_$_PhoneOnChanged) then) =
-      __$$_PhoneOnChangedCopyWithImpl<$Res>;
+abstract class _$$_PhoneNumberOnChangedCopyWith<$Res> {
+  factory _$$_PhoneNumberOnChangedCopyWith(_$_PhoneNumberOnChanged value,
+          $Res Function(_$_PhoneNumberOnChanged) then) =
+      __$$_PhoneNumberOnChangedCopyWithImpl<$Res>;
   @useResult
-  $Res call({String phone});
+  $Res call({String phoneNumber});
 }
 
 /// @nodoc
-class __$$_PhoneOnChangedCopyWithImpl<$Res>
-    extends _$SignUpFormEventCopyWithImpl<$Res, _$_PhoneOnChanged>
-    implements _$$_PhoneOnChangedCopyWith<$Res> {
-  __$$_PhoneOnChangedCopyWithImpl(
-      _$_PhoneOnChanged _value, $Res Function(_$_PhoneOnChanged) _then)
+class __$$_PhoneNumberOnChangedCopyWithImpl<$Res>
+    extends _$SignUpFormEventCopyWithImpl<$Res, _$_PhoneNumberOnChanged>
+    implements _$$_PhoneNumberOnChangedCopyWith<$Res> {
+  __$$_PhoneNumberOnChangedCopyWithImpl(_$_PhoneNumberOnChanged _value,
+      $Res Function(_$_PhoneNumberOnChanged) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? phone = null,
+    Object? phoneNumber = null,
   }) {
-    return _then(_$_PhoneOnChanged(
-      null == phone
-          ? _value.phone
-          : phone // ignore: cast_nullable_to_non_nullable
+    return _then(_$_PhoneNumberOnChanged(
+      null == phoneNumber
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -399,70 +399,72 @@ class __$$_PhoneOnChangedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_PhoneOnChanged implements _PhoneOnChanged {
-  const _$_PhoneOnChanged(this.phone);
+class _$_PhoneNumberOnChanged implements _PhoneNumberOnChanged {
+  const _$_PhoneNumberOnChanged(this.phoneNumber);
 
   @override
-  final String phone;
+  final String phoneNumber;
 
   @override
   String toString() {
-    return 'SignUpFormEvent.phoneOnChanged(phone: $phone)';
+    return 'SignUpFormEvent.phoneNumberOnChanged(phoneNumber: $phoneNumber)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PhoneOnChanged &&
-            (identical(other.phone, phone) || other.phone == phone));
+            other is _$_PhoneNumberOnChanged &&
+            (identical(other.phoneNumber, phoneNumber) ||
+                other.phoneNumber == phoneNumber));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, phone);
+  int get hashCode => Object.hash(runtimeType, phoneNumber);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PhoneOnChangedCopyWith<_$_PhoneOnChanged> get copyWith =>
-      __$$_PhoneOnChangedCopyWithImpl<_$_PhoneOnChanged>(this, _$identity);
+  _$$_PhoneNumberOnChangedCopyWith<_$_PhoneNumberOnChanged> get copyWith =>
+      __$$_PhoneNumberOnChangedCopyWithImpl<_$_PhoneNumberOnChanged>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() signUpPressed,
-    required TResult Function(String username) usernameOnChanged,
-    required TResult Function(String phone) phoneOnChanged,
+    required TResult Function(String fullName) fullNameOnChanged,
+    required TResult Function(String phoneNumber) phoneNumberOnChanged,
     required TResult Function(String email) emailOnChanged,
     required TResult Function(String password) passwordOnChanged,
   }) {
-    return phoneOnChanged(phone);
+    return phoneNumberOnChanged(phoneNumber);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? signUpPressed,
-    TResult? Function(String username)? usernameOnChanged,
-    TResult? Function(String phone)? phoneOnChanged,
+    TResult? Function(String fullName)? fullNameOnChanged,
+    TResult? Function(String phoneNumber)? phoneNumberOnChanged,
     TResult? Function(String email)? emailOnChanged,
     TResult? Function(String password)? passwordOnChanged,
   }) {
-    return phoneOnChanged?.call(phone);
+    return phoneNumberOnChanged?.call(phoneNumber);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? signUpPressed,
-    TResult Function(String username)? usernameOnChanged,
-    TResult Function(String phone)? phoneOnChanged,
+    TResult Function(String fullName)? fullNameOnChanged,
+    TResult Function(String phoneNumber)? phoneNumberOnChanged,
     TResult Function(String email)? emailOnChanged,
     TResult Function(String password)? passwordOnChanged,
     required TResult orElse(),
   }) {
-    if (phoneOnChanged != null) {
-      return phoneOnChanged(phone);
+    if (phoneNumberOnChanged != null) {
+      return phoneNumberOnChanged(phoneNumber);
     }
     return orElse();
   }
@@ -471,49 +473,50 @@ class _$_PhoneOnChanged implements _PhoneOnChanged {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_SignUpPressed value) signUpPressed,
-    required TResult Function(_UsernameOnChanged value) usernameOnChanged,
-    required TResult Function(_PhoneOnChanged value) phoneOnChanged,
+    required TResult Function(_FullNameOnChanged value) fullNameOnChanged,
+    required TResult Function(_PhoneNumberOnChanged value) phoneNumberOnChanged,
     required TResult Function(_EmailOnChanged value) emailOnChanged,
     required TResult Function(_PasswordOnChanged value) passwordOnChanged,
   }) {
-    return phoneOnChanged(this);
+    return phoneNumberOnChanged(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_SignUpPressed value)? signUpPressed,
-    TResult? Function(_UsernameOnChanged value)? usernameOnChanged,
-    TResult? Function(_PhoneOnChanged value)? phoneOnChanged,
+    TResult? Function(_FullNameOnChanged value)? fullNameOnChanged,
+    TResult? Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult? Function(_EmailOnChanged value)? emailOnChanged,
     TResult? Function(_PasswordOnChanged value)? passwordOnChanged,
   }) {
-    return phoneOnChanged?.call(this);
+    return phoneNumberOnChanged?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_SignUpPressed value)? signUpPressed,
-    TResult Function(_UsernameOnChanged value)? usernameOnChanged,
-    TResult Function(_PhoneOnChanged value)? phoneOnChanged,
+    TResult Function(_FullNameOnChanged value)? fullNameOnChanged,
+    TResult Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult Function(_EmailOnChanged value)? emailOnChanged,
     TResult Function(_PasswordOnChanged value)? passwordOnChanged,
     required TResult orElse(),
   }) {
-    if (phoneOnChanged != null) {
-      return phoneOnChanged(this);
+    if (phoneNumberOnChanged != null) {
+      return phoneNumberOnChanged(this);
     }
     return orElse();
   }
 }
 
-abstract class _PhoneOnChanged implements SignUpFormEvent {
-  const factory _PhoneOnChanged(final String phone) = _$_PhoneOnChanged;
+abstract class _PhoneNumberOnChanged implements SignUpFormEvent {
+  const factory _PhoneNumberOnChanged(final String phoneNumber) =
+      _$_PhoneNumberOnChanged;
 
-  String get phone;
+  String get phoneNumber;
   @JsonKey(ignore: true)
-  _$$_PhoneOnChangedCopyWith<_$_PhoneOnChanged> get copyWith =>
+  _$$_PhoneNumberOnChangedCopyWith<_$_PhoneNumberOnChanged> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -582,8 +585,8 @@ class _$_EmailOnChanged implements _EmailOnChanged {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() signUpPressed,
-    required TResult Function(String username) usernameOnChanged,
-    required TResult Function(String phone) phoneOnChanged,
+    required TResult Function(String fullName) fullNameOnChanged,
+    required TResult Function(String phoneNumber) phoneNumberOnChanged,
     required TResult Function(String email) emailOnChanged,
     required TResult Function(String password) passwordOnChanged,
   }) {
@@ -594,8 +597,8 @@ class _$_EmailOnChanged implements _EmailOnChanged {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? signUpPressed,
-    TResult? Function(String username)? usernameOnChanged,
-    TResult? Function(String phone)? phoneOnChanged,
+    TResult? Function(String fullName)? fullNameOnChanged,
+    TResult? Function(String phoneNumber)? phoneNumberOnChanged,
     TResult? Function(String email)? emailOnChanged,
     TResult? Function(String password)? passwordOnChanged,
   }) {
@@ -606,8 +609,8 @@ class _$_EmailOnChanged implements _EmailOnChanged {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? signUpPressed,
-    TResult Function(String username)? usernameOnChanged,
-    TResult Function(String phone)? phoneOnChanged,
+    TResult Function(String fullName)? fullNameOnChanged,
+    TResult Function(String phoneNumber)? phoneNumberOnChanged,
     TResult Function(String email)? emailOnChanged,
     TResult Function(String password)? passwordOnChanged,
     required TResult orElse(),
@@ -622,8 +625,8 @@ class _$_EmailOnChanged implements _EmailOnChanged {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_SignUpPressed value) signUpPressed,
-    required TResult Function(_UsernameOnChanged value) usernameOnChanged,
-    required TResult Function(_PhoneOnChanged value) phoneOnChanged,
+    required TResult Function(_FullNameOnChanged value) fullNameOnChanged,
+    required TResult Function(_PhoneNumberOnChanged value) phoneNumberOnChanged,
     required TResult Function(_EmailOnChanged value) emailOnChanged,
     required TResult Function(_PasswordOnChanged value) passwordOnChanged,
   }) {
@@ -634,8 +637,8 @@ class _$_EmailOnChanged implements _EmailOnChanged {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_SignUpPressed value)? signUpPressed,
-    TResult? Function(_UsernameOnChanged value)? usernameOnChanged,
-    TResult? Function(_PhoneOnChanged value)? phoneOnChanged,
+    TResult? Function(_FullNameOnChanged value)? fullNameOnChanged,
+    TResult? Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult? Function(_EmailOnChanged value)? emailOnChanged,
     TResult? Function(_PasswordOnChanged value)? passwordOnChanged,
   }) {
@@ -646,8 +649,8 @@ class _$_EmailOnChanged implements _EmailOnChanged {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_SignUpPressed value)? signUpPressed,
-    TResult Function(_UsernameOnChanged value)? usernameOnChanged,
-    TResult Function(_PhoneOnChanged value)? phoneOnChanged,
+    TResult Function(_FullNameOnChanged value)? fullNameOnChanged,
+    TResult Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult Function(_EmailOnChanged value)? emailOnChanged,
     TResult Function(_PasswordOnChanged value)? passwordOnChanged,
     required TResult orElse(),
@@ -735,8 +738,8 @@ class _$_PasswordOnChanged implements _PasswordOnChanged {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() signUpPressed,
-    required TResult Function(String username) usernameOnChanged,
-    required TResult Function(String phone) phoneOnChanged,
+    required TResult Function(String fullName) fullNameOnChanged,
+    required TResult Function(String phoneNumber) phoneNumberOnChanged,
     required TResult Function(String email) emailOnChanged,
     required TResult Function(String password) passwordOnChanged,
   }) {
@@ -747,8 +750,8 @@ class _$_PasswordOnChanged implements _PasswordOnChanged {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? signUpPressed,
-    TResult? Function(String username)? usernameOnChanged,
-    TResult? Function(String phone)? phoneOnChanged,
+    TResult? Function(String fullName)? fullNameOnChanged,
+    TResult? Function(String phoneNumber)? phoneNumberOnChanged,
     TResult? Function(String email)? emailOnChanged,
     TResult? Function(String password)? passwordOnChanged,
   }) {
@@ -759,8 +762,8 @@ class _$_PasswordOnChanged implements _PasswordOnChanged {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? signUpPressed,
-    TResult Function(String username)? usernameOnChanged,
-    TResult Function(String phone)? phoneOnChanged,
+    TResult Function(String fullName)? fullNameOnChanged,
+    TResult Function(String phoneNumber)? phoneNumberOnChanged,
     TResult Function(String email)? emailOnChanged,
     TResult Function(String password)? passwordOnChanged,
     required TResult orElse(),
@@ -775,8 +778,8 @@ class _$_PasswordOnChanged implements _PasswordOnChanged {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_SignUpPressed value) signUpPressed,
-    required TResult Function(_UsernameOnChanged value) usernameOnChanged,
-    required TResult Function(_PhoneOnChanged value) phoneOnChanged,
+    required TResult Function(_FullNameOnChanged value) fullNameOnChanged,
+    required TResult Function(_PhoneNumberOnChanged value) phoneNumberOnChanged,
     required TResult Function(_EmailOnChanged value) emailOnChanged,
     required TResult Function(_PasswordOnChanged value) passwordOnChanged,
   }) {
@@ -787,8 +790,8 @@ class _$_PasswordOnChanged implements _PasswordOnChanged {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_SignUpPressed value)? signUpPressed,
-    TResult? Function(_UsernameOnChanged value)? usernameOnChanged,
-    TResult? Function(_PhoneOnChanged value)? phoneOnChanged,
+    TResult? Function(_FullNameOnChanged value)? fullNameOnChanged,
+    TResult? Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult? Function(_EmailOnChanged value)? emailOnChanged,
     TResult? Function(_PasswordOnChanged value)? passwordOnChanged,
   }) {
@@ -799,8 +802,8 @@ class _$_PasswordOnChanged implements _PasswordOnChanged {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_SignUpPressed value)? signUpPressed,
-    TResult Function(_UsernameOnChanged value)? usernameOnChanged,
-    TResult Function(_PhoneOnChanged value)? phoneOnChanged,
+    TResult Function(_FullNameOnChanged value)? fullNameOnChanged,
+    TResult Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult Function(_EmailOnChanged value)? emailOnChanged,
     TResult Function(_PasswordOnChanged value)? passwordOnChanged,
     required TResult orElse(),
@@ -825,13 +828,11 @@ abstract class _PasswordOnChanged implements SignUpFormEvent {
 /// @nodoc
 mixin _$SignUpFormState {
   RequestState get state => throw _privateConstructorUsedError;
-  String get username => throw _privateConstructorUsedError;
-  String get phone => throw _privateConstructorUsedError;
+  String get fullName => throw _privateConstructorUsedError;
+  String get phoneNumber => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   String get password => throw _privateConstructorUsedError;
   String get message => throw _privateConstructorUsedError;
-  bool get isSubmitting => throw _privateConstructorUsedError;
-  bool get showErrorMessages => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SignUpFormStateCopyWith<SignUpFormState> get copyWith =>
@@ -846,13 +847,11 @@ abstract class $SignUpFormStateCopyWith<$Res> {
   @useResult
   $Res call(
       {RequestState state,
-      String username,
-      String phone,
+      String fullName,
+      String phoneNumber,
       String email,
       String password,
-      String message,
-      bool isSubmitting,
-      bool showErrorMessages});
+      String message});
 }
 
 /// @nodoc
@@ -869,26 +868,24 @@ class _$SignUpFormStateCopyWithImpl<$Res, $Val extends SignUpFormState>
   @override
   $Res call({
     Object? state = null,
-    Object? username = null,
-    Object? phone = null,
+    Object? fullName = null,
+    Object? phoneNumber = null,
     Object? email = null,
     Object? password = null,
     Object? message = null,
-    Object? isSubmitting = null,
-    Object? showErrorMessages = null,
   }) {
     return _then(_value.copyWith(
       state: null == state
           ? _value.state
           : state // ignore: cast_nullable_to_non_nullable
               as RequestState,
-      username: null == username
-          ? _value.username
-          : username // ignore: cast_nullable_to_non_nullable
+      fullName: null == fullName
+          ? _value.fullName
+          : fullName // ignore: cast_nullable_to_non_nullable
               as String,
-      phone: null == phone
-          ? _value.phone
-          : phone // ignore: cast_nullable_to_non_nullable
+      phoneNumber: null == phoneNumber
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String,
       email: null == email
           ? _value.email
@@ -902,14 +899,6 @@ class _$SignUpFormStateCopyWithImpl<$Res, $Val extends SignUpFormState>
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
-      isSubmitting: null == isSubmitting
-          ? _value.isSubmitting
-          : isSubmitting // ignore: cast_nullable_to_non_nullable
-              as bool,
-      showErrorMessages: null == showErrorMessages
-          ? _value.showErrorMessages
-          : showErrorMessages // ignore: cast_nullable_to_non_nullable
-              as bool,
     ) as $Val);
   }
 }
@@ -924,13 +913,11 @@ abstract class _$$_SignUpFormStateCopyWith<$Res>
   @useResult
   $Res call(
       {RequestState state,
-      String username,
-      String phone,
+      String fullName,
+      String phoneNumber,
       String email,
       String password,
-      String message,
-      bool isSubmitting,
-      bool showErrorMessages});
+      String message});
 }
 
 /// @nodoc
@@ -945,26 +932,24 @@ class __$$_SignUpFormStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? state = null,
-    Object? username = null,
-    Object? phone = null,
+    Object? fullName = null,
+    Object? phoneNumber = null,
     Object? email = null,
     Object? password = null,
     Object? message = null,
-    Object? isSubmitting = null,
-    Object? showErrorMessages = null,
   }) {
     return _then(_$_SignUpFormState(
       state: null == state
           ? _value.state
           : state // ignore: cast_nullable_to_non_nullable
               as RequestState,
-      username: null == username
-          ? _value.username
-          : username // ignore: cast_nullable_to_non_nullable
+      fullName: null == fullName
+          ? _value.fullName
+          : fullName // ignore: cast_nullable_to_non_nullable
               as String,
-      phone: null == phone
-          ? _value.phone
-          : phone // ignore: cast_nullable_to_non_nullable
+      phoneNumber: null == phoneNumber
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String,
       email: null == email
           ? _value.email
@@ -978,14 +963,6 @@ class __$$_SignUpFormStateCopyWithImpl<$Res>
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
-      isSubmitting: null == isSubmitting
-          ? _value.isSubmitting
-          : isSubmitting // ignore: cast_nullable_to_non_nullable
-              as bool,
-      showErrorMessages: null == showErrorMessages
-          ? _value.showErrorMessages
-          : showErrorMessages // ignore: cast_nullable_to_non_nullable
-              as bool,
     ));
   }
 }
@@ -995,34 +972,28 @@ class __$$_SignUpFormStateCopyWithImpl<$Res>
 class _$_SignUpFormState implements _SignUpFormState {
   const _$_SignUpFormState(
       {required this.state,
-      required this.username,
-      required this.phone,
+      required this.fullName,
+      required this.phoneNumber,
       required this.email,
       required this.password,
-      required this.message,
-      required this.isSubmitting,
-      required this.showErrorMessages});
+      required this.message});
 
   @override
   final RequestState state;
   @override
-  final String username;
+  final String fullName;
   @override
-  final String phone;
+  final String phoneNumber;
   @override
   final String email;
   @override
   final String password;
   @override
   final String message;
-  @override
-  final bool isSubmitting;
-  @override
-  final bool showErrorMessages;
 
   @override
   String toString() {
-    return 'SignUpFormState(state: $state, username: $username, phone: $phone, email: $email, password: $password, message: $message, isSubmitting: $isSubmitting, showErrorMessages: $showErrorMessages)';
+    return 'SignUpFormState(state: $state, fullName: $fullName, phoneNumber: $phoneNumber, email: $email, password: $password, message: $message)';
   }
 
   @override
@@ -1031,22 +1002,19 @@ class _$_SignUpFormState implements _SignUpFormState {
         (other.runtimeType == runtimeType &&
             other is _$_SignUpFormState &&
             (identical(other.state, state) || other.state == state) &&
-            (identical(other.username, username) ||
-                other.username == username) &&
-            (identical(other.phone, phone) || other.phone == phone) &&
+            (identical(other.fullName, fullName) ||
+                other.fullName == fullName) &&
+            (identical(other.phoneNumber, phoneNumber) ||
+                other.phoneNumber == phoneNumber) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.password, password) ||
                 other.password == password) &&
-            (identical(other.message, message) || other.message == message) &&
-            (identical(other.isSubmitting, isSubmitting) ||
-                other.isSubmitting == isSubmitting) &&
-            (identical(other.showErrorMessages, showErrorMessages) ||
-                other.showErrorMessages == showErrorMessages));
+            (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, state, username, phone, email,
-      password, message, isSubmitting, showErrorMessages);
+  int get hashCode => Object.hash(
+      runtimeType, state, fullName, phoneNumber, email, password, message);
 
   @JsonKey(ignore: true)
   @override
@@ -1058,30 +1026,24 @@ class _$_SignUpFormState implements _SignUpFormState {
 abstract class _SignUpFormState implements SignUpFormState {
   const factory _SignUpFormState(
       {required final RequestState state,
-      required final String username,
-      required final String phone,
+      required final String fullName,
+      required final String phoneNumber,
       required final String email,
       required final String password,
-      required final String message,
-      required final bool isSubmitting,
-      required final bool showErrorMessages}) = _$_SignUpFormState;
+      required final String message}) = _$_SignUpFormState;
 
   @override
   RequestState get state;
   @override
-  String get username;
+  String get fullName;
   @override
-  String get phone;
+  String get phoneNumber;
   @override
   String get email;
   @override
   String get password;
   @override
   String get message;
-  @override
-  bool get isSubmitting;
-  @override
-  bool get showErrorMessages;
   @override
   @JsonKey(ignore: true)
   _$$_SignUpFormStateCopyWith<_$_SignUpFormState> get copyWith =>

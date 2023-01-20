@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:joblance_firebase/src/common/const.dart';
-import 'package:joblance_firebase/src/domain/usecases/sign_out.dart';
+import 'package:joblance_firebase/src/domain/usecases/auth/sign_out_user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 part 'auth_watcher_bloc.freezed.dart';
@@ -33,5 +33,5 @@ class AuthWatcherBloc extends Bloc<AuthWatcherEvent, AuthWatcherState> {
       );
     });
   }
-  final SignOut signOut;
+  final SignOutUser signOut;
 }

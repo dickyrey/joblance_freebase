@@ -9,7 +9,7 @@ class Const {
   static const String accessToken = 'access_token';
   static const String baseURL = 'https://kayongku.com/jobiago/public/api';
   static const String disableOnBoarding = 'disable_onboarding';
-  static const String profileImage = 'https://i.pinimg.com/564x/b8/13/10/b813109196c7f7efbd00a1672de070a0.jpg';
+  static const String profileImage = 'https://i.pinimg.com/564x/17/96/f8/1796f83967cc3cc047ad58fe0e18fe62.jpg';
   static const String emptyImage = 'https://i.pinimg.com/564x/f3/19/10/f31910b49320f572516355d748a617f3.jpg';
   static const String companyImage = 'https://i.pinimg.com/564x/1c/2a/fd/1c2afd5df5bc136bfbae9ce51386cd5f.jpg';
 }

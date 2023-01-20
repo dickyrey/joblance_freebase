@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -26,10 +27,13 @@ import 'package:joblance_firebase/src/presentation/bloc/language/language_form_b
 import 'package:joblance_firebase/src/presentation/bloc/message/message_recruiter_watcher/message_recruiter_watcher_bloc.dart';
 import 'package:joblance_firebase/src/presentation/bloc/message/message_watcher/message_watcher_bloc.dart';
 import 'package:joblance_firebase/src/presentation/bloc/notifications/notifications_watcher/notifications_watcher_bloc.dart';
+import 'package:joblance_firebase/src/presentation/bloc/profile/profile_watcher/profile_watcher_bloc.dart';
 import 'package:joblance_firebase/src/presentation/cubit/theme_cubit.dart';
 import 'package:joblance_firebase/src/utilities/route_generator.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   di.init();
   runApp(const MyApp());
 }
@@ -62,6 +66,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => di.locator<MessageRecruiterWatcherBloc>()),
         BlocProvider(create: (context) => di.locator<MessageWatcherBloc>()),
         BlocProvider(create: (context) => di.locator<NotificationsWatcherBloc>()),
+        BlocProvider(create: (context) => di.locator<ProfileWatcherBloc>()),
 
         // Cubits
         BlocProvider(create: (context) => di.locator<ThemeCubit>()),
