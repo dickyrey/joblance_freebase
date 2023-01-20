@@ -7,11 +7,11 @@ import 'package:joblance_firebase/src/data/models/profile_model.dart';
 
 abstract class AuthenticationRemoteDataSource {
   Future<ProfileModel> getProfile();
-  Future<void> signinWithEmailAndPassword(
+  Future<void> signinWithEmail(
     String email,
     String password,
   );
-  Future<void> createUserWithEmailAndPassword({
+  Future<void> createUserWithEmail({
     required ProfileModel profile,
     required String password,
   });
@@ -19,13 +19,14 @@ abstract class AuthenticationRemoteDataSource {
   Future<void> signOutUser();
 }
 
-class AuthenticationRemoteDataSourceImpl extends AuthenticationRemoteDataSource {
+class AuthenticationRemoteDataSourceImpl
+    extends AuthenticationRemoteDataSource {
   AuthenticationRemoteDataSourceImpl({
     required this.firebaseAuth,
     required this.googleSignIn,
     required this.firestore,
   });
-  
+
   final FirebaseAuth firebaseAuth;
   final GoogleSignIn googleSignIn;
   final FirebaseFirestore firestore;
@@ -45,7 +46,7 @@ class AuthenticationRemoteDataSourceImpl extends AuthenticationRemoteDataSource 
   }
 
   @override
-  Future<void> signinWithEmailAndPassword(String email, String password) async {
+  Future<void> signinWithEmail(String email, String password) async {
     final result = await firebaseAuth.signInWithEmailAndPassword(
       email: email,
       password: password,
@@ -58,7 +59,7 @@ class AuthenticationRemoteDataSourceImpl extends AuthenticationRemoteDataSource 
   }
 
   @override
-  Future<void> createUserWithEmailAndPassword({
+  Future<void> createUserWithEmail({
     required ProfileModel profile,
     required String password,
   }) async {
@@ -69,7 +70,7 @@ class AuthenticationRemoteDataSourceImpl extends AuthenticationRemoteDataSource 
     );
     if (result.user != null) {
       final user = result.user!;
-      await ref.doc(user.uid).set(profile.toMap());
+      await ref.doc(user.uid).set(profile.toMap(user.uid));
     } else {
       throw ServerException('Failed to create Account with Email');
     }
@@ -78,7 +79,7 @@ class AuthenticationRemoteDataSourceImpl extends AuthenticationRemoteDataSource 
   @override
   Future<void> signInWithGoogle() async {
     final result = await googleSignIn.signIn();
-    final applicantCollection = firestore.collection('applicant');
+    final applicantCollection = firestore.collection('users');
 
     if (result != null) {
       final googleAuthentication = await result.authentication;
@@ -105,7 +106,9 @@ class AuthenticationRemoteDataSourceImpl extends AuthenticationRemoteDataSource 
             birthday: Timestamp.now(),
             createdAt: Timestamp.now(),
           );
-          await applicantCollection.doc(user?.uid).set(profileModel.toMap());
+          await applicantCollection
+              .doc(user?.uid)
+              .set(profileModel.toMap(user?.uid ?? ''));
         }
       });
     } else {

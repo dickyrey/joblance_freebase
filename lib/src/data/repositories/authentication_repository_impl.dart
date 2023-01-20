@@ -27,12 +27,12 @@ class AuthenticationRepositoryImpl extends AuthenticationRepository {
   }
 
   @override
-  Future<Either<Failure, void>> signInWithEmailAndPassword(
+  Future<Either<Failure, void>> signInWithEmail(
     String email,
     String password,
   ) async {
     try {
-      final result = await dataSource.signinWithEmailAndPassword(
+      final result = await dataSource.signinWithEmail(
         email,
         password,
       );
@@ -51,12 +51,12 @@ class AuthenticationRepositoryImpl extends AuthenticationRepository {
   }
 
   @override
-  Future<Either<Failure, void>> createUserWithEmailAndPassword({
+  Future<Either<Failure, void>> createUserWithEmail({
     required Profile profile,
     required String password,
   }) async {
     try {
-      final result = await dataSource.createUserWithEmailAndPassword(
+      final result = await dataSource.createUserWithEmail(
         profile: profile.toModel(),
         password: password,
       );

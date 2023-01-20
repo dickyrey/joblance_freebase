@@ -30,6 +30,7 @@ class _SignInPageState extends State<SignInPage> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final lang = AppLocalizations.of(context)!;
     final themeCubit = context.read<ThemeCubit>().state;
 
     return BlocListener<SignInFormBloc, SignInFormState>(
@@ -37,21 +38,26 @@ class _SignInPageState extends State<SignInPage> {
         if (state.showErrorMessages == true) {
           if (state.message == ExceptionMessage.emailNotFound) {
             AdvanceSnackBar(
-              message: AppLocalizations.of(context)!.email_not_found,
+              message: lang.email_not_found,
               bgColor: theme.errorColor,
             ).show(context);
           } else if (state.message == ExceptionMessage.wrongPassword) {
             AdvanceSnackBar(
-              message: AppLocalizations.of(context)!.wrong_password,
+              message: lang.wrong_password,
               bgColor: theme.errorColor,
             ).show(context);
           } else if (state.message == ExceptionMessage.internetNotConnected) {
             AdvanceSnackBar(
-              message: AppLocalizations.of(context)!.no_internet_connection,
+              message: lang.no_internet_connection,
+              bgColor: theme.errorColor,
+            ).show(context);
+          } else {
+            AdvanceSnackBar(
+              message: lang.email_not_found,
               bgColor: theme.errorColor,
             ).show(context);
           }
-        } else if (state.result == RequestState.loaded) {
+        } else if (state.state == RequestState.loaded) {
           Navigator.pushNamedAndRemoveUntil(
             context,
             HOME,
@@ -74,7 +80,9 @@ class _SignInPageState extends State<SignInPage> {
                   const SizedBox(height: Const.space50),
                   Card(
                     elevation: 0,
-                    margin: const EdgeInsets.symmetric(horizontal: Const.margin),
+                    margin: const EdgeInsets.symmetric(
+                      horizontal: Const.margin,
+                    ),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(Const.radius),
                     ),
@@ -89,7 +97,9 @@ class _SignInPageState extends State<SignInPage> {
                         children: [
                           Center(
                             child: ClipRRect(
-                              borderRadius: BorderRadius.circular(Const.radius),
+                              borderRadius: BorderRadius.circular(
+                                Const.radius,
+                              ),
                               child: SvgPicture.asset(
                                 CustomIcons.joblanceIcon,
                                 width: 50,
@@ -100,20 +110,19 @@ class _SignInPageState extends State<SignInPage> {
                           const SizedBox(height: Const.space15),
                           Center(
                             child: Text(
-                              AppLocalizations.of(context)!.sign_in_to_joblance,
+                              lang.sign_in_to_joblance,
                               style: theme.textTheme.headline3,
                               textAlign: TextAlign.center,
                             ),
                           ),
                           const SizedBox(height: Const.space25),
                           Text(
-                            AppLocalizations.of(context)!.email_address,
+                            lang.email_address,
                             style: theme.textTheme.subtitle2,
                           ),
                           const SizedBox(height: Const.space8),
                           CustomTextFormField(
-                            hintText: AppLocalizations.of(context)!
-                                .enter_your_email_address,
+                            hintText: lang.enter_your_email_address,
                             textFieldType: TextFieldType.email,
                             onChanged: (v) {
                               context
@@ -123,13 +132,12 @@ class _SignInPageState extends State<SignInPage> {
                           ),
                           const SizedBox(height: Const.space25),
                           Text(
-                            AppLocalizations.of(context)!.password,
+                            lang.password,
                             style: theme.textTheme.subtitle2,
                           ),
                           const SizedBox(height: Const.space8),
                           CustomTextFormField(
-                            hintText: AppLocalizations.of(context)!
-                                .enter_your_password,
+                            hintText: lang.enter_your_password,
                             textFieldType: TextFieldType.password,
                             obscureText: _obscureText,
                             suffixIcon: IconButton(
@@ -160,7 +168,7 @@ class _SignInPageState extends State<SignInPage> {
                                 activeColor: ColorLight.silverTree,
                               ),
                               Text(
-                                AppLocalizations.of(context)!.remember_me,
+                                lang.remember_me,
                                 style: theme.textTheme.bodyText2,
                               ),
                             ],
@@ -177,52 +185,55 @@ class _SignInPageState extends State<SignInPage> {
                                   }
                                 },
                                 isLoading: state.isSubmitting,
-                                label: AppLocalizations.of(context)!.sign_in,
+                                label: lang.sign_in,
                               );
                             },
                           ),
                           const SizedBox(height: Const.space15),
                           Center(
                             child: Text(
-                              '--- ${AppLocalizations.of(context)!.or} ---',
+                              '--- ${lang.or} ---',
                               style: theme.textTheme.bodyText2,
                             ),
                           ),
                           const SizedBox(height: Const.space15),
-                          CustomElevatedButton(
-                            onTap: () =>
-                              AdvanceSnackBar(
-                                message: AppLocalizations.of(context)!
-                                    .google_sign_in_clicked,
-                                bgColor: theme.errorColor,
-                              ).show(context),
-                            color: (themeCubit is ThemeDark)
-                                ? ColorDark.background
-                                : ColorLight.catSkillWhite,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                SvgPicture.asset(CustomIcons.google),
-                                const SizedBox(width: Const.space12),
-                                Text(
-                                  AppLocalizations.of(context)!
-                                      .continue_with_google,
-                                  style: theme.textTheme.button!.copyWith(
-                                    color: (themeCubit is ThemeDark)
-                                        ? ColorDark.fontTitle
-                                        : ColorLight.fontTitle,
-                                  ),
+                          BlocBuilder<SignInFormBloc, SignInFormState>(
+                            builder: (context, state) {
+                              return CustomElevatedButton(
+                                onTap: () {
+                                  context.read<SignInFormBloc>().add(
+                                        const SignInFormEvent
+                                            .signInWithGooglePressed(),
+                                      );
+                                },
+                                isLoading: state.isSubmitting,
+                                color: (themeCubit is ThemeDark)
+                                    ? ColorDark.background
+                                    : ColorLight.catSkillWhite,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    SvgPicture.asset(CustomIcons.google),
+                                    const SizedBox(width: Const.space12),
+                                    Text(
+                                      lang.continue_with_google,
+                                      style: theme.textTheme.button!.copyWith(
+                                        color: (themeCubit is ThemeDark)
+                                            ? ColorDark.fontTitle
+                                            : ColorLight.fontTitle,
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                              ],
-                            ),
+                              );
+                            },
                           ),
                           const SizedBox(height: Const.space25),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                AppLocalizations.of(context)!
-                                    .dont_have_an_account,
+                                lang.dont_have_an_account,
                                 style: theme.textTheme.subtitle1,
                               ),
                               CustomTextButton(
@@ -230,7 +241,7 @@ class _SignInPageState extends State<SignInPage> {
                                   context,
                                   SIGN_UP,
                                 ),
-                                label: AppLocalizations.of(context)!.sign_up,
+                                label: lang.sign_up,
                                 fontSize: 14,
                                 fontColor: theme.primaryColor,
                               )

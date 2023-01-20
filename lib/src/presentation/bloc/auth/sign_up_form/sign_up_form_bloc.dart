@@ -5,13 +5,14 @@ import 'package:joblance_firebase/src/common/const.dart';
 import 'package:joblance_firebase/src/common/enums.dart';
 import 'package:joblance_firebase/src/domain/entities/profile.dart';
 import 'package:joblance_firebase/src/domain/usecases/auth/create_user.dart';
+import 'package:joblance_firebase/src/domain/usecases/auth/sign_in_google.dart';
 
 part 'sign_up_form_bloc.freezed.dart';
 part 'sign_up_form_event.dart';
 part 'sign_up_form_state.dart';
 
 class SignUpFormBloc extends Bloc<SignUpFormEvent, SignUpFormState> {
-  SignUpFormBloc(this._createUser) : super(SignUpFormState.initial()) {
+  SignUpFormBloc(this._createUser, this._signInWithGoogle) : super(SignUpFormState.initial()) {
     on<SignUpFormEvent>((event, emit) async {
       await event.map(
         signUpPressed: (event) async {
@@ -78,8 +79,32 @@ class SignUpFormBloc extends Bloc<SignUpFormEvent, SignUpFormState> {
             ),
           );
         },
+        signUpWithGooglePressed: (_) async {
+          emit(
+            state.copyWith(
+              state: RequestState.loading,
+              isSubmitting: true,
+            ),
+          );
+          final result = await _signInWithGoogle.execute();
+          result.fold(
+            (failure) => emit(
+              state.copyWith(
+                state: RequestState.error,
+                isSubmitting: false,
+              ),
+            ),
+            (_) => emit(
+              state.copyWith(
+                state: RequestState.loaded,
+                isSubmitting: false,
+              ),
+            ),
+          );
+        },
       );
     });
   }
   final CreateUserWithEmail _createUser;
+  final SignInWithGoogle _signInWithGoogle;
 }

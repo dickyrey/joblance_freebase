@@ -285,11 +285,11 @@ void init() {
   locator.registerLazySingleton(
     () => authWatcherBloc,
   );
-  final signInFormBloc = SignInFormBloc(locator());
+  final signInFormBloc = SignInFormBloc(locator(), locator());
   locator.registerLazySingleton(
     () => signInFormBloc,
   );
-  final signUpFormBloc = SignUpFormBloc(locator());
+  final signUpFormBloc = SignUpFormBloc(locator(), locator());
   locator.registerLazySingleton(
     () => signUpFormBloc,
   );

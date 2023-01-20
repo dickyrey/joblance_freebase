@@ -9,6 +9,7 @@ class SignUpFormState with _$SignUpFormState {
     required String email,
     required String password,
     required String message,
+    required bool isSubmitting,
   }) = _SignUpFormState;
   
   factory SignUpFormState.initial() => const SignUpFormState(
@@ -18,5 +19,6 @@ class SignUpFormState with _$SignUpFormState {
         email: '',
         password: '',
         message: '',
+        isSubmitting: false,
       );
 }

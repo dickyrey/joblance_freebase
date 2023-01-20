@@ -74,9 +74,9 @@ class ProfileModel extends Equatable {
         createdAt,
       ];
 
-  Map<String, dynamic> toMap() {
+  Map<String, dynamic> toMap(String uid) {
     return {
-      'id': id == '' ? '' : id,
+      'id': uid,
       'email': email == '' ? '' : email,
       'full_name': fullName == '' ? '' : fullName,
       'image': image == '' ? '' : image,

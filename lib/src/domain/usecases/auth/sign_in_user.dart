@@ -7,6 +7,6 @@ class SignInWithEmail {
   final AuthenticationRepository repository;
 
   Future<Either<Failure, void>> execute(String email, String password) {
-    return repository.signInWithEmailAndPassword(email, password);
+    return repository.signInWithEmail(email, password);
   }
 }

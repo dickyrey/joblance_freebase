@@ -201,29 +201,36 @@ class _SignUpPageState extends State<SignUpPage> {
                             ),
                           ),
                           const SizedBox(height: Const.space15),
-                          CustomElevatedButton(
-                            onTap: () => AdvanceSnackBar(
-                              message: lang.google_sign_in_clicked,
-                              bgColor: theme.errorColor,
-                            ).show(context),
-                            color: (themeCubit is ThemeDark)
-                                ? ColorDark.background
-                                : ColorLight.catSkillWhite,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                SvgPicture.asset(CustomIcons.google),
-                                const SizedBox(width: Const.space12),
-                                Text(
-                                  lang.continue_with_google,
-                                  style: theme.textTheme.button!.copyWith(
-                                    color: (themeCubit is ThemeDark)
-                                        ? ColorDark.fontTitle
-                                        : ColorLight.fontTitle,
-                                  ),
+                          BlocBuilder<SignUpFormBloc, SignUpFormState>(
+                            builder: (context, state) {
+                              return CustomElevatedButton(
+                                onTap: () {
+                                  context.read<SignUpFormBloc>().add(
+                                        const SignUpFormEvent
+                                            .signUpWithGooglePressed(),
+                                      );
+                                },
+                                isLoading: state.isSubmitting,
+                                color: (themeCubit is ThemeDark)
+                                    ? ColorDark.background
+                                    : ColorLight.catSkillWhite,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    SvgPicture.asset(CustomIcons.google),
+                                    const SizedBox(width: Const.space12),
+                                    Text(
+                                      lang.continue_with_google,
+                                      style: theme.textTheme.button!.copyWith(
+                                        color: (themeCubit is ThemeDark)
+                                            ? ColorDark.fontTitle
+                                            : ColorLight.fontTitle,
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                              ],
-                            ),
+                              );
+                            },
                           ),
                           const SizedBox(height: Const.space25),
                           Row(

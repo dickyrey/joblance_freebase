@@ -23,6 +23,7 @@ mixin _$SignUpFormEvent {
     required TResult Function(String phoneNumber) phoneNumberOnChanged,
     required TResult Function(String email) emailOnChanged,
     required TResult Function(String password) passwordOnChanged,
+    required TResult Function() signUpWithGooglePressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -32,6 +33,7 @@ mixin _$SignUpFormEvent {
     TResult? Function(String phoneNumber)? phoneNumberOnChanged,
     TResult? Function(String email)? emailOnChanged,
     TResult? Function(String password)? passwordOnChanged,
+    TResult? Function()? signUpWithGooglePressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -41,6 +43,7 @@ mixin _$SignUpFormEvent {
     TResult Function(String phoneNumber)? phoneNumberOnChanged,
     TResult Function(String email)? emailOnChanged,
     TResult Function(String password)? passwordOnChanged,
+    TResult Function()? signUpWithGooglePressed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -51,6 +54,8 @@ mixin _$SignUpFormEvent {
     required TResult Function(_PhoneNumberOnChanged value) phoneNumberOnChanged,
     required TResult Function(_EmailOnChanged value) emailOnChanged,
     required TResult Function(_PasswordOnChanged value) passwordOnChanged,
+    required TResult Function(_SignUpWithGooglePressed value)
+        signUpWithGooglePressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,6 +65,7 @@ mixin _$SignUpFormEvent {
     TResult? Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult? Function(_EmailOnChanged value)? emailOnChanged,
     TResult? Function(_PasswordOnChanged value)? passwordOnChanged,
+    TResult? Function(_SignUpWithGooglePressed value)? signUpWithGooglePressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -69,6 +75,7 @@ mixin _$SignUpFormEvent {
     TResult Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult Function(_EmailOnChanged value)? emailOnChanged,
     TResult Function(_PasswordOnChanged value)? passwordOnChanged,
+    TResult Function(_SignUpWithGooglePressed value)? signUpWithGooglePressed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -135,6 +142,7 @@ class _$_SignUpPressed implements _SignUpPressed {
     required TResult Function(String phoneNumber) phoneNumberOnChanged,
     required TResult Function(String email) emailOnChanged,
     required TResult Function(String password) passwordOnChanged,
+    required TResult Function() signUpWithGooglePressed,
   }) {
     return signUpPressed();
   }
@@ -147,6 +155,7 @@ class _$_SignUpPressed implements _SignUpPressed {
     TResult? Function(String phoneNumber)? phoneNumberOnChanged,
     TResult? Function(String email)? emailOnChanged,
     TResult? Function(String password)? passwordOnChanged,
+    TResult? Function()? signUpWithGooglePressed,
   }) {
     return signUpPressed?.call();
   }
@@ -159,6 +168,7 @@ class _$_SignUpPressed implements _SignUpPressed {
     TResult Function(String phoneNumber)? phoneNumberOnChanged,
     TResult Function(String email)? emailOnChanged,
     TResult Function(String password)? passwordOnChanged,
+    TResult Function()? signUpWithGooglePressed,
     required TResult orElse(),
   }) {
     if (signUpPressed != null) {
@@ -175,6 +185,8 @@ class _$_SignUpPressed implements _SignUpPressed {
     required TResult Function(_PhoneNumberOnChanged value) phoneNumberOnChanged,
     required TResult Function(_EmailOnChanged value) emailOnChanged,
     required TResult Function(_PasswordOnChanged value) passwordOnChanged,
+    required TResult Function(_SignUpWithGooglePressed value)
+        signUpWithGooglePressed,
   }) {
     return signUpPressed(this);
   }
@@ -187,6 +199,7 @@ class _$_SignUpPressed implements _SignUpPressed {
     TResult? Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult? Function(_EmailOnChanged value)? emailOnChanged,
     TResult? Function(_PasswordOnChanged value)? passwordOnChanged,
+    TResult? Function(_SignUpWithGooglePressed value)? signUpWithGooglePressed,
   }) {
     return signUpPressed?.call(this);
   }
@@ -199,6 +212,7 @@ class _$_SignUpPressed implements _SignUpPressed {
     TResult Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult Function(_EmailOnChanged value)? emailOnChanged,
     TResult Function(_PasswordOnChanged value)? passwordOnChanged,
+    TResult Function(_SignUpWithGooglePressed value)? signUpWithGooglePressed,
     required TResult orElse(),
   }) {
     if (signUpPressed != null) {
@@ -283,6 +297,7 @@ class _$_FullNameOnChanged implements _FullNameOnChanged {
     required TResult Function(String phoneNumber) phoneNumberOnChanged,
     required TResult Function(String email) emailOnChanged,
     required TResult Function(String password) passwordOnChanged,
+    required TResult Function() signUpWithGooglePressed,
   }) {
     return fullNameOnChanged(fullName);
   }
@@ -295,6 +310,7 @@ class _$_FullNameOnChanged implements _FullNameOnChanged {
     TResult? Function(String phoneNumber)? phoneNumberOnChanged,
     TResult? Function(String email)? emailOnChanged,
     TResult? Function(String password)? passwordOnChanged,
+    TResult? Function()? signUpWithGooglePressed,
   }) {
     return fullNameOnChanged?.call(fullName);
   }
@@ -307,6 +323,7 @@ class _$_FullNameOnChanged implements _FullNameOnChanged {
     TResult Function(String phoneNumber)? phoneNumberOnChanged,
     TResult Function(String email)? emailOnChanged,
     TResult Function(String password)? passwordOnChanged,
+    TResult Function()? signUpWithGooglePressed,
     required TResult orElse(),
   }) {
     if (fullNameOnChanged != null) {
@@ -323,6 +340,8 @@ class _$_FullNameOnChanged implements _FullNameOnChanged {
     required TResult Function(_PhoneNumberOnChanged value) phoneNumberOnChanged,
     required TResult Function(_EmailOnChanged value) emailOnChanged,
     required TResult Function(_PasswordOnChanged value) passwordOnChanged,
+    required TResult Function(_SignUpWithGooglePressed value)
+        signUpWithGooglePressed,
   }) {
     return fullNameOnChanged(this);
   }
@@ -335,6 +354,7 @@ class _$_FullNameOnChanged implements _FullNameOnChanged {
     TResult? Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult? Function(_EmailOnChanged value)? emailOnChanged,
     TResult? Function(_PasswordOnChanged value)? passwordOnChanged,
+    TResult? Function(_SignUpWithGooglePressed value)? signUpWithGooglePressed,
   }) {
     return fullNameOnChanged?.call(this);
   }
@@ -347,6 +367,7 @@ class _$_FullNameOnChanged implements _FullNameOnChanged {
     TResult Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult Function(_EmailOnChanged value)? emailOnChanged,
     TResult Function(_PasswordOnChanged value)? passwordOnChanged,
+    TResult Function(_SignUpWithGooglePressed value)? signUpWithGooglePressed,
     required TResult orElse(),
   }) {
     if (fullNameOnChanged != null) {
@@ -437,6 +458,7 @@ class _$_PhoneNumberOnChanged implements _PhoneNumberOnChanged {
     required TResult Function(String phoneNumber) phoneNumberOnChanged,
     required TResult Function(String email) emailOnChanged,
     required TResult Function(String password) passwordOnChanged,
+    required TResult Function() signUpWithGooglePressed,
   }) {
     return phoneNumberOnChanged(phoneNumber);
   }
@@ -449,6 +471,7 @@ class _$_PhoneNumberOnChanged implements _PhoneNumberOnChanged {
     TResult? Function(String phoneNumber)? phoneNumberOnChanged,
     TResult? Function(String email)? emailOnChanged,
     TResult? Function(String password)? passwordOnChanged,
+    TResult? Function()? signUpWithGooglePressed,
   }) {
     return phoneNumberOnChanged?.call(phoneNumber);
   }
@@ -461,6 +484,7 @@ class _$_PhoneNumberOnChanged implements _PhoneNumberOnChanged {
     TResult Function(String phoneNumber)? phoneNumberOnChanged,
     TResult Function(String email)? emailOnChanged,
     TResult Function(String password)? passwordOnChanged,
+    TResult Function()? signUpWithGooglePressed,
     required TResult orElse(),
   }) {
     if (phoneNumberOnChanged != null) {
@@ -477,6 +501,8 @@ class _$_PhoneNumberOnChanged implements _PhoneNumberOnChanged {
     required TResult Function(_PhoneNumberOnChanged value) phoneNumberOnChanged,
     required TResult Function(_EmailOnChanged value) emailOnChanged,
     required TResult Function(_PasswordOnChanged value) passwordOnChanged,
+    required TResult Function(_SignUpWithGooglePressed value)
+        signUpWithGooglePressed,
   }) {
     return phoneNumberOnChanged(this);
   }
@@ -489,6 +515,7 @@ class _$_PhoneNumberOnChanged implements _PhoneNumberOnChanged {
     TResult? Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult? Function(_EmailOnChanged value)? emailOnChanged,
     TResult? Function(_PasswordOnChanged value)? passwordOnChanged,
+    TResult? Function(_SignUpWithGooglePressed value)? signUpWithGooglePressed,
   }) {
     return phoneNumberOnChanged?.call(this);
   }
@@ -501,6 +528,7 @@ class _$_PhoneNumberOnChanged implements _PhoneNumberOnChanged {
     TResult Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult Function(_EmailOnChanged value)? emailOnChanged,
     TResult Function(_PasswordOnChanged value)? passwordOnChanged,
+    TResult Function(_SignUpWithGooglePressed value)? signUpWithGooglePressed,
     required TResult orElse(),
   }) {
     if (phoneNumberOnChanged != null) {
@@ -589,6 +617,7 @@ class _$_EmailOnChanged implements _EmailOnChanged {
     required TResult Function(String phoneNumber) phoneNumberOnChanged,
     required TResult Function(String email) emailOnChanged,
     required TResult Function(String password) passwordOnChanged,
+    required TResult Function() signUpWithGooglePressed,
   }) {
     return emailOnChanged(email);
   }
@@ -601,6 +630,7 @@ class _$_EmailOnChanged implements _EmailOnChanged {
     TResult? Function(String phoneNumber)? phoneNumberOnChanged,
     TResult? Function(String email)? emailOnChanged,
     TResult? Function(String password)? passwordOnChanged,
+    TResult? Function()? signUpWithGooglePressed,
   }) {
     return emailOnChanged?.call(email);
   }
@@ -613,6 +643,7 @@ class _$_EmailOnChanged implements _EmailOnChanged {
     TResult Function(String phoneNumber)? phoneNumberOnChanged,
     TResult Function(String email)? emailOnChanged,
     TResult Function(String password)? passwordOnChanged,
+    TResult Function()? signUpWithGooglePressed,
     required TResult orElse(),
   }) {
     if (emailOnChanged != null) {
@@ -629,6 +660,8 @@ class _$_EmailOnChanged implements _EmailOnChanged {
     required TResult Function(_PhoneNumberOnChanged value) phoneNumberOnChanged,
     required TResult Function(_EmailOnChanged value) emailOnChanged,
     required TResult Function(_PasswordOnChanged value) passwordOnChanged,
+    required TResult Function(_SignUpWithGooglePressed value)
+        signUpWithGooglePressed,
   }) {
     return emailOnChanged(this);
   }
@@ -641,6 +674,7 @@ class _$_EmailOnChanged implements _EmailOnChanged {
     TResult? Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult? Function(_EmailOnChanged value)? emailOnChanged,
     TResult? Function(_PasswordOnChanged value)? passwordOnChanged,
+    TResult? Function(_SignUpWithGooglePressed value)? signUpWithGooglePressed,
   }) {
     return emailOnChanged?.call(this);
   }
@@ -653,6 +687,7 @@ class _$_EmailOnChanged implements _EmailOnChanged {
     TResult Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult Function(_EmailOnChanged value)? emailOnChanged,
     TResult Function(_PasswordOnChanged value)? passwordOnChanged,
+    TResult Function(_SignUpWithGooglePressed value)? signUpWithGooglePressed,
     required TResult orElse(),
   }) {
     if (emailOnChanged != null) {
@@ -742,6 +777,7 @@ class _$_PasswordOnChanged implements _PasswordOnChanged {
     required TResult Function(String phoneNumber) phoneNumberOnChanged,
     required TResult Function(String email) emailOnChanged,
     required TResult Function(String password) passwordOnChanged,
+    required TResult Function() signUpWithGooglePressed,
   }) {
     return passwordOnChanged(password);
   }
@@ -754,6 +790,7 @@ class _$_PasswordOnChanged implements _PasswordOnChanged {
     TResult? Function(String phoneNumber)? phoneNumberOnChanged,
     TResult? Function(String email)? emailOnChanged,
     TResult? Function(String password)? passwordOnChanged,
+    TResult? Function()? signUpWithGooglePressed,
   }) {
     return passwordOnChanged?.call(password);
   }
@@ -766,6 +803,7 @@ class _$_PasswordOnChanged implements _PasswordOnChanged {
     TResult Function(String phoneNumber)? phoneNumberOnChanged,
     TResult Function(String email)? emailOnChanged,
     TResult Function(String password)? passwordOnChanged,
+    TResult Function()? signUpWithGooglePressed,
     required TResult orElse(),
   }) {
     if (passwordOnChanged != null) {
@@ -782,6 +820,8 @@ class _$_PasswordOnChanged implements _PasswordOnChanged {
     required TResult Function(_PhoneNumberOnChanged value) phoneNumberOnChanged,
     required TResult Function(_EmailOnChanged value) emailOnChanged,
     required TResult Function(_PasswordOnChanged value) passwordOnChanged,
+    required TResult Function(_SignUpWithGooglePressed value)
+        signUpWithGooglePressed,
   }) {
     return passwordOnChanged(this);
   }
@@ -794,6 +834,7 @@ class _$_PasswordOnChanged implements _PasswordOnChanged {
     TResult? Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult? Function(_EmailOnChanged value)? emailOnChanged,
     TResult? Function(_PasswordOnChanged value)? passwordOnChanged,
+    TResult? Function(_SignUpWithGooglePressed value)? signUpWithGooglePressed,
   }) {
     return passwordOnChanged?.call(this);
   }
@@ -806,6 +847,7 @@ class _$_PasswordOnChanged implements _PasswordOnChanged {
     TResult Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult Function(_EmailOnChanged value)? emailOnChanged,
     TResult Function(_PasswordOnChanged value)? passwordOnChanged,
+    TResult Function(_SignUpWithGooglePressed value)? signUpWithGooglePressed,
     required TResult orElse(),
   }) {
     if (passwordOnChanged != null) {
@@ -826,6 +868,134 @@ abstract class _PasswordOnChanged implements SignUpFormEvent {
 }
 
 /// @nodoc
+abstract class _$$_SignUpWithGooglePressedCopyWith<$Res> {
+  factory _$$_SignUpWithGooglePressedCopyWith(_$_SignUpWithGooglePressed value,
+          $Res Function(_$_SignUpWithGooglePressed) then) =
+      __$$_SignUpWithGooglePressedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_SignUpWithGooglePressedCopyWithImpl<$Res>
+    extends _$SignUpFormEventCopyWithImpl<$Res, _$_SignUpWithGooglePressed>
+    implements _$$_SignUpWithGooglePressedCopyWith<$Res> {
+  __$$_SignUpWithGooglePressedCopyWithImpl(_$_SignUpWithGooglePressed _value,
+      $Res Function(_$_SignUpWithGooglePressed) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_SignUpWithGooglePressed implements _SignUpWithGooglePressed {
+  const _$_SignUpWithGooglePressed();
+
+  @override
+  String toString() {
+    return 'SignUpFormEvent.signUpWithGooglePressed()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_SignUpWithGooglePressed);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() signUpPressed,
+    required TResult Function(String fullName) fullNameOnChanged,
+    required TResult Function(String phoneNumber) phoneNumberOnChanged,
+    required TResult Function(String email) emailOnChanged,
+    required TResult Function(String password) passwordOnChanged,
+    required TResult Function() signUpWithGooglePressed,
+  }) {
+    return signUpWithGooglePressed();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? signUpPressed,
+    TResult? Function(String fullName)? fullNameOnChanged,
+    TResult? Function(String phoneNumber)? phoneNumberOnChanged,
+    TResult? Function(String email)? emailOnChanged,
+    TResult? Function(String password)? passwordOnChanged,
+    TResult? Function()? signUpWithGooglePressed,
+  }) {
+    return signUpWithGooglePressed?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? signUpPressed,
+    TResult Function(String fullName)? fullNameOnChanged,
+    TResult Function(String phoneNumber)? phoneNumberOnChanged,
+    TResult Function(String email)? emailOnChanged,
+    TResult Function(String password)? passwordOnChanged,
+    TResult Function()? signUpWithGooglePressed,
+    required TResult orElse(),
+  }) {
+    if (signUpWithGooglePressed != null) {
+      return signUpWithGooglePressed();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SignUpPressed value) signUpPressed,
+    required TResult Function(_FullNameOnChanged value) fullNameOnChanged,
+    required TResult Function(_PhoneNumberOnChanged value) phoneNumberOnChanged,
+    required TResult Function(_EmailOnChanged value) emailOnChanged,
+    required TResult Function(_PasswordOnChanged value) passwordOnChanged,
+    required TResult Function(_SignUpWithGooglePressed value)
+        signUpWithGooglePressed,
+  }) {
+    return signUpWithGooglePressed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SignUpPressed value)? signUpPressed,
+    TResult? Function(_FullNameOnChanged value)? fullNameOnChanged,
+    TResult? Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
+    TResult? Function(_EmailOnChanged value)? emailOnChanged,
+    TResult? Function(_PasswordOnChanged value)? passwordOnChanged,
+    TResult? Function(_SignUpWithGooglePressed value)? signUpWithGooglePressed,
+  }) {
+    return signUpWithGooglePressed?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SignUpPressed value)? signUpPressed,
+    TResult Function(_FullNameOnChanged value)? fullNameOnChanged,
+    TResult Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
+    TResult Function(_EmailOnChanged value)? emailOnChanged,
+    TResult Function(_PasswordOnChanged value)? passwordOnChanged,
+    TResult Function(_SignUpWithGooglePressed value)? signUpWithGooglePressed,
+    required TResult orElse(),
+  }) {
+    if (signUpWithGooglePressed != null) {
+      return signUpWithGooglePressed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SignUpWithGooglePressed implements SignUpFormEvent {
+  const factory _SignUpWithGooglePressed() = _$_SignUpWithGooglePressed;
+}
+
+/// @nodoc
 mixin _$SignUpFormState {
   RequestState get state => throw _privateConstructorUsedError;
   String get fullName => throw _privateConstructorUsedError;
@@ -833,6 +1003,7 @@ mixin _$SignUpFormState {
   String get email => throw _privateConstructorUsedError;
   String get password => throw _privateConstructorUsedError;
   String get message => throw _privateConstructorUsedError;
+  bool get isSubmitting => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SignUpFormStateCopyWith<SignUpFormState> get copyWith =>
@@ -851,7 +1022,8 @@ abstract class $SignUpFormStateCopyWith<$Res> {
       String phoneNumber,
       String email,
       String password,
-      String message});
+      String message,
+      bool isSubmitting});
 }
 
 /// @nodoc
@@ -873,6 +1045,7 @@ class _$SignUpFormStateCopyWithImpl<$Res, $Val extends SignUpFormState>
     Object? email = null,
     Object? password = null,
     Object? message = null,
+    Object? isSubmitting = null,
   }) {
     return _then(_value.copyWith(
       state: null == state
@@ -899,6 +1072,10 @@ class _$SignUpFormStateCopyWithImpl<$Res, $Val extends SignUpFormState>
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
+      isSubmitting: null == isSubmitting
+          ? _value.isSubmitting
+          : isSubmitting // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -917,7 +1094,8 @@ abstract class _$$_SignUpFormStateCopyWith<$Res>
       String phoneNumber,
       String email,
       String password,
-      String message});
+      String message,
+      bool isSubmitting});
 }
 
 /// @nodoc
@@ -937,6 +1115,7 @@ class __$$_SignUpFormStateCopyWithImpl<$Res>
     Object? email = null,
     Object? password = null,
     Object? message = null,
+    Object? isSubmitting = null,
   }) {
     return _then(_$_SignUpFormState(
       state: null == state
@@ -963,6 +1142,10 @@ class __$$_SignUpFormStateCopyWithImpl<$Res>
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
+      isSubmitting: null == isSubmitting
+          ? _value.isSubmitting
+          : isSubmitting // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -976,7 +1159,8 @@ class _$_SignUpFormState implements _SignUpFormState {
       required this.phoneNumber,
       required this.email,
       required this.password,
-      required this.message});
+      required this.message,
+      required this.isSubmitting});
 
   @override
   final RequestState state;
@@ -990,10 +1174,12 @@ class _$_SignUpFormState implements _SignUpFormState {
   final String password;
   @override
   final String message;
+  @override
+  final bool isSubmitting;
 
   @override
   String toString() {
-    return 'SignUpFormState(state: $state, fullName: $fullName, phoneNumber: $phoneNumber, email: $email, password: $password, message: $message)';
+    return 'SignUpFormState(state: $state, fullName: $fullName, phoneNumber: $phoneNumber, email: $email, password: $password, message: $message, isSubmitting: $isSubmitting)';
   }
 
   @override
@@ -1009,12 +1195,14 @@ class _$_SignUpFormState implements _SignUpFormState {
             (identical(other.email, email) || other.email == email) &&
             (identical(other.password, password) ||
                 other.password == password) &&
-            (identical(other.message, message) || other.message == message));
+            (identical(other.message, message) || other.message == message) &&
+            (identical(other.isSubmitting, isSubmitting) ||
+                other.isSubmitting == isSubmitting));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, state, fullName, phoneNumber, email, password, message);
+  int get hashCode => Object.hash(runtimeType, state, fullName, phoneNumber,
+      email, password, message, isSubmitting);
 
   @JsonKey(ignore: true)
   @override
@@ -1030,7 +1218,8 @@ abstract class _SignUpFormState implements SignUpFormState {
       required final String phoneNumber,
       required final String email,
       required final String password,
-      required final String message}) = _$_SignUpFormState;
+      required final String message,
+      required final bool isSubmitting}) = _$_SignUpFormState;
 
   @override
   RequestState get state;
@@ -1044,6 +1233,8 @@ abstract class _SignUpFormState implements SignUpFormState {
   String get password;
   @override
   String get message;
+  @override
+  bool get isSubmitting;
   @override
   @JsonKey(ignore: true)
   _$$_SignUpFormStateCopyWith<_$_SignUpFormState> get copyWith =>

@@ -11,11 +11,11 @@ class ColorLight {
   static const Color disabledButton = Color(0xFFB9B9B9);
   static const Color divider = Color(0xFFDCDCDC);
  
-  static const Color success = Color(0xFF81C784);
-  static const Color warning = Color(0xFFFFB74D);
-  static const Color error = Color(0xFFE57373);
-  static const Color info = Color(0xFF64B5F6);
-
+  static const Color success = Color(0xFF388E3C);
+  static const Color warning = Color(0xFFF57C00);
+  static const Color error = Color(0xFFD32F2F);
+  static const Color info = Color(0xFF1976D2);
+  
   // Other
   static const Color silverTree = Color(0xFF5FB4A5);
   static const Color catSkillWhite = Color(0xFFF0F5F9);
@@ -37,8 +37,8 @@ class ColorDark {
   static const Color disabledButton = Color(0xFF6E6E6E);
   static const Color divider = Color(0xFF494949);
  
-  static const Color success = Color(0xFF388E3C);
-  static const Color warning = Color(0xFFF57C00);
-  static const Color error = Color(0xFFD32F2F);
-  static const Color info = Color(0xFF1976D2);
+  static const Color success = Color(0xFF81C784);
+  static const Color warning = Color(0xFFFFB74D);
+  static const Color error = Color(0xFFE57373);
+  static const Color info = Color(0xFF64B5F6);
 }

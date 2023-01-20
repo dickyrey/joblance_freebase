@@ -11,7 +11,7 @@ class CreateUserWithEmail {
     required Profile profile,
     required String password,
   }) {
-    return repository.createUserWithEmailAndPassword(
+    return repository.createUserWithEmail(
       profile: profile,
       password: password,
     );

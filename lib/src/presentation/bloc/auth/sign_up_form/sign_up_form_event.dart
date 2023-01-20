@@ -7,4 +7,6 @@ class SignUpFormEvent with _$SignUpFormEvent {
   const factory SignUpFormEvent.phoneNumberOnChanged(String phoneNumber) = _PhoneNumberOnChanged;
   const factory SignUpFormEvent.emailOnChanged(String email) = _EmailOnChanged;
   const factory SignUpFormEvent.passwordOnChanged(String password) = _PasswordOnChanged;
+
+  const factory SignUpFormEvent.signUpWithGooglePressed() = _SignUpWithGooglePressed;
 }
