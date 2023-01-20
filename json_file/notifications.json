@@ -1,0 +1,25 @@
+{
+    "data": [
+        {
+            "id": 1,
+            "company": "Airways.inc",
+            "company_image": "https://i.pinimg.com/564x/ab/ef/05/abef05df89367701bf1af36cfaf46d29.jpg",
+            "message": "Airways.inc looking for a freelancer to work on a project. Please contact them for more information.",
+            "created_at": "2020-05-01T12:00:00.000Z"
+        },
+        {
+            "id": 2,
+            "company": "Kayongku Company",
+            "company_image": "https://i.pinimg.com/564x/66/83/02/66830231a29342f31c92f11e57a9c98a.jpg",
+            "message": "CV. Kayongku accept the job you sent as a freelancer. Please contact them for more information.",
+            "created_at": "2020-05-01T12:00:00.000Z"
+        },
+        {
+            "id": 3,
+            "company": "Meta",
+            "company_image": "https://i.pinimg.com/564x/66/83/02/66830231a29342f31c92f11e57a9c98a.jpg",
+            "message": "Meta reject the job you sent as a freelancer.",
+            "created_at": "2020-05-01T12:00:00.000Z"
+        }
+    ]
+}

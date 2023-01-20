@@ -1,0 +1,13 @@
+{
+    "id": 1,
+    "position": "Android Developer",
+    "location": "2542 Marshville Road, Phoenicia, New York",
+    "experience_level": "Advance",
+    "job_type": "Full Time",
+    "salary": 25000,
+    "currency": "USD",
+    "company_name": "Google Corporation",
+    "company_image": "https://i.pinimg.com/564x/ab/ef/05/abef05df89367701bf1af36cfaf46d29.jpg",
+    "description": "Google is an American multinational technology company that specializes in Internet-related services and products. These include online advertising technologies, search, cloud computing, and software. It is considered one of the Big Four technology companies, alongside Amazon, Apple, and Facebook.[5] Google was founded in 1998 by Larry Page and Sergey Brin while they were Ph.D. students at Stanford University in California. An initial public offering (IPO) took place on August 19, 2004, marking the first time that Google had an actual stock offering. Google's stock changed its name to Alphabet Inc. on September 11, 2015, after Alphabet Inc. acquired Google. Google is headquartered in Mountain View, California, U.S.",
+    "created_at": "2020-05-06T12:00:00.000Z"
+}

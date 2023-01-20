@@ -1,0 +1,50 @@
+{
+    "id": 1,
+    "sender_name" : "Alexander The Great",
+    "sender_image" : "https://i.pinimg.com/564x/f4/77/d3/f477d37db0ff941b5b44566b924637d1.jpg",
+    "is_online": true,
+    "messages": [
+        {
+            "is_sender": true,
+            "message": "Hello",
+            "created_at": "2020-01-01T12:00:00.000Z",
+            "is_read": true
+        },
+        {
+            "is_sender": true,
+            "message": "Are you available to freelance?",
+            "created_at": "2020-01-01T12:00:00.000Z",
+            "is_read": true
+        },
+        {
+            "is_sender": false,
+            "message": "Yes, I am available",
+            "created_at": "2020-01-01T12:00:00.000Z",
+            "is_read": true
+        },
+        {
+            "is_sender": true,
+            "message": "Alright, please apply our job in application, and we will contact you soon",
+            "created_at": "2020-01-01T12:00:00.000Z",
+            "is_read": true
+        },
+        {
+            "is_sender": false,
+            "message": "Okay, thanks. Can i work from home?",
+            "created_at": "2020-01-01T12:00:00.000Z",
+            "is_read": true
+        },
+        {
+            "is_sender": true,
+            "message": "Sure, you can work from home. But you mest report to me at least once a week",
+            "created_at": "2020-01-01T12:00:00.000Z",
+            "is_read": true
+        },
+        {
+            "is_sender": false,
+            "message": "Alright sir, I will report to you",
+            "created_at": "2020-01-01T12:00:00.000Z",
+            "is_read": false
+        }
+    ]
+}

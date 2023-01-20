@@ -1,0 +1,37 @@
+{
+    "id": 1,
+    "name": "John Denver",
+    "email": "john@gmail.com",
+    "password": "john",
+    "phone": "123456789",
+    "image": "https://i.pinimg.com/564x/1f/46/4f/1f464f8b7272628e8019d0488533f619.jpg",
+    "address": "123, ABC Street, XYZ City, ABC Country",
+    "position": "UI/UX Designer",
+    "work": "ABC Company",
+    "birthdate": "2020-01-01 00:00:00",
+    "about": "software engineer by day, software engineer by night.",
+    "created_at": "2020-01-01 00:00:00",
+    "work_experience": [
+        {
+            "id": "1",
+            "company": "ABC Company",
+            "position": "UI/UX Designer",
+            "start_date": "10/01/2022",
+            "job_type": "Full Time"
+        },
+        {
+            "id": "2",
+            "company": "Google",
+            "position": "Web Designer",
+            "start_date": "01/07/2021",
+            "job_type": "Remote"
+        },
+        {
+            "id": "3",
+            "company": "Facebook",
+            "position": "Android Developer",
+            "start_date": "01/01/2020",
+            "job_type": "Part Time"
+        }
+    ]
+}

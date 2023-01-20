@@ -1,0 +1,58 @@
+{
+    "data": [
+        {
+            "id": 1,
+            "position": "UI/UX Designer",
+            "company": "Google",
+            "company_image": "https://i.pinimg.com/564x/3b/74/49/3b744936cd8aa0b5c272915de25fe24d.jpg",
+            "location": "2542 Marshville Road, Phoenicia, New York",
+            "salary": 1000,
+            "created_at": "2018-01-01T00:00:00.000Z"
+        },
+        {
+            "id": 2,
+            "position": "Web Developer",
+            "company": "SAP",
+            "company_image": "https://i.pinimg.com/564x/3b/74/49/3b744936cd8aa0b5c272915de25fe24d.jpg",
+            "location": "2542 Marshville Road, Phoenicia, New York",
+            "salary": 1000,
+            "created_at": "2021-05-20T00:00:00.000Z"
+        },
+        {
+            "id": 3,
+            "position": "UI/UX Designer",
+            "company": "Google",
+            "company_image": "https://i.pinimg.com/564x/3b/74/49/3b744936cd8aa0b5c272915de25fe24d.jpg",
+            "location": "2542 Marshville Road, Phoenicia, New York",
+            "salary": 1000,
+            "created_at": "2021-05-20T00:00:00.000Z"
+        },
+        {
+            "id": 4,
+            "position": "Web Developer",
+            "company": "SAP",
+            "company_image": "https://i.pinimg.com/564x/3b/74/49/3b744936cd8aa0b5c272915de25fe24d.jpg",
+            "location": "2542 Marshville Road, Phoenicia, New York",
+            "salary": 1000,
+            "created_at": "2021-05-20T00:00:00.000Z"
+        },
+        {
+            "id": 5,
+            "position": "UI/UX Designer",
+            "company": "Google",
+            "company_image": "https://i.pinimg.com/564x/3b/74/49/3b744936cd8aa0b5c272915de25fe24d.jpg",
+            "location": "2542 Marshville Road, Phoenicia, New York",
+            "salary": 1000,
+            "created_at": "2021-05-20T00:00:00.000Z"
+        },
+        {
+            "id": 6,
+            "position": "Web Developer",
+            "company": "SAP",
+            "company_image": "https://i.pinimg.com/564x/3b/74/49/3b744936cd8aa0b5c272915de25fe24d.jpg",
+            "location": "2542 Marshville Road, Phoenicia, New York",
+            "salary": 1000,
+            "created_at": "2021-05-20T00:00:00.000Z"
+        }
+    ]
+}

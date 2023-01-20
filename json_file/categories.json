@@ -1,0 +1,28 @@
+{
+    "data": [
+        {
+            "id": 1,
+            "name": "Designer"
+        },
+        {
+            "id": 2,
+            "name": "Development"
+        },
+        {
+            "id": 3,
+            "name": "IT"
+        },
+        {
+            "id": 4,
+            "name": "Management"
+        },
+        {
+            "id": 5,
+            "name": "Marketing"
+        },
+        {
+            "id": 6,
+            "name": "Research"
+        }
+    ]
+}
