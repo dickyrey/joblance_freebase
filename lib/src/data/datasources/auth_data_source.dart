@@ -15,7 +15,6 @@ abstract class AuthRemoteDataSource {
     required ProfileModel profile,
     required String password,
   });
-  Future<ProfileModel> getProfile();
   Future<void> signInWithGoogle();
   Future<void> signOutUser();
   Future<bool> checkAuthStatus();
@@ -31,20 +30,6 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
   final FirebaseAuth firebaseAuth;
   final GoogleSignIn googleSignIn;
   final FirebaseFirestore firestore;
-
-  @override
-  Future<ProfileModel> getProfile() async {
-    final uid = firebaseAuth.currentUser?.uid;
-    if (uid != null) {
-      return firestore
-          .collection('users')
-          .doc(uid)
-          .get()
-          .then((value) => ProfileModel.fromDocument(value));
-    } else {
-      throw ServerException('Error to get User data');
-    }
-  }
 
   @override
   Future<void> signinWithEmail(String email, String password) async {

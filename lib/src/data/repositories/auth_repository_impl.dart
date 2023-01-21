@@ -11,22 +11,6 @@ class AuthRepositoryImpl extends AuthRepository {
   final AuthRemoteDataSource dataSource;
 
   @override
-  Future<Either<Failure, Profile>> getProfile() async {
-    try {
-      final result = await dataSource.getProfile();
-      return Right(result.toEntity());
-    } on FirebaseException catch (e) {
-      if (e.message!.contains('permission-denied')) {
-        return const Left(ServerFailure('permission-denied'));
-      } else {
-        return const Left(ConnectionFailure('network-request-failed'));
-      }
-    } on ServerException {
-      return const Left(ServerFailure('not-signed-in'));
-    }
-  }
-
-  @override
   Future<Either<Failure, void>> signInWithEmail(
     String email,
     String password,

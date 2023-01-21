@@ -26,11 +26,7 @@ class _SplashPageState extends State<SplashPage> {
     return BlocListener<AuthWatcherBloc, AuthWatcherState>(
       listener: (context, state) {
         state.maybeMap(
-          orElse: () => Navigator.pushNamedAndRemoveUntil(
-            context,
-            SIGN_IN,
-            (Route<dynamic> route) => false,
-          ),
+          orElse: () {},
           authenticated: (_) => Navigator.pushNamedAndRemoveUntil(
             context,
             HOME,

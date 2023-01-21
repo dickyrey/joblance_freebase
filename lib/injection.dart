@@ -13,6 +13,7 @@ import 'package:joblance_firebase/src/data/datasources/client_remote_data_source
 import 'package:joblance_firebase/src/data/datasources/job_remote_data_source.dart';
 import 'package:joblance_firebase/src/data/datasources/message_remote_data_source.dart';
 import 'package:joblance_firebase/src/data/datasources/notifications_remote_data_source.dart';
+import 'package:joblance_firebase/src/data/datasources/profile_data_source.dart';
 import 'package:joblance_firebase/src/data/repositories/applicant_repository_impl.dart';
 import 'package:joblance_firebase/src/data/repositories/auth_repository_impl.dart';
 import 'package:joblance_firebase/src/data/repositories/category_repository_impl.dart';
@@ -20,6 +21,7 @@ import 'package:joblance_firebase/src/data/repositories/client_repository_impl.d
 import 'package:joblance_firebase/src/data/repositories/job_repository_impl.dart';
 import 'package:joblance_firebase/src/data/repositories/message_repository_impl.dart';
 import 'package:joblance_firebase/src/data/repositories/notifications_repository_impl.dart';
+import 'package:joblance_firebase/src/data/repositories/profile_repository_impl.dart';
 import 'package:joblance_firebase/src/domain/repositories/applicant_repository.dart';
 import 'package:joblance_firebase/src/domain/repositories/auth_repository.dart';
 import 'package:joblance_firebase/src/domain/repositories/category_repository.dart';
@@ -27,6 +29,7 @@ import 'package:joblance_firebase/src/domain/repositories/client_repository.dart
 import 'package:joblance_firebase/src/domain/repositories/job_repository.dart';
 import 'package:joblance_firebase/src/domain/repositories/message_repository.dart';
 import 'package:joblance_firebase/src/domain/repositories/notifications_repository.dart';
+import 'package:joblance_firebase/src/domain/repositories/profile_repository.dart';
 import 'package:joblance_firebase/src/domain/usecases/auth/check_auth_status.dart';
 import 'package:joblance_firebase/src/domain/usecases/auth/create_user.dart';
 import 'package:joblance_firebase/src/domain/usecases/auth/sign_in_google.dart';
@@ -71,8 +74,10 @@ import 'package:joblance_firebase/src/presentation/cubit/theme_cubit.dart';
 final locator = GetIt.instance;
 
 void init() {
-  // External
-
+  
+  /// List of [External Packages] allow class to parse data using [locator()]
+  ///
+  ///
   final dataConnectionChecker = DataConnectionChecker();
   locator.registerLazySingleton(
     () => dataConnectionChecker,
@@ -110,10 +115,12 @@ void init() {
 
   /// List of [Data Sources] Class from folder [Data] & [Domain]
   ///
+  ///
   final applicantDataSource = ApplicantRemoteDataSourceImpl();
   locator.registerLazySingleton<ApplicantRemoteDataSource>(
     () => applicantDataSource,
   );
+
   final authDataSource = AuthRemoteDataSourceImpl(
     firebaseAuth: locator(),
     firestore: locator(),
@@ -148,7 +155,16 @@ void init() {
     () => notificationsRemoteDataSource,
   );
 
+  final profileDataSource = ProfileDataSourceImpl(
+    firebaseAuth: locator(),
+    firestore: locator(),
+  );
+  locator.registerLazySingleton<ProfileDataSource>(
+    () => profileDataSource,
+  );
+
   /// List of [Repositories] Class from folder [Data] & [Domain]
+  ///
   ///
   final applicantRepository = ApplicantRepositoryImpl(dataSource: locator());
   locator.registerLazySingleton<ApplicantRepository>(
@@ -180,10 +196,16 @@ void init() {
     () => messageRepository,
   );
 
-  final notificationsRepository =
-      NotificationsRepositoryImpl(dataSource: locator());
+  final notificationsRepository = NotificationsRepositoryImpl(
+    dataSource: locator(),
+  );
   locator.registerLazySingleton<NotificationsRepository>(
     () => notificationsRepository,
+  );
+
+  final profileRepository = ProfileRepositoryImpl(locator());
+  locator.registerLazySingleton<ProfileRepository>(
+    () => profileRepository,
   );
 
   /// [Usecases] allow class to parse data into [BLoC]
