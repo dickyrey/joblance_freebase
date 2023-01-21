@@ -4,9 +4,9 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:joblance_firebase/src/common/const.dart';
 import 'package:joblance_firebase/src/common/exception.dart';
 import 'package:joblance_firebase/src/data/models/profile_model.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class AuthenticationRemoteDataSource {
-  Future<ProfileModel> getProfile();
   Future<void> signinWithEmail(
     String email,
     String password,
@@ -15,8 +15,10 @@ abstract class AuthenticationRemoteDataSource {
     required ProfileModel profile,
     required String password,
   });
+  Future<ProfileModel> getProfile();
   Future<void> signInWithGoogle();
   Future<void> signOutUser();
+  Future<bool> checkAuthStatus();
 }
 
 class AuthenticationRemoteDataSourceImpl
@@ -47,11 +49,17 @@ class AuthenticationRemoteDataSourceImpl
 
   @override
   Future<void> signinWithEmail(String email, String password) async {
+    final prefs = await SharedPreferences.getInstance();
     final result = await firebaseAuth.signInWithEmailAndPassword(
       email: email,
       password: password,
     );
     if (result.user != null) {
+      final token = firebaseAuth.currentUser?.uid;
+
+      /// Set [Token] into [SharedPreference]
+      ///
+      await prefs.setString(Const.accessToken, token ?? '');
       return;
     } else {
       throw ServerException('failed to sign in with email');
@@ -63,6 +71,7 @@ class AuthenticationRemoteDataSourceImpl
     required ProfileModel profile,
     required String password,
   }) async {
+    final prefs = await SharedPreferences.getInstance();
     final ref = firestore.collection('users');
     final result = await firebaseAuth.createUserWithEmailAndPassword(
       email: profile.email,
@@ -71,6 +80,10 @@ class AuthenticationRemoteDataSourceImpl
     if (result.user != null) {
       final user = result.user!;
       await ref.doc(user.uid).set(profile.toMap(user.uid));
+
+      /// Set [Token] into [SharedPreference]
+      ///
+      await prefs.setString(Const.accessToken, user.uid);
     } else {
       throw ServerException('Failed to create Account with Email');
     }
@@ -78,6 +91,7 @@ class AuthenticationRemoteDataSourceImpl
 
   @override
   Future<void> signInWithGoogle() async {
+    final prefs = await SharedPreferences.getInstance();
     final result = await googleSignIn.signIn();
     final applicantCollection = firestore.collection('users');
 
@@ -109,6 +123,10 @@ class AuthenticationRemoteDataSourceImpl
           await applicantCollection
               .doc(user?.uid)
               .set(profileModel.toMap(user?.uid ?? ''));
+
+          /// Set [Token] into [SharedPreference]
+          ///
+          await prefs.setString(Const.accessToken, user?.uid ?? '');
         }
       });
     } else {
@@ -118,7 +136,24 @@ class AuthenticationRemoteDataSourceImpl
 
   @override
   Future<void> signOutUser() async {
+    final prefs = await SharedPreferences.getInstance();
+
     await firebaseAuth.signOut();
     await googleSignIn.signOut();
+    await prefs.remove(Const.accessToken);
+  }
+
+  @override
+  Future<bool> checkAuthStatus() async {
+    final isSignedIn = await googleSignIn.isSignedIn();
+    final prefs = await SharedPreferences.getInstance();
+    final uid = firebaseAuth.currentUser?.uid;
+    final token = prefs.getString(Const.accessToken);
+
+    if (isSignedIn && token != null || uid != null && token != null) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

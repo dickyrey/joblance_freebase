@@ -15,4 +15,5 @@ abstract class AuthenticationRepository {
 
   Future<Either<Failure, void>> signInWithGoogle();
   Future<Either<Failure, void>> signOutUser();
+  Future<Either<Failure, bool>> checkAuthStatus();
 }

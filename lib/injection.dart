@@ -27,6 +27,7 @@ import 'package:joblance_firebase/src/domain/repositories/client_repository.dart
 import 'package:joblance_firebase/src/domain/repositories/job_repository.dart';
 import 'package:joblance_firebase/src/domain/repositories/message_repository.dart';
 import 'package:joblance_firebase/src/domain/repositories/notifications_repository.dart';
+import 'package:joblance_firebase/src/domain/usecases/auth/check_auth_status.dart';
 import 'package:joblance_firebase/src/domain/usecases/auth/create_user.dart';
 import 'package:joblance_firebase/src/domain/usecases/auth/sign_in_google.dart';
 import 'package:joblance_firebase/src/domain/usecases/auth/sign_in_user.dart';
@@ -192,6 +193,10 @@ void init() {
 
   /// [Auth] Folder
   ///
+  final checkAuthStatusUseCase = CheckAuthStatus(locator());
+  locator.registerLazySingleton(
+    () => checkAuthStatusUseCase,
+  );
   final createUserWithEmailUseCase = CreateUserWithEmail(locator());
   locator.registerLazySingleton(
     () => createUserWithEmailUseCase,
@@ -281,7 +286,7 @@ void init() {
   locator.registerLazySingleton(
     () => applicantWatcherBloc,
   );
-  final authWatcherBloc = AuthWatcherBloc(locator());
+  final authWatcherBloc = AuthWatcherBloc(locator(), locator());
   locator.registerLazySingleton(
     () => authWatcherBloc,
   );

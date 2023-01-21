@@ -91,4 +91,14 @@ class AuthenticationRepositoryImpl extends AuthenticationRepository {
       return const Left(ConnectionFailure('Failed to connect'));
     }
   }
+  
+  @override
+  Future<Either<Failure, bool>> checkAuthStatus() async {
+    try {
+      final result = await dataSource.checkAuthStatus();
+      return Right(result);
+    } catch (e) {
+      return const Left(ConnectionFailure('Failed to connect'));
+    }
+  }
 }
