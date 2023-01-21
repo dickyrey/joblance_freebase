@@ -2,26 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
-import 'package:joblance_firebase/src/presentation/bloc/client/client_watcher/client_watcher_bloc.dart';
 import 'package:joblance_firebase/src/presentation/bloc/job/popular_job_watcher/popular_job_watcher_bloc.dart';
 import 'package:joblance_firebase/src/presentation/bloc/job/recently_added_job_watcher/recently_added_job_watcher_bloc.dart';
 import 'package:joblance_firebase/src/presentation/bloc/job/saved_job_watcher/saved_job_watcher_bloc.dart';
+import 'package:joblance_firebase/src/presentation/bloc/profile/profile_watcher/profile_watcher_bloc.dart';
 import 'package:joblance_firebase/src/presentation/pages/client/chat_page.dart';
 import 'package:joblance_firebase/src/presentation/pages/client/home_page.dart';
 import 'package:joblance_firebase/src/presentation/pages/client/notifications_page.dart';
 import 'package:joblance_firebase/src/presentation/pages/client/profile_page.dart';
 import 'package:joblance_firebase/src/presentation/pages/client/saved_jobs_page.dart';
 
-class CustomBottomNavigationBar extends StatefulWidget {
-  const CustomBottomNavigationBar({Key? key, this.index = 0}) : super(key: key);
+class BottomNavigationBarWidget extends StatefulWidget {
+  const BottomNavigationBarWidget({Key? key, this.index = 0}) : super(key: key);
   final int index;
 
   @override
-  State<CustomBottomNavigationBar> createState() =>
-      _CustomBottomNavigationBarState();
+  State<BottomNavigationBarWidget> createState() =>
+      _BottomNavigationBarWidgetState();
 }
 
-class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
+class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget> {
   int _selectedIndex = 0;
 
   late PageController _controller;
@@ -32,6 +32,9 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
     _controller = PageController(initialPage: widget.index);
     Future.microtask(() {
       context
+          .read<ProfileWatcherBloc>()
+          .add(const ProfileWatcherEvent.fetchProfile());
+      context
           .read<PopularJobWatcherBloc>()
           .add(const PopularJobWatcherEvent.fetchPopularJobs());
       context
@@ -40,9 +43,6 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
       context
           .read<SavedJobWatcherBloc>()
           .add(const SavedJobWatcherEvent.fetchSavedJobs());
-      context
-          .read<ClientWatcherBloc>()
-          .add(const ClientWatcherEvent.fetchClientInformation());
     });
   }
 

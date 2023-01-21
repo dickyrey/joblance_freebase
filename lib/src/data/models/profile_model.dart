@@ -13,6 +13,7 @@ class ProfileModel extends Equatable {
     required this.company,
     required this.location,
     required this.about,
+    required this.address,
     required this.birthday,
     required this.createdAt,
   });
@@ -28,6 +29,7 @@ class ProfileModel extends Equatable {
       company: document['company'] as String,
       location: document['location'] as String,
       about: document['about'] as String,
+      address: document['address'] as String,
       birthday: document['birthday'] as Timestamp,
       createdAt: document['created_at'] as Timestamp,
     );
@@ -42,6 +44,7 @@ class ProfileModel extends Equatable {
   final String company;
   final String location;
   final String about;
+  final String address;
   final Timestamp birthday;
   final Timestamp createdAt;
 
@@ -55,6 +58,7 @@ class ProfileModel extends Equatable {
         company: company,
         location: location,
         about: about,
+        address: address,
         birthday: birthday,
         createdAt: createdAt,
       );
@@ -70,13 +74,14 @@ class ProfileModel extends Equatable {
         company,
         location,
         about,
+        address,
         birthday,
         createdAt,
       ];
 
-  Map<String, dynamic> toMap(String uid) {
+  Map<String, dynamic> toMap() {
     return {
-      'id': uid,
+      'id': id == '' ? '' : id,
       'email': email == '' ? '' : email,
       'full_name': fullName == '' ? '' : fullName,
       'image': image == '' ? '' : image,
@@ -85,6 +90,7 @@ class ProfileModel extends Equatable {
       'company': company == '' ? '' : company,
       'location': location == '' ? '' : location,
       'about': about == '' ? '' : about,
+      'address': address == '' ? '' : address,
       'birthday': birthday,
       'created_at': createdAt,
     };

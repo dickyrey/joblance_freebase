@@ -3,6 +3,8 @@
   "about_this_application": "このアプリケーションについて",
   "account_settings": "アカウント設定",
   "active_jobs": "アクティブな仕事",
+  "address": "住所",
+  "address_not_filled": "住所が満たされていない",
   "already_have_an_account": "すでにアカウントをお持ちですか？",
   "applications": "アプリケーション",
   "applies_for": "に適用",

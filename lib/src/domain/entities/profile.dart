@@ -13,6 +13,7 @@ class Profile extends Equatable {
     required this.company,
     required this.location,
     required this.about,
+    required this.address,
     required this.birthday,
     required this.createdAt,
   });
@@ -26,6 +27,7 @@ class Profile extends Equatable {
         company: company,
         location: location,
         about: about,
+        address: address,
         birthday: birthday,
         createdAt: createdAt,
       );
@@ -38,6 +40,7 @@ class Profile extends Equatable {
   final String company;
   final String location;
   final String about;
+  final String address;
   final Timestamp birthday;
   final Timestamp createdAt;
 
@@ -52,6 +55,7 @@ class Profile extends Equatable {
         company,
         location,
         about,
+        address,
         birthday,
         createdAt,
       ];
@@ -67,6 +71,7 @@ class Profile extends Equatable {
       'company': company == '' ? '' : company,
       'location': location == '' ? '' : location,
       'about': about == '' ? '' : about,
+      'address': address == '' ? '' : address,
       'birthday': birthday,
       'created_at': createdAt,
     };

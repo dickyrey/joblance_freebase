@@ -28,6 +28,7 @@ class SignUpFormBloc extends Bloc<SignUpFormEvent, SignUpFormState> {
               company: '',
               location: '',
               about: '',
+              address:'',
               birthday: Timestamp.now(),
               createdAt: Timestamp.now(),
             ),

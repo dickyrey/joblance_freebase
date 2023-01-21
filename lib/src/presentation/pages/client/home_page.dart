@@ -9,10 +9,10 @@ import 'package:joblance_firebase/src/common/const.dart';
 import 'package:joblance_firebase/src/common/routes.dart';
 import 'package:joblance_firebase/src/common/screens.dart';
 import 'package:joblance_firebase/src/domain/entities/job.dart';
-import 'package:joblance_firebase/src/presentation/bloc/client/client_watcher/client_watcher_bloc.dart';
 import 'package:joblance_firebase/src/presentation/bloc/job/job_search_form/job_search_form_bloc.dart';
 import 'package:joblance_firebase/src/presentation/bloc/job/popular_job_watcher/popular_job_watcher_bloc.dart';
 import 'package:joblance_firebase/src/presentation/bloc/job/recently_added_job_watcher/recently_added_job_watcher_bloc.dart';
+import 'package:joblance_firebase/src/presentation/bloc/profile/profile_watcher/profile_watcher_bloc.dart';
 import 'package:joblance_firebase/src/presentation/cubit/theme_cubit.dart';
 import 'package:joblance_firebase/src/presentation/widgets/job_horizontal_card.dart';
 import 'package:joblance_firebase/src/presentation/widgets/job_vertical_card.dart';
@@ -24,6 +24,8 @@ class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    final lang = AppLocalizations.of(context)!;
+
     return RefreshIndicator(
       onRefresh: () async {
         context
@@ -58,8 +60,7 @@ class HomePage extends StatelessWidget {
                               return _buildPopularJobList(
                                 context,
                                 jobs: state.jobs,
-                                label:
-                                    AppLocalizations.of(context)!.popular_jobs,
+                                label: lang.popular_jobs,
                               );
                             },
                           );
@@ -74,8 +75,7 @@ class HomePage extends StatelessWidget {
                             loaded: (state) {
                               return _buildRecentlyAddedList(
                                 context,
-                                label: AppLocalizations.of(context)!
-                                    .recently_added,
+                                label: lang.recently_added,
                                 jobs: state.jobs,
                               );
                             },
@@ -220,6 +220,8 @@ class HomePage extends StatelessWidget {
     required String label,
   }) {
     final theme = Theme.of(context);
+    final lang = AppLocalizations.of(context)!;
+
     return Column(
       children: [
         Padding(
@@ -240,7 +242,7 @@ class HomePage extends StatelessWidget {
                   BROWSE_JOB,
                 ),
                 child: Text(
-                  AppLocalizations.of(context)!.show_all,
+                  lang.show_all,
                   style: theme.textTheme.subtitle1,
                 ),
               ),
@@ -267,6 +269,8 @@ class HomePage extends StatelessWidget {
     required List<Job> jobs,
   }) {
     final theme = Theme.of(context);
+    final lang = AppLocalizations.of(context)!;
+
     return Column(
       children: [
         Padding(
@@ -287,7 +291,7 @@ class HomePage extends StatelessWidget {
                   BROWSE_JOB,
                 ),
                 child: Text(
-                  AppLocalizations.of(context)!.show_all,
+                  lang.show_all,
                   style: theme.textTheme.subtitle1,
                 ),
               ),
@@ -314,6 +318,7 @@ class HomePage extends StatelessWidget {
 
   Padding _buildSearchBox(BuildContext context) {
     final theme = Theme.of(context);
+    final lang = AppLocalizations.of(context)!;
     final themeCubit = context.read<ThemeCubit>().state;
 
     return Padding(
@@ -342,7 +347,7 @@ class HomePage extends StatelessWidget {
                   alignment: Alignment.centerLeft,
                   padding: const EdgeInsets.symmetric(horizontal: Const.margin),
                   child: Text(
-                    AppLocalizations.of(context)!.search_job,
+                    lang.search_job,
                     style: theme.textTheme.subtitle1,
                   ),
                 ),
@@ -378,23 +383,24 @@ class HomePage extends StatelessWidget {
 
   Padding _buildGreetings(BuildContext context) {
     final theme = Theme.of(context);
+    final lang = AppLocalizations.of(context)!;
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: Const.margin),
-      child: BlocBuilder<ClientWatcherBloc, ClientWatcherState>(
+      child: BlocBuilder<ProfileWatcherBloc, ProfileWatcherState>(
         builder: (context, state) {
           return state.maybeMap(
             orElse: () => const SizedBox(),
-            loaded: (state) {
+            loadSuccess: (state) {
               return RichText(
                 text: TextSpan(
                   children: [
                     TextSpan(
-                      text:
-                          '${AppLocalizations.of(context)!.hi}, ${state.client.name}\n',
+                      text: '${lang.hi}, ${state.profile.fullName}\n',
                       style: theme.textTheme.subtitle1,
                     ),
                     TextSpan(
-                      text: AppLocalizations.of(context)!.find_your_perfect_job,
+                      text: lang.find_your_perfect_job,
                       style: theme.textTheme.headline2,
                     ),
                   ],
@@ -408,6 +414,8 @@ class HomePage extends StatelessWidget {
   }
 
   Padding _buildAppBar(BuildContext context) {
+    final lang = AppLocalizations.of(context)!;
+    
     return Padding(
       padding: const EdgeInsets.symmetric(
         horizontal: Const.margin,
@@ -420,7 +428,7 @@ class HomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              AppLocalizations.of(context)!.joblance,
+              lang.joblance,
               style: GoogleFonts.prompt(
                 color: Theme.of(context).primaryColor,
                 fontSize: 25,
@@ -428,18 +436,18 @@ class HomePage extends StatelessWidget {
                 letterSpacing: .5,
               ),
             ),
-            BlocBuilder<ClientWatcherBloc, ClientWatcherState>(
+            BlocBuilder<ProfileWatcherBloc, ProfileWatcherState>(
               builder: (context, state) {
                 return state.maybeMap(
                   orElse: () => const SizedBox(),
-                  loaded: (state) {
+                  loadSuccess: (state) {
                     return InkWell(
                       onTap: () => Navigator.pushNamed(context, PROFILE_DETAIL),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(Const.radius),
                         child: OctoImage(
-                          image:  CachedNetworkImageProvider(
-                            state.client.image,
+                          image: CachedNetworkImageProvider(
+                            state.profile.image,
                           ),
                           width: 50,
                           height: 50,

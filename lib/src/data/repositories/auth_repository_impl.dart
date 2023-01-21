@@ -1,6 +1,5 @@
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:joblance_firebase/src/common/exception.dart';
 import 'package:joblance_firebase/src/common/failure.dart';
 import 'package:joblance_firebase/src/data/datasources/auth_data_source.dart';
 import 'package:joblance_firebase/src/domain/entities/profile.dart';

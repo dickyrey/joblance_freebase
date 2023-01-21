@@ -32,8 +32,10 @@ class ProfileDataSourceImpl extends ProfileDataSource {
   }
 
   @override
-  Future<void> changeProfile(ProfileModel profileModel) {
-    // TODO: implement changeProfile
-    throw UnimplementedError();
+  Future<void> changeProfile(ProfileModel profileModel) async {
+    final applicantCollection = firestore.collection('users');
+    final user = firebaseAuth.currentUser;
+    await applicantCollection.doc(user?.uid).update(profileModel.toMap());
+  
   }
 }

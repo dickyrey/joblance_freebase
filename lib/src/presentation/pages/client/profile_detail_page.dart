@@ -9,10 +9,10 @@ import 'package:joblance_firebase/src/common/colors.dart';
 import 'package:joblance_firebase/src/common/const.dart';
 import 'package:joblance_firebase/src/common/routes.dart';
 import 'package:joblance_firebase/src/common/screens.dart';
-import 'package:joblance_firebase/src/domain/entities/client.dart';
+import 'package:joblance_firebase/src/domain/entities/profile.dart';
 import 'package:joblance_firebase/src/presentation/bloc/auth/auth_watcher/auth_watcher_bloc.dart';
-import 'package:joblance_firebase/src/presentation/bloc/client/client_form/client_form_bloc.dart';
-import 'package:joblance_firebase/src/presentation/bloc/client/client_watcher/client_watcher_bloc.dart';
+import 'package:joblance_firebase/src/presentation/bloc/profile/profile_form/profile_form_bloc.dart';
+import 'package:joblance_firebase/src/presentation/bloc/profile/profile_watcher/profile_watcher_bloc.dart';
 import 'package:joblance_firebase/src/presentation/cubit/theme_cubit.dart';
 import 'package:octo_image/octo_image.dart';
 
@@ -39,14 +39,14 @@ class ProfileDetailPage extends StatelessWidget {
           child: Column(
             children: [
               _buildAppBar(context),
-              BlocBuilder<ClientWatcherBloc, ClientWatcherState>(
+              BlocBuilder<ProfileWatcherBloc, ProfileWatcherState>(
                 builder: (context, state) {
                   return state.maybeMap(
                     orElse: () {
                       return Container();
                     },
-                    loaded: (state) {
-                      return _buildBody(context, client: state.client);
+                    loadSuccess: (state) {
+                      return _buildBody(context, profile: state.profile);
                     },
                   );
                 },
@@ -60,9 +60,11 @@ class ProfileDetailPage extends StatelessWidget {
 
   Expanded _buildBody(
     BuildContext context, {
-    required Client client,
+    required Profile profile,
   }) {
     final theme = Theme.of(context);
+    final lang = AppLocalizations.of(context)!;
+
     final themeCubit = context.read<ThemeCubit>().state;
     return Expanded(
       child: SingleChildScrollView(
@@ -91,12 +93,14 @@ class ProfileDetailPage extends StatelessWidget {
                               child: Stack(
                                 children: [
                                   ClipRRect(
-                                    borderRadius: BorderRadius.circular(Const.radius),
+                                    borderRadius: BorderRadius.circular(
+                                      Const.radius,
+                                    ),
                                     child: OctoImage(
                                       width: 100,
                                       height: 100,
                                       image: CachedNetworkImageProvider(
-                                        client.image,
+                                        profile.image,
                                       ),
                                       fit: BoxFit.cover,
                                     ),
@@ -119,12 +123,12 @@ class ProfileDetailPage extends StatelessWidget {
                             InkWell(
                               onTap: () {
                                 context
-                                    .read<ClientFormBloc>()
-                                    .add(ClientFormEvent.init(client));
+                                    .read<ProfileFormBloc>()
+                                    .add(ProfileFormEvent.initialized(profile));
                                 Navigator.pushNamed(
                                   context,
                                   PROFILE_FORM,
-                                  arguments: client,
+                                  arguments: profile,
                                 );
                               },
                               child: Container(
@@ -134,7 +138,9 @@ class ProfileDetailPage extends StatelessWidget {
                                   color: (themeCubit is ThemeDark)
                                       ? ColorDark.background
                                       : ColorLight.whiteSmoke,
-                                  borderRadius: BorderRadius.circular(Const.radius),
+                                  borderRadius: BorderRadius.circular(
+                                    Const.radius,
+                                  ),
                                 ),
                                 child: const Icon(FeatherIcons.edit),
                               ),
@@ -143,12 +149,12 @@ class ProfileDetailPage extends StatelessWidget {
                         ),
                         const SizedBox(height: Const.space15),
                         Text(
-                          client.name,
+                          profile.fullName,
                           style: theme.textTheme.headline3,
                         ),
                         const SizedBox(height: Const.space8),
                         Text(
-                          client.position,
+                          profile.position,
                           style: theme.textTheme.subtitle1,
                         ),
                       ],
@@ -164,33 +170,37 @@ class ProfileDetailPage extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          AppLocalizations.of(context)!.main_info,
+                          lang.main_info,
                           style: theme.textTheme.headline3,
                         ),
                         _buildListTile(
                           context,
                           icon: IconlyLight.location,
-                          label: client.address,
+                          label: profile.address.isEmpty
+                              ? lang.address_not_filled
+                              : profile.address,
                         ),
+                        // TODO(dickyrey): Birthdate
                         _buildListTile(
                           context,
                           icon: IconlyLight.calendar,
-                          label: DateFormat.yMMMEd().format(client.birthdate),
+                          label: DateFormat.yMMMEd()
+                              .format(profile.birthday.toDate()),
                         ),
                         const SizedBox(height: Const.space25),
                         Text(
-                          AppLocalizations.of(context)!.contact_info,
+                          lang.contact_info,
                           style: theme.textTheme.headline3,
                         ),
                         _buildListTile(
                           context,
                           icon: IconlyLight.message,
-                          label: client.email,
+                          label: profile.email,
                         ),
                         _buildListTile(
                           context,
                           icon: IconlyLight.calling,
-                          label: client.phone,
+                          label: profile.phoneNumber,
                         ),
                       ],
                     ),
@@ -199,30 +209,31 @@ class ProfileDetailPage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: Const.space8),
-            Card(
-              elevation: 0,
-              margin: const EdgeInsets.symmetric(horizontal: Const.margin),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(Const.radius),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(Const.space12),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      AppLocalizations.of(context)!.about,
-                      style: theme.textTheme.headline3,
-                    ),
-                    const SizedBox(height: Const.space12),
-                    Text(
-                      client.about,
-                      style: theme.textTheme.subtitle1,
-                    ),
-                  ],
+            if (profile.about != '')
+              Card(
+                elevation: 0,
+                margin: const EdgeInsets.symmetric(horizontal: Const.margin),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(Const.radius),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(Const.space12),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        lang.about,
+                        style: theme.textTheme.headline3,
+                      ),
+                      const SizedBox(height: Const.space12),
+                      Text(
+                        profile.about,
+                        style: theme.textTheme.subtitle1,
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
             const SizedBox(height: Const.space25),
           ],
         ),
@@ -259,6 +270,7 @@ class ProfileDetailPage extends StatelessWidget {
 
   Padding _buildAppBar(BuildContext context) {
     final theme = Theme.of(context);
+    final lang = AppLocalizations.of(context)!;
     final themeCubit = context.read<ThemeCubit>().state;
 
     return Padding(
@@ -287,7 +299,7 @@ class ProfileDetailPage extends StatelessWidget {
             ),
             const SizedBox(width: Const.space15),
             Text(
-              AppLocalizations.of(context)!.my_profile,
+              lang.my_profile,
               style: theme.textTheme.headline3,
             ),
             const Spacer(),

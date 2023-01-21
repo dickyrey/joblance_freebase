@@ -12,8 +12,6 @@ import 'package:joblance_firebase/src/presentation/bloc/auth/auth_watcher/auth_w
 import 'package:joblance_firebase/src/presentation/bloc/auth/sign_in_form/sign_in_form_bloc.dart';
 import 'package:joblance_firebase/src/presentation/bloc/auth/sign_up_form/sign_up_form_bloc.dart';
 import 'package:joblance_firebase/src/presentation/bloc/category/category_watcher/category_watcher_bloc.dart';
-import 'package:joblance_firebase/src/presentation/bloc/client/client_form/client_form_bloc.dart';
-import 'package:joblance_firebase/src/presentation/bloc/client/client_watcher/client_watcher_bloc.dart';
 import 'package:joblance_firebase/src/presentation/bloc/interest/interest_form/interest_form_bloc.dart';
 import 'package:joblance_firebase/src/presentation/bloc/job/active_job_watcher/active_job_watcher_bloc.dart';
 import 'package:joblance_firebase/src/presentation/bloc/job/browse_job_watcher/browse_job_watcher_bloc.dart';
@@ -27,6 +25,7 @@ import 'package:joblance_firebase/src/presentation/bloc/language/language_form_b
 import 'package:joblance_firebase/src/presentation/bloc/message/message_recruiter_watcher/message_recruiter_watcher_bloc.dart';
 import 'package:joblance_firebase/src/presentation/bloc/message/message_watcher/message_watcher_bloc.dart';
 import 'package:joblance_firebase/src/presentation/bloc/notifications/notifications_watcher/notifications_watcher_bloc.dart';
+import 'package:joblance_firebase/src/presentation/bloc/profile/profile_form/profile_form_bloc.dart';
 import 'package:joblance_firebase/src/presentation/bloc/profile/profile_watcher/profile_watcher_bloc.dart';
 import 'package:joblance_firebase/src/presentation/cubit/theme_cubit.dart';
 import 'package:joblance_firebase/src/utilities/route_generator.dart';
@@ -52,8 +51,6 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => di.locator<SignUpFormBloc>()),
         BlocProvider(create: (context) => di.locator<CategoryWatcherBloc>()),
         BlocProvider(create: (context) => di.locator<InterestFormBloc>()),
-        BlocProvider(create: (context) => di.locator<ClientFormBloc>()),
-        BlocProvider(create: (context) => di.locator<ClientWatcherBloc>()),
         BlocProvider(create: (context) => di.locator<ActiveJobWatcherBloc>()),
         BlocProvider(create: (context) => di.locator<BrowseJobWatcherBloc>()),
         BlocProvider(create: (context) => di.locator<JobDetailsWatcherBloc>()),
@@ -66,6 +63,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => di.locator<MessageRecruiterWatcherBloc>()),
         BlocProvider(create: (context) => di.locator<MessageWatcherBloc>()),
         BlocProvider(create: (context) => di.locator<NotificationsWatcherBloc>()),
+        BlocProvider(create: (context) => di.locator<ProfileFormBloc>()),
         BlocProvider(create: (context) => di.locator<ProfileWatcherBloc>()),
 
         // Cubits

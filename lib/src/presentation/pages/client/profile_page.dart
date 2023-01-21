@@ -6,7 +6,7 @@ import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:joblance_firebase/src/common/const.dart';
 import 'package:joblance_firebase/src/common/routes.dart';
 import 'package:joblance_firebase/src/presentation/bloc/auth/auth_watcher/auth_watcher_bloc.dart';
-import 'package:joblance_firebase/src/presentation/bloc/client/client_watcher/client_watcher_bloc.dart';
+import 'package:joblance_firebase/src/presentation/bloc/profile/profile_watcher/profile_watcher_bloc.dart';
 import 'package:joblance_firebase/src/presentation/widgets/custom_app_bar.dart';
 import 'package:joblance_firebase/src/presentation/widgets/custom_dialog.dart';
 import 'package:joblance_firebase/src/presentation/widgets/shimmer.dart';
@@ -48,8 +48,7 @@ class ProfilePage extends StatelessWidget {
                 context,
                 icon: IconlyLight.work,
                 title: lang.become_a_recruiter,
-                subtitle: AppLocalizations.of(context)!
-                    .you_can_recruit_freelancers_in_this_app,
+                subtitle: lang.you_can_recruit_freelancers_in_this_app,
                 onTap: () => Navigator.pushNamed(context, REGISTER_RECRUITER),
               ),
               _buildListTile(
@@ -80,8 +79,7 @@ class ProfilePage extends StatelessWidget {
                 context,
                 icon: IconlyLight.buy,
                 title: lang.purchase_this_app,
-                subtitle: AppLocalizations.of(context)!
-                    .buy_this_app_with_adorable_price,
+                subtitle: lang.buy_this_app_with_adorable_price,
                 onTap: () async {
                   if (!await launchUrl(
                     Uri(
@@ -104,8 +102,7 @@ class ProfilePage extends StatelessWidget {
                 onTap: () {
                   showConfirmationDialog(
                     context,
-                    title: AppLocalizations.of(context)!
-                        .are_you_sure_want_to_sign_out,
+                    title: lang.are_you_sure_want_to_sign_out,
                     primaryButtonLabel: lang.sign_out,
                     onPrimaryButtonTap: () {
                       Navigator.pop(context);
@@ -126,8 +123,8 @@ class ProfilePage extends StatelessWidget {
   Widget _buildProfileTile(BuildContext context) {
     final theme = Theme.of(context);
     final lang = AppLocalizations.of(context)!;
-    
-    return BlocBuilder<ClientWatcherBloc, ClientWatcherState>(
+
+    return BlocBuilder<ProfileWatcherBloc, ProfileWatcherState>(
       builder: (context, state) {
         return state.maybeMap(
           orElse: () {
@@ -150,16 +147,17 @@ class ProfilePage extends StatelessWidget {
               ),
             );
           },
-          loaded: (state) {
+          loadSuccess: (state) {
             return ListTile(
               contentPadding: EdgeInsets.zero,
               leading: CircleAvatar(
                 radius: 30,
-                backgroundImage: CachedNetworkImageProvider(state.client.image),
+                backgroundImage:
+                    CachedNetworkImageProvider(state.profile.image),
                 backgroundColor: theme.disabledColor,
               ),
               title: Text(
-                state.client.name,
+                state.profile.fullName,
                 style: theme.textTheme.headline2,
               ),
               subtitle: InkWell(

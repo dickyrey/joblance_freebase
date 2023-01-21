@@ -7,11 +7,12 @@ import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:intl/intl.dart';
 import 'package:joblance_firebase/src/common/colors.dart';
 import 'package:joblance_firebase/src/common/const.dart';
 import 'package:joblance_firebase/src/common/screens.dart';
-import 'package:joblance_firebase/src/domain/entities/client.dart';
-import 'package:joblance_firebase/src/presentation/bloc/client/client_form/client_form_bloc.dart';
+import 'package:joblance_firebase/src/domain/entities/profile.dart';
+import 'package:joblance_firebase/src/presentation/bloc/profile/profile_form/profile_form_bloc.dart';
 import 'package:joblance_firebase/src/presentation/cubit/theme_cubit.dart';
 import 'package:joblance_firebase/src/presentation/widgets/custom_dialog.dart';
 import 'package:joblance_firebase/src/presentation/widgets/custom_elevated_button.dart';
@@ -20,8 +21,8 @@ import 'package:joblance_firebase/src/utilities/toast.dart';
 import 'package:octo_image/octo_image.dart';
 
 class ProfileFormPage extends StatefulWidget {
-  const ProfileFormPage({Key? key, required this.client}) : super(key: key);
-  final Client client;
+  const ProfileFormPage({Key? key, required this.profile}) : super(key: key);
+  final Profile profile;
 
   @override
   State<ProfileFormPage> createState() => _EditProfilePageState();
@@ -39,21 +40,22 @@ class _EditProfilePageState extends State<ProfileFormPage> {
   @override
   void initState() {
     super.initState();
-    final state = context.read<ClientFormBloc>().state;
-    _usernameController = TextEditingController(text: state.name);
+    final state = context.read<ProfileFormBloc>().state;
+    _usernameController = TextEditingController(text: state.fullName);
     _positionController = TextEditingController(text: state.position);
     _addressController = TextEditingController(text: state.address);
     _emailController = TextEditingController(text: state.email);
-    _phoneController = TextEditingController(text: state.phone);
+    _phoneController = TextEditingController(text: state.phoneNumber);
   }
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final lang = AppLocalizations.of(context)!;
     final themeCubit = context.read<ThemeCubit>().state;
 
     return Scaffold(
-      body: BlocBuilder<ClientFormBloc, ClientFormState>(
+      body: BlocBuilder<ProfileFormBloc, ProfileFormState>(
         builder: (context, state) {
           return SafeArea(
             child: Column(
@@ -68,8 +70,9 @@ class _EditProfilePageState extends State<ProfileFormPage> {
                           color: (themeCubit is ThemeDark)
                               ? ColorDark.card
                               : ColorLight.catSkillWhite,
-                          margin:
-                              const EdgeInsets.symmetric(horizontal: Const.margin),
+                          margin: const EdgeInsets.symmetric(
+                            horizontal: Const.margin,
+                          ),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(Const.radius),
                           ),
@@ -77,7 +80,7 @@ class _EditProfilePageState extends State<ProfileFormPage> {
                             children: [
                               _buildProfile(
                                 context,
-                                imageUrl: widget.client.image,
+                                imageUrl: widget.profile.image,
                                 imageFile: state.imageFile,
                               ),
                               Divider(
@@ -86,7 +89,9 @@ class _EditProfilePageState extends State<ProfileFormPage> {
                               ),
                               _buildForm(
                                 context,
-                                birthdate: state.birthdate,
+                                birthdate: DateFormat('MMM dd, yyyy').format(
+                                  state.birthday?.toDate() ?? DateTime.now(),
+                                ),
                                 formKey: _formKey,
                               ),
                             ],
@@ -97,16 +102,19 @@ class _EditProfilePageState extends State<ProfileFormPage> {
                           onTap: () {
                             FocusScope.of(context).requestFocus(FocusNode());
                             showToast(
-                              msg: AppLocalizations.of(context)!.changes_saved,
+                              msg: lang.changes_saved,
                             );
-                            context
-                                .read<ClientFormBloc>()
-                                .add(const ClientFormEvent.saveChanges());
+                            context.read<ProfileFormBloc>().add(
+                                  ProfileFormEvent.saveChangesPressed(
+                                    widget.profile,
+                                  ),
+                                );
                             Navigator.pop(context);
                           },
-                          label: AppLocalizations.of(context)!.save_changes,
-                          margin:
-                              const EdgeInsets.symmetric(horizontal: Const.margin),
+                          label: lang.save_changes,
+                          margin: const EdgeInsets.symmetric(
+                            horizontal: Const.margin,
+                          ),
                         ),
                         const SizedBox(height: Const.space25),
                       ],
@@ -167,19 +175,21 @@ class _EditProfilePageState extends State<ProfileFormPage> {
                           context,
                           onCameraTap: () {
                             Navigator.pop(context);
-                            context.read<ClientFormBloc>().add(
-                                  const ClientFormEvent.pickImage(
-                                    ImageSource.camera,
-                                  ),
-                                );
+                            // TODO(dickyrey): Image
+                            // context.read<ProfileFormBloc>().add(
+                            //       const ProfileFormEvent.pickImage(
+                            //         ImageSource.camera,
+                            //       ),
+                            // );
                           },
                           onGalleryTap: () {
-                            Navigator.pop(context);
-                            context.read<ClientFormBloc>().add(
-                                  const ClientFormEvent.pickImage(
-                                    ImageSource.gallery,
-                                  ),
-                                );
+                            // TODO(dickyrey): Image
+                            // Navigator.pop(context);
+                            // context.read<ProfileFormBloc>().add(
+                            //       const ProfileFormEvent.pickImage(
+                            //         ImageSource.gallery,
+                            //       ),
+                            //     );
                           },
                         );
                       },
@@ -212,6 +222,8 @@ class _EditProfilePageState extends State<ProfileFormPage> {
     required Key formKey,
   }) {
     final theme = Theme.of(context);
+    final lang = AppLocalizations.of(context)!;
+
     return Padding(
       padding: const EdgeInsets.all(Const.space12),
       child: Form(
@@ -220,12 +232,12 @@ class _EditProfilePageState extends State<ProfileFormPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              AppLocalizations.of(context)!.main_info,
+              lang.main_info,
               style: theme.textTheme.headline3,
             ),
             const SizedBox(height: Const.space15),
             Text(
-              AppLocalizations.of(context)!.username,
+              lang.username,
               style: theme.textTheme.subtitle1,
             ),
             const SizedBox(height: Const.space8),
@@ -236,17 +248,17 @@ class _EditProfilePageState extends State<ProfileFormPage> {
               ),
               child: CustomTextFormField(
                 controller: _usernameController,
-                hintText: AppLocalizations.of(context)!.enter_your_username,
+                hintText: lang.enter_your_username,
                 onChanged: (v) {
                   context
-                      .read<ClientFormBloc>()
-                      .add(ClientFormEvent.nameOnChanged(v));
+                      .read<ProfileFormBloc>()
+                      .add(ProfileFormEvent.fullNameOnChanged(v));
                 },
               ),
             ),
             const SizedBox(height: Const.space12),
             Text(
-              AppLocalizations.of(context)!.position,
+              lang.position,
               style: theme.textTheme.subtitle1,
             ),
             const SizedBox(height: Const.space8),
@@ -257,17 +269,17 @@ class _EditProfilePageState extends State<ProfileFormPage> {
               ),
               child: CustomTextFormField(
                 controller: _positionController,
-                hintText: AppLocalizations.of(context)!.position,
+                hintText: lang.position,
                 onChanged: (v) {
                   context
-                      .read<ClientFormBloc>()
-                      .add(ClientFormEvent.positionOnChanged(v));
+                      .read<ProfileFormBloc>()
+                      .add(ProfileFormEvent.positionOnChanged(v));
                 },
               ),
             ),
             const SizedBox(height: Const.space12),
             Text(
-              AppLocalizations.of(context)!.location,
+              lang.address,
               style: theme.textTheme.subtitle1,
             ),
             const SizedBox(height: Const.space8),
@@ -278,24 +290,27 @@ class _EditProfilePageState extends State<ProfileFormPage> {
               ),
               child: CustomTextFormField(
                 controller: _addressController,
-                hintText: AppLocalizations.of(context)!.location,
+                hintText: lang.address,
                 onChanged: (v) {
                   context
-                      .read<ClientFormBloc>()
-                      .add(ClientFormEvent.addressOnChanged(v));
+                      .read<ProfileFormBloc>()
+                      .add(ProfileFormEvent.addressOnChanged(v));
                 },
               ),
             ),
             const SizedBox(height: Const.space12),
             Text(
-              AppLocalizations.of(context)!.birthday_date,
+              lang.birthday_date,
               style: theme.textTheme.subtitle1,
             ),
             const SizedBox(height: Const.space8),
             InkWell(
-              onTap: () => context
-                  .read<ClientFormBloc>()
-                  .add(ClientFormEvent.birthdayOnChanged(context)),
+              onTap: () {
+                // TODO(dickyrey): Image
+                // context
+                //   .read<ProfileFormBloc>()
+                //   .add(ProfileFormEvent.birthdayOnChanged(v));
+              },
               borderRadius: BorderRadius.circular(Const.radius),
               child: Container(
                 width: Screens.width(context),
@@ -322,12 +337,12 @@ class _EditProfilePageState extends State<ProfileFormPage> {
             ),
             const SizedBox(height: Const.space25),
             Text(
-              AppLocalizations.of(context)!.contact_info,
+              lang.contact_info,
               style: theme.textTheme.headline3,
             ),
             const SizedBox(height: Const.space15),
             Text(
-              AppLocalizations.of(context)!.email_address,
+              lang.email_address,
               style: theme.textTheme.subtitle1,
             ),
             const SizedBox(height: Const.space8),
@@ -339,12 +354,16 @@ class _EditProfilePageState extends State<ProfileFormPage> {
               child: CustomTextFormField(
                 controller: _emailController,
                 enabled: false,
-                hintText: AppLocalizations.of(context)!.email_address,
+                hintText: lang.email_address,
+                suffixIcon: const Icon(
+                  FeatherIcons.check,
+                  color: ColorLight.success,
+                ),
               ),
             ),
             const SizedBox(height: Const.space12),
             Text(
-              AppLocalizations.of(context)!.mobile_number,
+              lang.mobile_number,
               style: theme.textTheme.subtitle1,
             ),
             const SizedBox(height: Const.space8),
@@ -355,11 +374,11 @@ class _EditProfilePageState extends State<ProfileFormPage> {
               ),
               child: CustomTextFormField(
                 controller: _phoneController,
-                hintText: AppLocalizations.of(context)!.mobile_number,
+                hintText: lang.mobile_number,
                 onChanged: (v) {
                   context
-                      .read<ClientFormBloc>()
-                      .add(ClientFormEvent.phoneOnChanged(v));
+                      .read<ProfileFormBloc>()
+                      .add(ProfileFormEvent.phoneNumberOnChanged(v));
                 },
               ),
             ),
@@ -372,6 +391,7 @@ class _EditProfilePageState extends State<ProfileFormPage> {
 
   Padding _buildAppBar(BuildContext context) {
     final theme = Theme.of(context);
+    final lang = AppLocalizations.of(context)!;
     final themeCubit = context.read<ThemeCubit>().state;
 
     return Padding(
@@ -400,7 +420,7 @@ class _EditProfilePageState extends State<ProfileFormPage> {
             ),
             const SizedBox(width: Const.space15),
             Text(
-              AppLocalizations.of(context)!.edit_profile,
+              lang.edit_profile,
               style: theme.textTheme.headline3,
             ),
           ],

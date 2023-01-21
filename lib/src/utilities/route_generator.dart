@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:joblance_firebase/src/common/routes.dart';
 import 'package:joblance_firebase/src/domain/entities/chat.dart';
-import 'package:joblance_firebase/src/domain/entities/client.dart';
+import 'package:joblance_firebase/src/domain/entities/profile.dart';
 import 'package:joblance_firebase/src/presentation/pages/client/browse_job_page.dart';
 import 'package:joblance_firebase/src/presentation/pages/client/interest_page.dart';
 import 'package:joblance_firebase/src/presentation/pages/client/job_details_page.dart';
@@ -19,7 +19,7 @@ import 'package:joblance_firebase/src/presentation/pages/recruiter/job_form_recr
 import 'package:joblance_firebase/src/presentation/pages/recruiter/messages_recruiter_page.dart';
 import 'package:joblance_firebase/src/presentation/pages/recruiter/register_recruiter_page.dart';
 import 'package:joblance_firebase/src/presentation/pages/recruiter/register_success_recruiter_page.dart';
-import 'package:joblance_firebase/src/presentation/widgets/custom_bottom_navigation_bar.dart';
+import 'package:joblance_firebase/src/presentation/widgets/bottom_navigation_bar.dart';
 import 'package:joblance_firebase/src/presentation/widgets/recruiter_botton_navigation_bar.dart';
 
 class RouteGenerator {
@@ -36,23 +36,23 @@ class RouteGenerator {
       // Bottom Navigation Page List
       case HOME:
         return MaterialPageRoute(
-          builder: (_) => const CustomBottomNavigationBar(),
+          builder: (_) => const BottomNavigationBarWidget(),
         );
       case SAVED_JOBS:
         return MaterialPageRoute(
-          builder: (_) => const CustomBottomNavigationBar(index: 1),
+          builder: (_) => const BottomNavigationBarWidget(index: 1),
         );
       case MESSAGES:
         return MaterialPageRoute(
-          builder: (_) => const CustomBottomNavigationBar(index: 2),
+          builder: (_) => const BottomNavigationBarWidget(index: 2),
         );
       case NOTIFICATIONS:
         return MaterialPageRoute(
-          builder: (_) => const CustomBottomNavigationBar(index: 3),
+          builder: (_) => const BottomNavigationBarWidget(index: 3),
         );
       case PROFILE:
         return MaterialPageRoute(
-          builder: (_) => const CustomBottomNavigationBar(index: 4),
+          builder: (_) => const BottomNavigationBarWidget(index: 4),
         );
       case LANGUAGE:
         return MaterialPageRoute(
@@ -85,9 +85,9 @@ class RouteGenerator {
           builder: (_) => const ProfileDetailPage(),
         );
       case PROFILE_FORM:
-        if (args is Client) {
+        if (args is Profile) {
           return MaterialPageRoute(
-            builder: (_) => ProfileFormPage(client: args),
+            builder: (_) => ProfileFormPage(profile: args),
           );
         }
         return _errorRoute();

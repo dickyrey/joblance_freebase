@@ -9,7 +9,6 @@ import 'package:joblance_firebase/src/common/network_info.dart';
 import 'package:joblance_firebase/src/data/datasources/applicant_remote_data_source.dart';
 import 'package:joblance_firebase/src/data/datasources/auth_data_source.dart';
 import 'package:joblance_firebase/src/data/datasources/category_remote_data_source.dart';
-import 'package:joblance_firebase/src/data/datasources/client_remote_data_source.dart';
 import 'package:joblance_firebase/src/data/datasources/job_remote_data_source.dart';
 import 'package:joblance_firebase/src/data/datasources/message_remote_data_source.dart';
 import 'package:joblance_firebase/src/data/datasources/notifications_remote_data_source.dart';
@@ -17,7 +16,6 @@ import 'package:joblance_firebase/src/data/datasources/profile_data_source.dart'
 import 'package:joblance_firebase/src/data/repositories/applicant_repository_impl.dart';
 import 'package:joblance_firebase/src/data/repositories/auth_repository_impl.dart';
 import 'package:joblance_firebase/src/data/repositories/category_repository_impl.dart';
-import 'package:joblance_firebase/src/data/repositories/client_repository_impl.dart';
 import 'package:joblance_firebase/src/data/repositories/job_repository_impl.dart';
 import 'package:joblance_firebase/src/data/repositories/message_repository_impl.dart';
 import 'package:joblance_firebase/src/data/repositories/notifications_repository_impl.dart';
@@ -25,7 +23,6 @@ import 'package:joblance_firebase/src/data/repositories/profile_repository_impl.
 import 'package:joblance_firebase/src/domain/repositories/applicant_repository.dart';
 import 'package:joblance_firebase/src/domain/repositories/auth_repository.dart';
 import 'package:joblance_firebase/src/domain/repositories/category_repository.dart';
-import 'package:joblance_firebase/src/domain/repositories/client_repository.dart';
 import 'package:joblance_firebase/src/domain/repositories/job_repository.dart';
 import 'package:joblance_firebase/src/domain/repositories/message_repository.dart';
 import 'package:joblance_firebase/src/domain/repositories/notifications_repository.dart';
@@ -39,7 +36,6 @@ import 'package:joblance_firebase/src/domain/usecases/get_active_jobs.dart';
 import 'package:joblance_firebase/src/domain/usecases/get_applicants.dart';
 import 'package:joblance_firebase/src/domain/usecases/get_browse_jobs.dart';
 import 'package:joblance_firebase/src/domain/usecases/get_categories.dart';
-import 'package:joblance_firebase/src/domain/usecases/get_client_information.dart';
 import 'package:joblance_firebase/src/domain/usecases/get_job_details.dart';
 import 'package:joblance_firebase/src/domain/usecases/get_messages.dart';
 import 'package:joblance_firebase/src/domain/usecases/get_messages_recruiter.dart';
@@ -47,14 +43,13 @@ import 'package:joblance_firebase/src/domain/usecases/get_notifications.dart';
 import 'package:joblance_firebase/src/domain/usecases/get_popular_jobs.dart';
 import 'package:joblance_firebase/src/domain/usecases/get_recently_added_jobs.dart';
 import 'package:joblance_firebase/src/domain/usecases/get_saved_jobs.dart';
+import 'package:joblance_firebase/src/domain/usecases/profile/change_profile.dart';
 import 'package:joblance_firebase/src/domain/usecases/profile/get_profile.dart';
 import 'package:joblance_firebase/src/presentation/bloc/applicant/applicant_watcher/applicant_watcher_bloc.dart';
 import 'package:joblance_firebase/src/presentation/bloc/auth/auth_watcher/auth_watcher_bloc.dart';
 import 'package:joblance_firebase/src/presentation/bloc/auth/sign_in_form/sign_in_form_bloc.dart';
 import 'package:joblance_firebase/src/presentation/bloc/auth/sign_up_form/sign_up_form_bloc.dart';
 import 'package:joblance_firebase/src/presentation/bloc/category/category_watcher/category_watcher_bloc.dart';
-import 'package:joblance_firebase/src/presentation/bloc/client/client_form/client_form_bloc.dart';
-import 'package:joblance_firebase/src/presentation/bloc/client/client_watcher/client_watcher_bloc.dart';
 import 'package:joblance_firebase/src/presentation/bloc/interest/interest_form/interest_form_bloc.dart';
 import 'package:joblance_firebase/src/presentation/bloc/job/active_job_watcher/active_job_watcher_bloc.dart';
 import 'package:joblance_firebase/src/presentation/bloc/job/browse_job_watcher/browse_job_watcher_bloc.dart';
@@ -68,13 +63,13 @@ import 'package:joblance_firebase/src/presentation/bloc/language/language_form_b
 import 'package:joblance_firebase/src/presentation/bloc/message/message_recruiter_watcher/message_recruiter_watcher_bloc.dart';
 import 'package:joblance_firebase/src/presentation/bloc/message/message_watcher/message_watcher_bloc.dart';
 import 'package:joblance_firebase/src/presentation/bloc/notifications/notifications_watcher/notifications_watcher_bloc.dart';
+import 'package:joblance_firebase/src/presentation/bloc/profile/profile_form/profile_form_bloc.dart';
 import 'package:joblance_firebase/src/presentation/bloc/profile/profile_watcher/profile_watcher_bloc.dart';
 import 'package:joblance_firebase/src/presentation/cubit/theme_cubit.dart';
 
 final locator = GetIt.instance;
 
 void init() {
-  
   /// List of [External Packages] allow class to parse data using [locator()]
   ///
   ///
@@ -135,11 +130,6 @@ void init() {
     () => categoryRemoteDataSource,
   );
 
-  final clientRemoteDataSource = ClientRemoteDataSourceImpl();
-  locator.registerLazySingleton<ClientRemoteDataSource>(
-    () => clientRemoteDataSource,
-  );
-
   final jobRemoteDataSource = JobRemoteDataSourceImpl();
   locator.registerLazySingleton<JobRemoteDataSource>(
     () => jobRemoteDataSource,
@@ -181,11 +171,6 @@ void init() {
     () => categoryRepository,
   );
 
-  final clientRepository = ClientRepositoryImpl(dataSource: locator());
-  locator.registerLazySingleton<ClientRepository>(
-    () => clientRepository,
-  );
-
   final jobRepository = JobRepositoryImpl(dataSource: locator());
   locator.registerLazySingleton<JobRepository>(
     () => jobRepository,
@@ -203,7 +188,10 @@ void init() {
     () => notificationsRepository,
   );
 
-  final profileRepository = ProfileRepositoryImpl(locator());
+  final profileRepository = ProfileRepositoryImpl(
+    dataSource: locator(),
+    networkInfo: locator(),
+  );
   locator.registerLazySingleton<ProfileRepository>(
     () => profileRepository,
   );
@@ -218,18 +206,22 @@ void init() {
   locator.registerLazySingleton(
     () => checkAuthStatusUseCase,
   );
+
   final createUserWithEmailUseCase = CreateUserWithEmail(locator());
   locator.registerLazySingleton(
     () => createUserWithEmailUseCase,
   );
+
   final signInWithGoogleUseCase = SignInWithGoogle(locator());
   locator.registerLazySingleton(
     () => signInWithGoogleUseCase,
   );
+
   final signInWithEmailUseCase = SignInWithEmail(locator());
   locator.registerLazySingleton(
     () => signInWithEmailUseCase,
   );
+
   final signOutUserUseCase = SignOutUser(locator());
   locator.registerLazySingleton(
     () => signOutUserUseCase,
@@ -240,6 +232,11 @@ void init() {
   final getProfileUseCase = GetProfile(locator());
   locator.registerLazySingleton(
     () => getProfileUseCase,
+  );
+
+  final changeProfileUseCase = ChangeProfile(locator());
+  locator.registerLazySingleton(
+    () => changeProfileUseCase,
   );
 
   final getActiveJobsUseCase = GetActiveJobs(locator());
@@ -260,11 +257,6 @@ void init() {
   final getCategoriesUseCase = GetCategories(locator());
   locator.registerLazySingleton(
     () => getCategoriesUseCase,
-  );
-
-  final getClientInformationUseCase = GetClientInformation(locator());
-  locator.registerLazySingleton(
-    () => getClientInformationUseCase,
   );
 
   final getJobDetailsUseCase = GetJobDetails(locator());
@@ -302,39 +294,54 @@ void init() {
     () => getSavedJobsUseCase,
   );
 
-  // BLoCs
+  /// [BLoC] is main State Management for this App
+  ///
+  ///
+
+  /// [Applicant BLoC] Folder
+  ///
   final applicantWatcherBloc = ApplicantWatcherBloc(locator());
   locator.registerLazySingleton(
     () => applicantWatcherBloc,
   );
+
+  ///
+  /// [Auth BLoC] Folder
+  ///
   final authWatcherBloc = AuthWatcherBloc(locator(), locator());
   locator.registerLazySingleton(
     () => authWatcherBloc,
   );
+
   final signInFormBloc = SignInFormBloc(locator(), locator());
   locator.registerLazySingleton(
     () => signInFormBloc,
   );
+
   final signUpFormBloc = SignUpFormBloc(locator(), locator());
   locator.registerLazySingleton(
     () => signUpFormBloc,
   );
+  
+  ///
+  /// [Category BLoC] Folder
+  ///
   final categoryWatcherBloc = CategoryWatcherBloc(locator());
   locator.registerLazySingleton(
     () => categoryWatcherBloc,
   );
-  final clientFormBloc = ClientFormBloc();
-  locator.registerLazySingleton(
-    () => clientFormBloc,
-  );
-  final clientWatcherBloc = ClientWatcherBloc(locator());
-  locator.registerLazySingleton(
-    () => clientWatcherBloc,
-  );
+    
+  ///
+  /// [Interest BLoC] Folder
+  ///
   final interestFormBloc = InterestFormBloc(locator());
   locator.registerLazySingleton(
     () => interestFormBloc,
   );
+  
+  ///
+  /// [Job BLoC] Folder
+  ///
   final activeJobWatcherBloc = ActiveJobWatcherBloc(locator());
   locator.registerLazySingleton(
     () => activeJobWatcherBloc,
@@ -374,11 +381,17 @@ void init() {
     () => savedJobWatcherBloc,
   );
 
+  ///
+  /// [Language or Localization BLoC] Folder
+  ///
   final languageFormBloc = LanguageFormBloc();
   locator.registerLazySingleton(
     () => languageFormBloc,
   );
 
+  ///
+  /// [Chat or Message BLoC] Folder
+  ///
   final messageRecruiterWatcherBloc = MessageRecruiterWatcherBloc(locator());
   locator.registerLazySingleton(
     () => messageRecruiterWatcherBloc,
@@ -389,16 +402,29 @@ void init() {
     () => messageWatcherBloc,
   );
 
+  ///
+  /// [Notifications BLoC] Folder
+  ///
   final notificationsWatcherBloc = NotificationsWatcherBloc(locator());
   locator.registerLazySingleton(
     () => notificationsWatcherBloc,
   );
 
+  ///
+  /// [Profile BLoC] Folder
+  ///
+  final profileFormBloc = ProfileFormBloc(locator());
+  locator.registerLazySingleton(
+    () => profileFormBloc,
+  );
   final profileWatcherBloc = ProfileWatcherBloc(locator());
   locator.registerLazySingleton(
     () => profileWatcherBloc,
   );
 
+  ///
+  /// [Theme Cubit] Folder
+  ///
   final themeCubit = ThemeCubit();
   locator.registerLazySingleton(
     () => themeCubit,
