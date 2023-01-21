@@ -2,13 +2,13 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:joblance_firebase/src/common/exception.dart';
 import 'package:joblance_firebase/src/common/failure.dart';
-import 'package:joblance_firebase/src/data/datasources/authentication_remote_data_source.dart';
+import 'package:joblance_firebase/src/data/datasources/auth_data_source.dart';
 import 'package:joblance_firebase/src/domain/entities/profile.dart';
-import 'package:joblance_firebase/src/domain/repositories/authentication_repository.dart';
+import 'package:joblance_firebase/src/domain/repositories/auth_repository.dart';
 
-class AuthenticationRepositoryImpl extends AuthenticationRepository {
-  AuthenticationRepositoryImpl({required this.dataSource});
-  final AuthenticationRemoteDataSource dataSource;
+class AuthRepositoryImpl extends AuthRepository {
+  AuthRepositoryImpl({required this.dataSource});
+  final AuthRemoteDataSource dataSource;
 
   @override
   Future<Either<Failure, Profile>> getProfile() async {

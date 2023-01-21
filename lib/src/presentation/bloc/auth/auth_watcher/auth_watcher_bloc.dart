@@ -17,7 +17,6 @@ AuthWatcherBloc(this._signOut, this._checkAuthStatus) : super(const AuthWatcherS
           result.fold(
             (_) => emit(const AuthWatcherState.unauthenticated()),
             (data) {
-              print(data);
               if (data == true) {
                 return emit(const AuthWatcherState.authenticated());
               } else {

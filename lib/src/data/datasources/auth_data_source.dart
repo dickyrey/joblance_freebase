@@ -6,7 +6,7 @@ import 'package:joblance_firebase/src/common/exception.dart';
 import 'package:joblance_firebase/src/data/models/profile_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-abstract class AuthenticationRemoteDataSource {
+abstract class AuthRemoteDataSource {
   Future<void> signinWithEmail(
     String email,
     String password,
@@ -21,9 +21,8 @@ abstract class AuthenticationRemoteDataSource {
   Future<bool> checkAuthStatus();
 }
 
-class AuthenticationRemoteDataSourceImpl
-    extends AuthenticationRemoteDataSource {
-  AuthenticationRemoteDataSourceImpl({
+class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
+  AuthRemoteDataSourceImpl({
     required this.firebaseAuth,
     required this.googleSignIn,
     required this.firestore,

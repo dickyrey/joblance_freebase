@@ -7,21 +7,21 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:http/http.dart' as http;
 import 'package:joblance_firebase/src/common/network_info.dart';
 import 'package:joblance_firebase/src/data/datasources/applicant_remote_data_source.dart';
-import 'package:joblance_firebase/src/data/datasources/authentication_remote_data_source.dart';
+import 'package:joblance_firebase/src/data/datasources/auth_data_source.dart';
 import 'package:joblance_firebase/src/data/datasources/category_remote_data_source.dart';
 import 'package:joblance_firebase/src/data/datasources/client_remote_data_source.dart';
 import 'package:joblance_firebase/src/data/datasources/job_remote_data_source.dart';
 import 'package:joblance_firebase/src/data/datasources/message_remote_data_source.dart';
 import 'package:joblance_firebase/src/data/datasources/notifications_remote_data_source.dart';
 import 'package:joblance_firebase/src/data/repositories/applicant_repository_impl.dart';
-import 'package:joblance_firebase/src/data/repositories/authentication_repository_impl.dart';
+import 'package:joblance_firebase/src/data/repositories/auth_repository_impl.dart';
 import 'package:joblance_firebase/src/data/repositories/category_repository_impl.dart';
 import 'package:joblance_firebase/src/data/repositories/client_repository_impl.dart';
 import 'package:joblance_firebase/src/data/repositories/job_repository_impl.dart';
 import 'package:joblance_firebase/src/data/repositories/message_repository_impl.dart';
 import 'package:joblance_firebase/src/data/repositories/notifications_repository_impl.dart';
 import 'package:joblance_firebase/src/domain/repositories/applicant_repository.dart';
-import 'package:joblance_firebase/src/domain/repositories/authentication_repository.dart';
+import 'package:joblance_firebase/src/domain/repositories/auth_repository.dart';
 import 'package:joblance_firebase/src/domain/repositories/category_repository.dart';
 import 'package:joblance_firebase/src/domain/repositories/client_repository.dart';
 import 'package:joblance_firebase/src/domain/repositories/job_repository.dart';
@@ -114,12 +114,12 @@ void init() {
   locator.registerLazySingleton<ApplicantRemoteDataSource>(
     () => applicantDataSource,
   );
-  final authDataSource = AuthenticationRemoteDataSourceImpl(
+  final authDataSource = AuthRemoteDataSourceImpl(
     firebaseAuth: locator(),
     firestore: locator(),
     googleSignIn: locator(),
   );
-  locator.registerLazySingleton<AuthenticationRemoteDataSource>(
+  locator.registerLazySingleton<AuthRemoteDataSource>(
     () => authDataSource,
   );
 
@@ -155,9 +155,8 @@ void init() {
     () => applicantRepository,
   );
 
-  final authenticationRepository =
-      AuthenticationRepositoryImpl(dataSource: locator());
-  locator.registerLazySingleton<AuthenticationRepository>(
+  final authenticationRepository = AuthRepositoryImpl(dataSource: locator());
+  locator.registerLazySingleton<AuthRepository>(
     () => authenticationRepository,
   );
 

@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:joblance_firebase/src/common/failure.dart';
 import 'package:joblance_firebase/src/domain/entities/profile.dart';
 
-abstract class AuthenticationRepository {
+abstract class AuthRepository {
   Future<Either<Failure, Profile>> getProfile();
   Future<Either<Failure, void>> signInWithEmail(
     String email,
