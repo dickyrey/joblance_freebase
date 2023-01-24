@@ -105,13 +105,7 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
             birthday: Timestamp.now(),
             createdAt: Timestamp.now(),
           );
-          await applicantCollection
-              .doc(user?.uid)
-              .set(profileModel.toMap());
-
-          /// Set [Token] into [SharedPreference]
-          ///
-          await prefs.setString(Const.accessToken, user?.uid ?? '');
+          await applicantCollection.doc(user?.uid).set(profileModel.toMap());
         }
       });
     } else {
@@ -135,7 +129,9 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
     final uid = firebaseAuth.currentUser?.uid;
     final token = prefs.getString(Const.accessToken);
 
-    if (isSignedIn && token != null || uid != null && token != null) {
+    if (isSignedIn) {
+      return true;
+    } else if (uid != null && token != null) {
       return true;
     } else {
       return false;
