@@ -2,6 +2,7 @@ part of 'profile_form_bloc.dart';
 
 @freezed
 class ProfileFormEvent with _$ProfileFormEvent {
+  const factory ProfileFormEvent.init() =_Init;
   const factory ProfileFormEvent.initialized(Profile profile) =_Initialized;
   const factory ProfileFormEvent.saveChangesPressed(Profile profile) =_SaveChangesPressed;
 

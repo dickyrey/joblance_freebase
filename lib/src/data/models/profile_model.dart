@@ -79,9 +79,9 @@ class ProfileModel extends Equatable {
         createdAt,
       ];
 
-  Map<String, dynamic> toMap() {
+  Map<String, dynamic> toMap(String? uid) {
     return {
-      'id': id == '' ? '' : id,
+      'id': uid == '' ? '' : uid,
       'email': email == '' ? '' : email,
       'full_name': fullName == '' ? '' : fullName,
       'image': image == '' ? '' : image,
@@ -91,7 +91,7 @@ class ProfileModel extends Equatable {
       'location': location == '' ? '' : location,
       'about': about == '' ? '' : about,
       'address': address == '' ? '' : address,
-      'birthday': Timestamp.fromDate(DateTime(1990)),
+      'birthday': birthday,
       'created_at': createdAt,
     };
   }

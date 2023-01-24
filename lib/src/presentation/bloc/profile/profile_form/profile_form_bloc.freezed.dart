@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ProfileFormEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() init,
     required TResult Function(Profile profile) initialized,
     required TResult Function(Profile profile) saveChangesPressed,
     required TResult Function(String value) fullNameOnChanged,
@@ -32,6 +33,7 @@ mixin _$ProfileFormEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
     TResult? Function(Profile profile)? initialized,
     TResult? Function(Profile profile)? saveChangesPressed,
     TResult? Function(String value)? fullNameOnChanged,
@@ -46,6 +48,7 @@ mixin _$ProfileFormEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
     TResult Function(Profile profile)? initialized,
     TResult Function(Profile profile)? saveChangesPressed,
     TResult Function(String value)? fullNameOnChanged,
@@ -61,6 +64,7 @@ mixin _$ProfileFormEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Init value) init,
     required TResult Function(_Initialized value) initialized,
     required TResult Function(_SaveChangesPressed value) saveChangesPressed,
     required TResult Function(_FullNameOnChanged value) fullNameOnChanged,
@@ -75,6 +79,7 @@ mixin _$ProfileFormEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Init value)? init,
     TResult? Function(_Initialized value)? initialized,
     TResult? Function(_SaveChangesPressed value)? saveChangesPressed,
     TResult? Function(_FullNameOnChanged value)? fullNameOnChanged,
@@ -89,6 +94,7 @@ mixin _$ProfileFormEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Init value)? init,
     TResult Function(_Initialized value)? initialized,
     TResult Function(_SaveChangesPressed value)? saveChangesPressed,
     TResult Function(_FullNameOnChanged value)? fullNameOnChanged,
@@ -120,6 +126,160 @@ class _$ProfileFormEventCopyWithImpl<$Res, $Val extends ProfileFormEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$_InitCopyWith<$Res> {
+  factory _$$_InitCopyWith(_$_Init value, $Res Function(_$_Init) then) =
+      __$$_InitCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_InitCopyWithImpl<$Res>
+    extends _$ProfileFormEventCopyWithImpl<$Res, _$_Init>
+    implements _$$_InitCopyWith<$Res> {
+  __$$_InitCopyWithImpl(_$_Init _value, $Res Function(_$_Init) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_Init implements _Init {
+  const _$_Init();
+
+  @override
+  String toString() {
+    return 'ProfileFormEvent.init()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_Init);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function(Profile profile) initialized,
+    required TResult Function(Profile profile) saveChangesPressed,
+    required TResult Function(String value) fullNameOnChanged,
+    required TResult Function(String value) addressOnChanged,
+    required TResult Function(String value) positionOnChanged,
+    required TResult Function(String value) companyOnChanged,
+    required TResult Function(String value) locationOnChanged,
+    required TResult Function(String value) phoneNumberOnChanged,
+    required TResult Function(String value) aboutOnChanged,
+    required TResult Function(Timestamp value) birthdayOnChanged,
+  }) {
+    return init();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function(Profile profile)? initialized,
+    TResult? Function(Profile profile)? saveChangesPressed,
+    TResult? Function(String value)? fullNameOnChanged,
+    TResult? Function(String value)? addressOnChanged,
+    TResult? Function(String value)? positionOnChanged,
+    TResult? Function(String value)? companyOnChanged,
+    TResult? Function(String value)? locationOnChanged,
+    TResult? Function(String value)? phoneNumberOnChanged,
+    TResult? Function(String value)? aboutOnChanged,
+    TResult? Function(Timestamp value)? birthdayOnChanged,
+  }) {
+    return init?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function(Profile profile)? initialized,
+    TResult Function(Profile profile)? saveChangesPressed,
+    TResult Function(String value)? fullNameOnChanged,
+    TResult Function(String value)? addressOnChanged,
+    TResult Function(String value)? positionOnChanged,
+    TResult Function(String value)? companyOnChanged,
+    TResult Function(String value)? locationOnChanged,
+    TResult Function(String value)? phoneNumberOnChanged,
+    TResult Function(String value)? aboutOnChanged,
+    TResult Function(Timestamp value)? birthdayOnChanged,
+    required TResult orElse(),
+  }) {
+    if (init != null) {
+      return init();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Init value) init,
+    required TResult Function(_Initialized value) initialized,
+    required TResult Function(_SaveChangesPressed value) saveChangesPressed,
+    required TResult Function(_FullNameOnChanged value) fullNameOnChanged,
+    required TResult Function(_AddressOnChanged value) addressOnChanged,
+    required TResult Function(_PositionOnChanged value) positionOnChanged,
+    required TResult Function(_CompanyOnChanged value) companyOnChanged,
+    required TResult Function(_LocationOnChanged value) locationOnChanged,
+    required TResult Function(_PhoneNumberOnChanged value) phoneNumberOnChanged,
+    required TResult Function(_AboutOnChanged value) aboutOnChanged,
+    required TResult Function(_BirthdayOnChanged value) birthdayOnChanged,
+  }) {
+    return init(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Init value)? init,
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_SaveChangesPressed value)? saveChangesPressed,
+    TResult? Function(_FullNameOnChanged value)? fullNameOnChanged,
+    TResult? Function(_AddressOnChanged value)? addressOnChanged,
+    TResult? Function(_PositionOnChanged value)? positionOnChanged,
+    TResult? Function(_CompanyOnChanged value)? companyOnChanged,
+    TResult? Function(_LocationOnChanged value)? locationOnChanged,
+    TResult? Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
+    TResult? Function(_AboutOnChanged value)? aboutOnChanged,
+    TResult? Function(_BirthdayOnChanged value)? birthdayOnChanged,
+  }) {
+    return init?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Init value)? init,
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_SaveChangesPressed value)? saveChangesPressed,
+    TResult Function(_FullNameOnChanged value)? fullNameOnChanged,
+    TResult Function(_AddressOnChanged value)? addressOnChanged,
+    TResult Function(_PositionOnChanged value)? positionOnChanged,
+    TResult Function(_CompanyOnChanged value)? companyOnChanged,
+    TResult Function(_LocationOnChanged value)? locationOnChanged,
+    TResult Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
+    TResult Function(_AboutOnChanged value)? aboutOnChanged,
+    TResult Function(_BirthdayOnChanged value)? birthdayOnChanged,
+    required TResult orElse(),
+  }) {
+    if (init != null) {
+      return init(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Init implements ProfileFormEvent {
+  const factory _Init() = _$_Init;
 }
 
 /// @nodoc
@@ -186,6 +346,7 @@ class _$_Initialized implements _Initialized {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() init,
     required TResult Function(Profile profile) initialized,
     required TResult Function(Profile profile) saveChangesPressed,
     required TResult Function(String value) fullNameOnChanged,
@@ -203,6 +364,7 @@ class _$_Initialized implements _Initialized {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
     TResult? Function(Profile profile)? initialized,
     TResult? Function(Profile profile)? saveChangesPressed,
     TResult? Function(String value)? fullNameOnChanged,
@@ -220,6 +382,7 @@ class _$_Initialized implements _Initialized {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
     TResult Function(Profile profile)? initialized,
     TResult Function(Profile profile)? saveChangesPressed,
     TResult Function(String value)? fullNameOnChanged,
@@ -241,6 +404,7 @@ class _$_Initialized implements _Initialized {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Init value) init,
     required TResult Function(_Initialized value) initialized,
     required TResult Function(_SaveChangesPressed value) saveChangesPressed,
     required TResult Function(_FullNameOnChanged value) fullNameOnChanged,
@@ -258,6 +422,7 @@ class _$_Initialized implements _Initialized {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Init value)? init,
     TResult? Function(_Initialized value)? initialized,
     TResult? Function(_SaveChangesPressed value)? saveChangesPressed,
     TResult? Function(_FullNameOnChanged value)? fullNameOnChanged,
@@ -275,6 +440,7 @@ class _$_Initialized implements _Initialized {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Init value)? init,
     TResult Function(_Initialized value)? initialized,
     TResult Function(_SaveChangesPressed value)? saveChangesPressed,
     TResult Function(_FullNameOnChanged value)? fullNameOnChanged,
@@ -368,6 +534,7 @@ class _$_SaveChangesPressed implements _SaveChangesPressed {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() init,
     required TResult Function(Profile profile) initialized,
     required TResult Function(Profile profile) saveChangesPressed,
     required TResult Function(String value) fullNameOnChanged,
@@ -385,6 +552,7 @@ class _$_SaveChangesPressed implements _SaveChangesPressed {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
     TResult? Function(Profile profile)? initialized,
     TResult? Function(Profile profile)? saveChangesPressed,
     TResult? Function(String value)? fullNameOnChanged,
@@ -402,6 +570,7 @@ class _$_SaveChangesPressed implements _SaveChangesPressed {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
     TResult Function(Profile profile)? initialized,
     TResult Function(Profile profile)? saveChangesPressed,
     TResult Function(String value)? fullNameOnChanged,
@@ -423,6 +592,7 @@ class _$_SaveChangesPressed implements _SaveChangesPressed {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Init value) init,
     required TResult Function(_Initialized value) initialized,
     required TResult Function(_SaveChangesPressed value) saveChangesPressed,
     required TResult Function(_FullNameOnChanged value) fullNameOnChanged,
@@ -440,6 +610,7 @@ class _$_SaveChangesPressed implements _SaveChangesPressed {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Init value)? init,
     TResult? Function(_Initialized value)? initialized,
     TResult? Function(_SaveChangesPressed value)? saveChangesPressed,
     TResult? Function(_FullNameOnChanged value)? fullNameOnChanged,
@@ -457,6 +628,7 @@ class _$_SaveChangesPressed implements _SaveChangesPressed {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Init value)? init,
     TResult Function(_Initialized value)? initialized,
     TResult Function(_SaveChangesPressed value)? saveChangesPressed,
     TResult Function(_FullNameOnChanged value)? fullNameOnChanged,
@@ -551,6 +723,7 @@ class _$_FullNameOnChanged implements _FullNameOnChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() init,
     required TResult Function(Profile profile) initialized,
     required TResult Function(Profile profile) saveChangesPressed,
     required TResult Function(String value) fullNameOnChanged,
@@ -568,6 +741,7 @@ class _$_FullNameOnChanged implements _FullNameOnChanged {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
     TResult? Function(Profile profile)? initialized,
     TResult? Function(Profile profile)? saveChangesPressed,
     TResult? Function(String value)? fullNameOnChanged,
@@ -585,6 +759,7 @@ class _$_FullNameOnChanged implements _FullNameOnChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
     TResult Function(Profile profile)? initialized,
     TResult Function(Profile profile)? saveChangesPressed,
     TResult Function(String value)? fullNameOnChanged,
@@ -606,6 +781,7 @@ class _$_FullNameOnChanged implements _FullNameOnChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Init value) init,
     required TResult Function(_Initialized value) initialized,
     required TResult Function(_SaveChangesPressed value) saveChangesPressed,
     required TResult Function(_FullNameOnChanged value) fullNameOnChanged,
@@ -623,6 +799,7 @@ class _$_FullNameOnChanged implements _FullNameOnChanged {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Init value)? init,
     TResult? Function(_Initialized value)? initialized,
     TResult? Function(_SaveChangesPressed value)? saveChangesPressed,
     TResult? Function(_FullNameOnChanged value)? fullNameOnChanged,
@@ -640,6 +817,7 @@ class _$_FullNameOnChanged implements _FullNameOnChanged {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Init value)? init,
     TResult Function(_Initialized value)? initialized,
     TResult Function(_SaveChangesPressed value)? saveChangesPressed,
     TResult Function(_FullNameOnChanged value)? fullNameOnChanged,
@@ -732,6 +910,7 @@ class _$_AddressOnChanged implements _AddressOnChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() init,
     required TResult Function(Profile profile) initialized,
     required TResult Function(Profile profile) saveChangesPressed,
     required TResult Function(String value) fullNameOnChanged,
@@ -749,6 +928,7 @@ class _$_AddressOnChanged implements _AddressOnChanged {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
     TResult? Function(Profile profile)? initialized,
     TResult? Function(Profile profile)? saveChangesPressed,
     TResult? Function(String value)? fullNameOnChanged,
@@ -766,6 +946,7 @@ class _$_AddressOnChanged implements _AddressOnChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
     TResult Function(Profile profile)? initialized,
     TResult Function(Profile profile)? saveChangesPressed,
     TResult Function(String value)? fullNameOnChanged,
@@ -787,6 +968,7 @@ class _$_AddressOnChanged implements _AddressOnChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Init value) init,
     required TResult Function(_Initialized value) initialized,
     required TResult Function(_SaveChangesPressed value) saveChangesPressed,
     required TResult Function(_FullNameOnChanged value) fullNameOnChanged,
@@ -804,6 +986,7 @@ class _$_AddressOnChanged implements _AddressOnChanged {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Init value)? init,
     TResult? Function(_Initialized value)? initialized,
     TResult? Function(_SaveChangesPressed value)? saveChangesPressed,
     TResult? Function(_FullNameOnChanged value)? fullNameOnChanged,
@@ -821,6 +1004,7 @@ class _$_AddressOnChanged implements _AddressOnChanged {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Init value)? init,
     TResult Function(_Initialized value)? initialized,
     TResult Function(_SaveChangesPressed value)? saveChangesPressed,
     TResult Function(_FullNameOnChanged value)? fullNameOnChanged,
@@ -914,6 +1098,7 @@ class _$_PositionOnChanged implements _PositionOnChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() init,
     required TResult Function(Profile profile) initialized,
     required TResult Function(Profile profile) saveChangesPressed,
     required TResult Function(String value) fullNameOnChanged,
@@ -931,6 +1116,7 @@ class _$_PositionOnChanged implements _PositionOnChanged {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
     TResult? Function(Profile profile)? initialized,
     TResult? Function(Profile profile)? saveChangesPressed,
     TResult? Function(String value)? fullNameOnChanged,
@@ -948,6 +1134,7 @@ class _$_PositionOnChanged implements _PositionOnChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
     TResult Function(Profile profile)? initialized,
     TResult Function(Profile profile)? saveChangesPressed,
     TResult Function(String value)? fullNameOnChanged,
@@ -969,6 +1156,7 @@ class _$_PositionOnChanged implements _PositionOnChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Init value) init,
     required TResult Function(_Initialized value) initialized,
     required TResult Function(_SaveChangesPressed value) saveChangesPressed,
     required TResult Function(_FullNameOnChanged value) fullNameOnChanged,
@@ -986,6 +1174,7 @@ class _$_PositionOnChanged implements _PositionOnChanged {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Init value)? init,
     TResult? Function(_Initialized value)? initialized,
     TResult? Function(_SaveChangesPressed value)? saveChangesPressed,
     TResult? Function(_FullNameOnChanged value)? fullNameOnChanged,
@@ -1003,6 +1192,7 @@ class _$_PositionOnChanged implements _PositionOnChanged {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Init value)? init,
     TResult Function(_Initialized value)? initialized,
     TResult Function(_SaveChangesPressed value)? saveChangesPressed,
     TResult Function(_FullNameOnChanged value)? fullNameOnChanged,
@@ -1095,6 +1285,7 @@ class _$_CompanyOnChanged implements _CompanyOnChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() init,
     required TResult Function(Profile profile) initialized,
     required TResult Function(Profile profile) saveChangesPressed,
     required TResult Function(String value) fullNameOnChanged,
@@ -1112,6 +1303,7 @@ class _$_CompanyOnChanged implements _CompanyOnChanged {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
     TResult? Function(Profile profile)? initialized,
     TResult? Function(Profile profile)? saveChangesPressed,
     TResult? Function(String value)? fullNameOnChanged,
@@ -1129,6 +1321,7 @@ class _$_CompanyOnChanged implements _CompanyOnChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
     TResult Function(Profile profile)? initialized,
     TResult Function(Profile profile)? saveChangesPressed,
     TResult Function(String value)? fullNameOnChanged,
@@ -1150,6 +1343,7 @@ class _$_CompanyOnChanged implements _CompanyOnChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Init value) init,
     required TResult Function(_Initialized value) initialized,
     required TResult Function(_SaveChangesPressed value) saveChangesPressed,
     required TResult Function(_FullNameOnChanged value) fullNameOnChanged,
@@ -1167,6 +1361,7 @@ class _$_CompanyOnChanged implements _CompanyOnChanged {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Init value)? init,
     TResult? Function(_Initialized value)? initialized,
     TResult? Function(_SaveChangesPressed value)? saveChangesPressed,
     TResult? Function(_FullNameOnChanged value)? fullNameOnChanged,
@@ -1184,6 +1379,7 @@ class _$_CompanyOnChanged implements _CompanyOnChanged {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Init value)? init,
     TResult Function(_Initialized value)? initialized,
     TResult Function(_SaveChangesPressed value)? saveChangesPressed,
     TResult Function(_FullNameOnChanged value)? fullNameOnChanged,
@@ -1277,6 +1473,7 @@ class _$_LocationOnChanged implements _LocationOnChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() init,
     required TResult Function(Profile profile) initialized,
     required TResult Function(Profile profile) saveChangesPressed,
     required TResult Function(String value) fullNameOnChanged,
@@ -1294,6 +1491,7 @@ class _$_LocationOnChanged implements _LocationOnChanged {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
     TResult? Function(Profile profile)? initialized,
     TResult? Function(Profile profile)? saveChangesPressed,
     TResult? Function(String value)? fullNameOnChanged,
@@ -1311,6 +1509,7 @@ class _$_LocationOnChanged implements _LocationOnChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
     TResult Function(Profile profile)? initialized,
     TResult Function(Profile profile)? saveChangesPressed,
     TResult Function(String value)? fullNameOnChanged,
@@ -1332,6 +1531,7 @@ class _$_LocationOnChanged implements _LocationOnChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Init value) init,
     required TResult Function(_Initialized value) initialized,
     required TResult Function(_SaveChangesPressed value) saveChangesPressed,
     required TResult Function(_FullNameOnChanged value) fullNameOnChanged,
@@ -1349,6 +1549,7 @@ class _$_LocationOnChanged implements _LocationOnChanged {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Init value)? init,
     TResult? Function(_Initialized value)? initialized,
     TResult? Function(_SaveChangesPressed value)? saveChangesPressed,
     TResult? Function(_FullNameOnChanged value)? fullNameOnChanged,
@@ -1366,6 +1567,7 @@ class _$_LocationOnChanged implements _LocationOnChanged {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Init value)? init,
     TResult Function(_Initialized value)? initialized,
     TResult Function(_SaveChangesPressed value)? saveChangesPressed,
     TResult Function(_FullNameOnChanged value)? fullNameOnChanged,
@@ -1459,6 +1661,7 @@ class _$_PhoneNumberOnChanged implements _PhoneNumberOnChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() init,
     required TResult Function(Profile profile) initialized,
     required TResult Function(Profile profile) saveChangesPressed,
     required TResult Function(String value) fullNameOnChanged,
@@ -1476,6 +1679,7 @@ class _$_PhoneNumberOnChanged implements _PhoneNumberOnChanged {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
     TResult? Function(Profile profile)? initialized,
     TResult? Function(Profile profile)? saveChangesPressed,
     TResult? Function(String value)? fullNameOnChanged,
@@ -1493,6 +1697,7 @@ class _$_PhoneNumberOnChanged implements _PhoneNumberOnChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
     TResult Function(Profile profile)? initialized,
     TResult Function(Profile profile)? saveChangesPressed,
     TResult Function(String value)? fullNameOnChanged,
@@ -1514,6 +1719,7 @@ class _$_PhoneNumberOnChanged implements _PhoneNumberOnChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Init value) init,
     required TResult Function(_Initialized value) initialized,
     required TResult Function(_SaveChangesPressed value) saveChangesPressed,
     required TResult Function(_FullNameOnChanged value) fullNameOnChanged,
@@ -1531,6 +1737,7 @@ class _$_PhoneNumberOnChanged implements _PhoneNumberOnChanged {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Init value)? init,
     TResult? Function(_Initialized value)? initialized,
     TResult? Function(_SaveChangesPressed value)? saveChangesPressed,
     TResult? Function(_FullNameOnChanged value)? fullNameOnChanged,
@@ -1548,6 +1755,7 @@ class _$_PhoneNumberOnChanged implements _PhoneNumberOnChanged {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Init value)? init,
     TResult Function(_Initialized value)? initialized,
     TResult Function(_SaveChangesPressed value)? saveChangesPressed,
     TResult Function(_FullNameOnChanged value)? fullNameOnChanged,
@@ -1641,6 +1849,7 @@ class _$_AboutOnChanged implements _AboutOnChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() init,
     required TResult Function(Profile profile) initialized,
     required TResult Function(Profile profile) saveChangesPressed,
     required TResult Function(String value) fullNameOnChanged,
@@ -1658,6 +1867,7 @@ class _$_AboutOnChanged implements _AboutOnChanged {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
     TResult? Function(Profile profile)? initialized,
     TResult? Function(Profile profile)? saveChangesPressed,
     TResult? Function(String value)? fullNameOnChanged,
@@ -1675,6 +1885,7 @@ class _$_AboutOnChanged implements _AboutOnChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
     TResult Function(Profile profile)? initialized,
     TResult Function(Profile profile)? saveChangesPressed,
     TResult Function(String value)? fullNameOnChanged,
@@ -1696,6 +1907,7 @@ class _$_AboutOnChanged implements _AboutOnChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Init value) init,
     required TResult Function(_Initialized value) initialized,
     required TResult Function(_SaveChangesPressed value) saveChangesPressed,
     required TResult Function(_FullNameOnChanged value) fullNameOnChanged,
@@ -1713,6 +1925,7 @@ class _$_AboutOnChanged implements _AboutOnChanged {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Init value)? init,
     TResult? Function(_Initialized value)? initialized,
     TResult? Function(_SaveChangesPressed value)? saveChangesPressed,
     TResult? Function(_FullNameOnChanged value)? fullNameOnChanged,
@@ -1730,6 +1943,7 @@ class _$_AboutOnChanged implements _AboutOnChanged {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Init value)? init,
     TResult Function(_Initialized value)? initialized,
     TResult Function(_SaveChangesPressed value)? saveChangesPressed,
     TResult Function(_FullNameOnChanged value)? fullNameOnChanged,
@@ -1823,6 +2037,7 @@ class _$_BirthdayOnChanged implements _BirthdayOnChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() init,
     required TResult Function(Profile profile) initialized,
     required TResult Function(Profile profile) saveChangesPressed,
     required TResult Function(String value) fullNameOnChanged,
@@ -1840,6 +2055,7 @@ class _$_BirthdayOnChanged implements _BirthdayOnChanged {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
     TResult? Function(Profile profile)? initialized,
     TResult? Function(Profile profile)? saveChangesPressed,
     TResult? Function(String value)? fullNameOnChanged,
@@ -1857,6 +2073,7 @@ class _$_BirthdayOnChanged implements _BirthdayOnChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
     TResult Function(Profile profile)? initialized,
     TResult Function(Profile profile)? saveChangesPressed,
     TResult Function(String value)? fullNameOnChanged,
@@ -1878,6 +2095,7 @@ class _$_BirthdayOnChanged implements _BirthdayOnChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Init value) init,
     required TResult Function(_Initialized value) initialized,
     required TResult Function(_SaveChangesPressed value) saveChangesPressed,
     required TResult Function(_FullNameOnChanged value) fullNameOnChanged,
@@ -1895,6 +2113,7 @@ class _$_BirthdayOnChanged implements _BirthdayOnChanged {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Init value)? init,
     TResult? Function(_Initialized value)? initialized,
     TResult? Function(_SaveChangesPressed value)? saveChangesPressed,
     TResult? Function(_FullNameOnChanged value)? fullNameOnChanged,
@@ -1912,6 +2131,7 @@ class _$_BirthdayOnChanged implements _BirthdayOnChanged {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Init value)? init,
     TResult Function(_Initialized value)? initialized,
     TResult Function(_SaveChangesPressed value)? saveChangesPressed,
     TResult Function(_FullNameOnChanged value)? fullNameOnChanged,
@@ -1955,6 +2175,7 @@ mixin _$ProfileFormState {
   String get about => throw _privateConstructorUsedError;
   String get address => throw _privateConstructorUsedError;
   Timestamp? get birthday => throw _privateConstructorUsedError;
+  bool get isSubmitting => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ProfileFormStateCopyWith<ProfileFormState> get copyWith =>
@@ -1979,7 +2200,8 @@ abstract class $ProfileFormStateCopyWith<$Res> {
       String location,
       String about,
       String address,
-      Timestamp? birthday});
+      Timestamp? birthday,
+      bool isSubmitting});
 }
 
 /// @nodoc
@@ -2007,6 +2229,7 @@ class _$ProfileFormStateCopyWithImpl<$Res, $Val extends ProfileFormState>
     Object? about = null,
     Object? address = null,
     Object? birthday = freezed,
+    Object? isSubmitting = null,
   }) {
     return _then(_value.copyWith(
       state: null == state
@@ -2057,6 +2280,10 @@ class _$ProfileFormStateCopyWithImpl<$Res, $Val extends ProfileFormState>
           ? _value.birthday
           : birthday // ignore: cast_nullable_to_non_nullable
               as Timestamp?,
+      isSubmitting: null == isSubmitting
+          ? _value.isSubmitting
+          : isSubmitting // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -2081,7 +2308,8 @@ abstract class _$$_ProfileFormStateCopyWith<$Res>
       String location,
       String about,
       String address,
-      Timestamp? birthday});
+      Timestamp? birthday,
+      bool isSubmitting});
 }
 
 /// @nodoc
@@ -2107,6 +2335,7 @@ class __$$_ProfileFormStateCopyWithImpl<$Res>
     Object? about = null,
     Object? address = null,
     Object? birthday = freezed,
+    Object? isSubmitting = null,
   }) {
     return _then(_$_ProfileFormState(
       state: null == state
@@ -2157,6 +2386,10 @@ class __$$_ProfileFormStateCopyWithImpl<$Res>
           ? _value.birthday
           : birthday // ignore: cast_nullable_to_non_nullable
               as Timestamp?,
+      isSubmitting: null == isSubmitting
+          ? _value.isSubmitting
+          : isSubmitting // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -2176,7 +2409,8 @@ class _$_ProfileFormState implements _ProfileFormState {
       required this.location,
       required this.about,
       required this.address,
-      required this.birthday});
+      required this.birthday,
+      required this.isSubmitting});
 
   @override
   final RequestState state;
@@ -2202,10 +2436,12 @@ class _$_ProfileFormState implements _ProfileFormState {
   final String address;
   @override
   final Timestamp? birthday;
+  @override
+  final bool isSubmitting;
 
   @override
   String toString() {
-    return 'ProfileFormState(state: $state, message: $message, fullName: $fullName, email: $email, imageFile: $imageFile, phoneNumber: $phoneNumber, position: $position, company: $company, location: $location, about: $about, address: $address, birthday: $birthday)';
+    return 'ProfileFormState(state: $state, message: $message, fullName: $fullName, email: $email, imageFile: $imageFile, phoneNumber: $phoneNumber, position: $position, company: $company, location: $location, about: $about, address: $address, birthday: $birthday, isSubmitting: $isSubmitting)';
   }
 
   @override
@@ -2230,7 +2466,9 @@ class _$_ProfileFormState implements _ProfileFormState {
             (identical(other.about, about) || other.about == about) &&
             (identical(other.address, address) || other.address == address) &&
             (identical(other.birthday, birthday) ||
-                other.birthday == birthday));
+                other.birthday == birthday) &&
+            (identical(other.isSubmitting, isSubmitting) ||
+                other.isSubmitting == isSubmitting));
   }
 
   @override
@@ -2247,7 +2485,8 @@ class _$_ProfileFormState implements _ProfileFormState {
       location,
       about,
       address,
-      birthday);
+      birthday,
+      isSubmitting);
 
   @JsonKey(ignore: true)
   @override
@@ -2269,7 +2508,8 @@ abstract class _ProfileFormState implements ProfileFormState {
       required final String location,
       required final String about,
       required final String address,
-      required final Timestamp? birthday}) = _$_ProfileFormState;
+      required final Timestamp? birthday,
+      required final bool isSubmitting}) = _$_ProfileFormState;
 
   @override
   RequestState get state;
@@ -2295,6 +2535,8 @@ abstract class _ProfileFormState implements ProfileFormState {
   String get address;
   @override
   Timestamp? get birthday;
+  @override
+  bool get isSubmitting;
   @override
   @JsonKey(ignore: true)
   _$$_ProfileFormStateCopyWith<_$_ProfileFormState> get copyWith =>

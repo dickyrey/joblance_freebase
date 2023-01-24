@@ -35,7 +35,8 @@ class ProfileDataSourceImpl extends ProfileDataSource {
   Future<void> changeProfile(ProfileModel profileModel) async {
     final applicantCollection = firestore.collection('users');
     final user = firebaseAuth.currentUser;
-    await applicantCollection.doc(user?.uid).update(profileModel.toMap());
-  
+    await applicantCollection
+        .doc(user?.uid)
+        .update(profileModel.toMap(user?.uid));
   }
 }

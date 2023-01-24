@@ -12,9 +12,12 @@ part 'profile_form_event.dart';
 part 'profile_form_state.dart';
 
 class ProfileFormBloc extends Bloc<ProfileFormEvent, ProfileFormState> {
-  ProfileFormBloc(this._changeProfile) : super(ProfileFormState.initial()) {
+  ProfileFormBloc(this._changeProfile) : super(ProfileFormState.init()) {
     on<ProfileFormEvent>((event, emit) async {
       await event.map(
+        init: (_){
+          emit(ProfileFormState.init());
+        },
         initialized: (event) {
           emit(
             state.copyWith(
@@ -24,17 +27,18 @@ class ProfileFormBloc extends Bloc<ProfileFormEvent, ProfileFormState> {
               email: event.profile.email,
               imageFile: null,
               phoneNumber: event.profile.phoneNumber,
-              position: event.profile.phoneNumber,
+              position: event.profile.position,
               company: event.profile.company,
               location: event.profile.location,
               about: event.profile.about,
               address: event.profile.address,
               birthday: event.profile.birthday,
+              isSubmitting: false,
             ),
           );
         },
         saveChangesPressed: (event) async {
-          emit(state.copyWith(state: RequestState.loading));
+          emit(state.copyWith(state: RequestState.loading,isSubmitting: true));
           final result = await _changeProfile.execute(
             Profile(
               id: event.profile.id,
@@ -47,7 +51,7 @@ class ProfileFormBloc extends Bloc<ProfileFormEvent, ProfileFormState> {
               location: state.location,
               about: state.about,
               address: state.address,
-              birthday: state.birthday ?? event.profile.birthday,
+              birthday: state.birthday!,
               createdAt: event.profile.createdAt,
             ),
           );
@@ -56,9 +60,15 @@ class ProfileFormBloc extends Bloc<ProfileFormEvent, ProfileFormState> {
               state.copyWith(
                 state: RequestState.empty,
                 message: failure.message,
+                isSubmitting: false,
               ),
             ),
-            (_) => emit(state.copyWith(state: RequestState.loaded)),
+            (_) => emit(
+              state.copyWith(
+                state: RequestState.loaded,
+                isSubmitting: false,
+              ),
+            ),
           );
         },
         fullNameOnChanged: (event) {

@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
@@ -10,9 +11,11 @@ import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:joblance_firebase/src/common/colors.dart';
 import 'package:joblance_firebase/src/common/const.dart';
+import 'package:joblance_firebase/src/common/enums.dart';
 import 'package:joblance_firebase/src/common/screens.dart';
 import 'package:joblance_firebase/src/domain/entities/profile.dart';
 import 'package:joblance_firebase/src/presentation/bloc/profile/profile_form/profile_form_bloc.dart';
+import 'package:joblance_firebase/src/presentation/bloc/profile/profile_watcher/profile_watcher_bloc.dart';
 import 'package:joblance_firebase/src/presentation/cubit/theme_cubit.dart';
 import 'package:joblance_firebase/src/presentation/widgets/custom_dialog.dart';
 import 'package:joblance_firebase/src/presentation/widgets/custom_elevated_button.dart';
@@ -34,6 +37,7 @@ class _EditProfilePageState extends State<ProfileFormPage> {
   late TextEditingController _addressController;
   late TextEditingController _emailController;
   late TextEditingController _phoneController;
+  String _birthday = '';
 
   final _formKey = GlobalKey<FormState>();
 
@@ -46,6 +50,26 @@ class _EditProfilePageState extends State<ProfileFormPage> {
     _addressController = TextEditingController(text: state.address);
     _emailController = TextEditingController(text: state.email);
     _phoneController = TextEditingController(text: state.phoneNumber);
+    _birthday = DateFormat('MMM dd, yyyy').format(
+      widget.profile.birthday.toDate(),
+    );
+  }
+
+  Future<void> selectDate(BuildContext context) async {
+    final picked = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(1900),
+      lastDate: DateTime.now(),
+    );
+    if (picked != null) {
+      setState(() {
+        _birthday = DateFormat('MMM dd, yyyy').format(picked);
+        context.read<ProfileFormBloc>().add(
+              ProfileFormEvent.birthdayOnChanged(Timestamp.fromDate(picked)),
+            );
+      });
+    }
   }
 
   @override
@@ -55,7 +79,18 @@ class _EditProfilePageState extends State<ProfileFormPage> {
     final themeCubit = context.read<ThemeCubit>().state;
 
     return Scaffold(
-      body: BlocBuilder<ProfileFormBloc, ProfileFormState>(
+      body: BlocConsumer<ProfileFormBloc, ProfileFormState>(
+        listener: (context, state) {
+          if (state.state == RequestState.error) {
+            showToast(msg: 'Error while updating profile');
+          } else if (state.state == RequestState.loaded) {
+            context
+                .read<ProfileWatcherBloc>()
+                .add(const ProfileWatcherEvent.fetchProfile());
+            showToast(msg: lang.changes_saved);
+            Navigator.pop(context);
+          }
+        },
         builder: (context, state) {
           return SafeArea(
             child: Column(
@@ -89,9 +124,7 @@ class _EditProfilePageState extends State<ProfileFormPage> {
                               ),
                               _buildForm(
                                 context,
-                                birthdate: DateFormat('MMM dd, yyyy').format(
-                                  state.birthday?.toDate() ?? DateTime.now(),
-                                ),
+                                birthday: _birthday,
                                 formKey: _formKey,
                               ),
                             ],
@@ -101,20 +134,17 @@ class _EditProfilePageState extends State<ProfileFormPage> {
                         CustomElevatedButton(
                           onTap: () {
                             FocusScope.of(context).requestFocus(FocusNode());
-                            showToast(
-                              msg: lang.changes_saved,
-                            );
                             context.read<ProfileFormBloc>().add(
                                   ProfileFormEvent.saveChangesPressed(
                                     widget.profile,
                                   ),
                                 );
-                            Navigator.pop(context);
                           },
                           label: lang.save_changes,
                           margin: const EdgeInsets.symmetric(
                             horizontal: Const.margin,
                           ),
+                          isLoading: state.isSubmitting ? true : false,
                         ),
                         const SizedBox(height: Const.space25),
                       ],
@@ -218,7 +248,7 @@ class _EditProfilePageState extends State<ProfileFormPage> {
 
   Padding _buildForm(
     BuildContext context, {
-    required String birthdate,
+    required String birthday,
     required Key formKey,
   }) {
     final theme = Theme.of(context);
@@ -306,10 +336,7 @@ class _EditProfilePageState extends State<ProfileFormPage> {
             const SizedBox(height: Const.space8),
             InkWell(
               onTap: () {
-                // TODO(dickyrey): Image
-                // context
-                //   .read<ProfileFormBloc>()
-                //   .add(ProfileFormEvent.birthdayOnChanged(v));
+                selectDate(context);
               },
               borderRadius: BorderRadius.circular(Const.radius),
               child: Container(
@@ -327,7 +354,7 @@ class _EditProfilePageState extends State<ProfileFormPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      birthdate,
+                      birthday,
                       style: theme.textTheme.bodyText1,
                     ),
                     const Icon(IconlyLight.calendar)
@@ -405,7 +432,12 @@ class _EditProfilePageState extends State<ProfileFormPage> {
         child: Row(
           children: [
             InkWell(
-              onTap: () => Navigator.pop(context),
+              onTap: () {
+                Navigator.pop(context);
+                context
+                    .read<ProfileFormBloc>()
+                    .add(const ProfileFormEvent.init());
+              },
               child: Container(
                 width: 45,
                 height: 45,

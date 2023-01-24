@@ -15,9 +15,10 @@ class ProfileFormState with _$ProfileFormState {
     required String about,
     required String address,
     required Timestamp? birthday,
+    required bool isSubmitting,
   }) = _ProfileFormState;
 
-  factory ProfileFormState.initial() =>  const ProfileFormState(
+  factory ProfileFormState.init() =>  const ProfileFormState(
         state: RequestState.empty,
         message: '',
         fullName: '',
@@ -30,5 +31,6 @@ class ProfileFormState with _$ProfileFormState {
         about: '',
         address: '',
         birthday: null,
+        isSubmitting: false,
       );
 }
