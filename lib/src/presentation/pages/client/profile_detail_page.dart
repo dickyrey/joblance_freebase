@@ -176,9 +176,9 @@ class ProfileDetailPage extends StatelessWidget {
                         _buildListTile(
                           context,
                           icon: IconlyLight.location,
-                          label: profile.address.isEmpty
-                              ? lang.address_not_filled
-                              : profile.address,
+                          label: profile.address.isNotEmpty
+                              ? profile.address
+                              : '-',
                         ),
                         // TODO(dickyrey): Birthdate
                         _buildListTile(
@@ -200,7 +200,9 @@ class ProfileDetailPage extends StatelessWidget {
                         _buildListTile(
                           context,
                           icon: IconlyLight.calling,
-                          label: profile.phoneNumber,
+                          label: profile.phoneNumber.isNotEmpty
+                              ? profile.phoneNumber
+                              : '-',
                         ),
                       ],
                     ),

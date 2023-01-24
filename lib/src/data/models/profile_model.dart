@@ -91,7 +91,7 @@ class ProfileModel extends Equatable {
       'location': location == '' ? '' : location,
       'about': about == '' ? '' : about,
       'address': address == '' ? '' : address,
-      'birthday': birthday,
+      'birthday': Timestamp.fromDate(DateTime(1990)),
       'created_at': createdAt,
     };
   }

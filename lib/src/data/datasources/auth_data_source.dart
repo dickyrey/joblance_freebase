@@ -102,10 +102,14 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
             location: '',
             about: '',
             address: '',
-            birthday: Timestamp.now(),
+            birthday: Timestamp.fromDate(DateTime(1990)),
             createdAt: Timestamp.now(),
           );
           await applicantCollection.doc(user?.uid).set(profileModel.toMap());
+
+          /// Set [Token] into [SharedPreference]
+          ///
+          await prefs.setString(Const.accessToken, user?.uid ?? '');
         }
       });
     } else {
