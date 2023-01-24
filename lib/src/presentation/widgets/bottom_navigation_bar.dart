@@ -6,11 +6,11 @@ import 'package:joblance_firebase/src/presentation/bloc/job/popular_job_watcher/
 import 'package:joblance_firebase/src/presentation/bloc/job/recently_added_job_watcher/recently_added_job_watcher_bloc.dart';
 import 'package:joblance_firebase/src/presentation/bloc/job/saved_job_watcher/saved_job_watcher_bloc.dart';
 import 'package:joblance_firebase/src/presentation/bloc/profile/profile_watcher/profile_watcher_bloc.dart';
-import 'package:joblance_firebase/src/presentation/pages/client/chat_page.dart';
-import 'package:joblance_firebase/src/presentation/pages/client/home_page.dart';
-import 'package:joblance_firebase/src/presentation/pages/client/notifications_page.dart';
-import 'package:joblance_firebase/src/presentation/pages/client/profile_page.dart';
-import 'package:joblance_firebase/src/presentation/pages/client/saved_jobs_page.dart';
+import 'package:joblance_firebase/src/presentation/pages/chat_page.dart';
+import 'package:joblance_firebase/src/presentation/pages/home_page.dart';
+import 'package:joblance_firebase/src/presentation/pages/notifications_page.dart';
+import 'package:joblance_firebase/src/presentation/pages/profile_page.dart';
+import 'package:joblance_firebase/src/presentation/pages/saved_jobs_page.dart';
 
 class BottomNavigationBarWidget extends StatefulWidget {
   const BottomNavigationBarWidget({Key? key, this.index = 0}) : super(key: key);
