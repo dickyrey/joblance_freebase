@@ -29,6 +29,7 @@ mixin _$ProfileFormEvent {
     required TResult Function(String value) phoneNumberOnChanged,
     required TResult Function(String value) aboutOnChanged,
     required TResult Function(Timestamp value) birthdayOnChanged,
+    required TResult Function(ImageSource source) pickImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -44,6 +45,7 @@ mixin _$ProfileFormEvent {
     TResult? Function(String value)? phoneNumberOnChanged,
     TResult? Function(String value)? aboutOnChanged,
     TResult? Function(Timestamp value)? birthdayOnChanged,
+    TResult? Function(ImageSource source)? pickImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -59,6 +61,7 @@ mixin _$ProfileFormEvent {
     TResult Function(String value)? phoneNumberOnChanged,
     TResult Function(String value)? aboutOnChanged,
     TResult Function(Timestamp value)? birthdayOnChanged,
+    TResult Function(ImageSource source)? pickImage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -75,6 +78,7 @@ mixin _$ProfileFormEvent {
     required TResult Function(_PhoneNumberOnChanged value) phoneNumberOnChanged,
     required TResult Function(_AboutOnChanged value) aboutOnChanged,
     required TResult Function(_BirthdayOnChanged value) birthdayOnChanged,
+    required TResult Function(_PickImage value) pickImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -90,6 +94,7 @@ mixin _$ProfileFormEvent {
     TResult? Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult? Function(_AboutOnChanged value)? aboutOnChanged,
     TResult? Function(_BirthdayOnChanged value)? birthdayOnChanged,
+    TResult? Function(_PickImage value)? pickImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -105,6 +110,7 @@ mixin _$ProfileFormEvent {
     TResult Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult Function(_AboutOnChanged value)? aboutOnChanged,
     TResult Function(_BirthdayOnChanged value)? birthdayOnChanged,
+    TResult Function(_PickImage value)? pickImage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -175,6 +181,7 @@ class _$_Init implements _Init {
     required TResult Function(String value) phoneNumberOnChanged,
     required TResult Function(String value) aboutOnChanged,
     required TResult Function(Timestamp value) birthdayOnChanged,
+    required TResult Function(ImageSource source) pickImage,
   }) {
     return init();
   }
@@ -193,6 +200,7 @@ class _$_Init implements _Init {
     TResult? Function(String value)? phoneNumberOnChanged,
     TResult? Function(String value)? aboutOnChanged,
     TResult? Function(Timestamp value)? birthdayOnChanged,
+    TResult? Function(ImageSource source)? pickImage,
   }) {
     return init?.call();
   }
@@ -211,6 +219,7 @@ class _$_Init implements _Init {
     TResult Function(String value)? phoneNumberOnChanged,
     TResult Function(String value)? aboutOnChanged,
     TResult Function(Timestamp value)? birthdayOnChanged,
+    TResult Function(ImageSource source)? pickImage,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -233,6 +242,7 @@ class _$_Init implements _Init {
     required TResult Function(_PhoneNumberOnChanged value) phoneNumberOnChanged,
     required TResult Function(_AboutOnChanged value) aboutOnChanged,
     required TResult Function(_BirthdayOnChanged value) birthdayOnChanged,
+    required TResult Function(_PickImage value) pickImage,
   }) {
     return init(this);
   }
@@ -251,6 +261,7 @@ class _$_Init implements _Init {
     TResult? Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult? Function(_AboutOnChanged value)? aboutOnChanged,
     TResult? Function(_BirthdayOnChanged value)? birthdayOnChanged,
+    TResult? Function(_PickImage value)? pickImage,
   }) {
     return init?.call(this);
   }
@@ -269,6 +280,7 @@ class _$_Init implements _Init {
     TResult Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult Function(_AboutOnChanged value)? aboutOnChanged,
     TResult Function(_BirthdayOnChanged value)? birthdayOnChanged,
+    TResult Function(_PickImage value)? pickImage,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -357,6 +369,7 @@ class _$_Initialized implements _Initialized {
     required TResult Function(String value) phoneNumberOnChanged,
     required TResult Function(String value) aboutOnChanged,
     required TResult Function(Timestamp value) birthdayOnChanged,
+    required TResult Function(ImageSource source) pickImage,
   }) {
     return initialized(profile);
   }
@@ -375,6 +388,7 @@ class _$_Initialized implements _Initialized {
     TResult? Function(String value)? phoneNumberOnChanged,
     TResult? Function(String value)? aboutOnChanged,
     TResult? Function(Timestamp value)? birthdayOnChanged,
+    TResult? Function(ImageSource source)? pickImage,
   }) {
     return initialized?.call(profile);
   }
@@ -393,6 +407,7 @@ class _$_Initialized implements _Initialized {
     TResult Function(String value)? phoneNumberOnChanged,
     TResult Function(String value)? aboutOnChanged,
     TResult Function(Timestamp value)? birthdayOnChanged,
+    TResult Function(ImageSource source)? pickImage,
     required TResult orElse(),
   }) {
     if (initialized != null) {
@@ -415,6 +430,7 @@ class _$_Initialized implements _Initialized {
     required TResult Function(_PhoneNumberOnChanged value) phoneNumberOnChanged,
     required TResult Function(_AboutOnChanged value) aboutOnChanged,
     required TResult Function(_BirthdayOnChanged value) birthdayOnChanged,
+    required TResult Function(_PickImage value) pickImage,
   }) {
     return initialized(this);
   }
@@ -433,6 +449,7 @@ class _$_Initialized implements _Initialized {
     TResult? Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult? Function(_AboutOnChanged value)? aboutOnChanged,
     TResult? Function(_BirthdayOnChanged value)? birthdayOnChanged,
+    TResult? Function(_PickImage value)? pickImage,
   }) {
     return initialized?.call(this);
   }
@@ -451,6 +468,7 @@ class _$_Initialized implements _Initialized {
     TResult Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult Function(_AboutOnChanged value)? aboutOnChanged,
     TResult Function(_BirthdayOnChanged value)? birthdayOnChanged,
+    TResult Function(_PickImage value)? pickImage,
     required TResult orElse(),
   }) {
     if (initialized != null) {
@@ -545,6 +563,7 @@ class _$_SaveChangesPressed implements _SaveChangesPressed {
     required TResult Function(String value) phoneNumberOnChanged,
     required TResult Function(String value) aboutOnChanged,
     required TResult Function(Timestamp value) birthdayOnChanged,
+    required TResult Function(ImageSource source) pickImage,
   }) {
     return saveChangesPressed(profile);
   }
@@ -563,6 +582,7 @@ class _$_SaveChangesPressed implements _SaveChangesPressed {
     TResult? Function(String value)? phoneNumberOnChanged,
     TResult? Function(String value)? aboutOnChanged,
     TResult? Function(Timestamp value)? birthdayOnChanged,
+    TResult? Function(ImageSource source)? pickImage,
   }) {
     return saveChangesPressed?.call(profile);
   }
@@ -581,6 +601,7 @@ class _$_SaveChangesPressed implements _SaveChangesPressed {
     TResult Function(String value)? phoneNumberOnChanged,
     TResult Function(String value)? aboutOnChanged,
     TResult Function(Timestamp value)? birthdayOnChanged,
+    TResult Function(ImageSource source)? pickImage,
     required TResult orElse(),
   }) {
     if (saveChangesPressed != null) {
@@ -603,6 +624,7 @@ class _$_SaveChangesPressed implements _SaveChangesPressed {
     required TResult Function(_PhoneNumberOnChanged value) phoneNumberOnChanged,
     required TResult Function(_AboutOnChanged value) aboutOnChanged,
     required TResult Function(_BirthdayOnChanged value) birthdayOnChanged,
+    required TResult Function(_PickImage value) pickImage,
   }) {
     return saveChangesPressed(this);
   }
@@ -621,6 +643,7 @@ class _$_SaveChangesPressed implements _SaveChangesPressed {
     TResult? Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult? Function(_AboutOnChanged value)? aboutOnChanged,
     TResult? Function(_BirthdayOnChanged value)? birthdayOnChanged,
+    TResult? Function(_PickImage value)? pickImage,
   }) {
     return saveChangesPressed?.call(this);
   }
@@ -639,6 +662,7 @@ class _$_SaveChangesPressed implements _SaveChangesPressed {
     TResult Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult Function(_AboutOnChanged value)? aboutOnChanged,
     TResult Function(_BirthdayOnChanged value)? birthdayOnChanged,
+    TResult Function(_PickImage value)? pickImage,
     required TResult orElse(),
   }) {
     if (saveChangesPressed != null) {
@@ -734,6 +758,7 @@ class _$_FullNameOnChanged implements _FullNameOnChanged {
     required TResult Function(String value) phoneNumberOnChanged,
     required TResult Function(String value) aboutOnChanged,
     required TResult Function(Timestamp value) birthdayOnChanged,
+    required TResult Function(ImageSource source) pickImage,
   }) {
     return fullNameOnChanged(value);
   }
@@ -752,6 +777,7 @@ class _$_FullNameOnChanged implements _FullNameOnChanged {
     TResult? Function(String value)? phoneNumberOnChanged,
     TResult? Function(String value)? aboutOnChanged,
     TResult? Function(Timestamp value)? birthdayOnChanged,
+    TResult? Function(ImageSource source)? pickImage,
   }) {
     return fullNameOnChanged?.call(value);
   }
@@ -770,6 +796,7 @@ class _$_FullNameOnChanged implements _FullNameOnChanged {
     TResult Function(String value)? phoneNumberOnChanged,
     TResult Function(String value)? aboutOnChanged,
     TResult Function(Timestamp value)? birthdayOnChanged,
+    TResult Function(ImageSource source)? pickImage,
     required TResult orElse(),
   }) {
     if (fullNameOnChanged != null) {
@@ -792,6 +819,7 @@ class _$_FullNameOnChanged implements _FullNameOnChanged {
     required TResult Function(_PhoneNumberOnChanged value) phoneNumberOnChanged,
     required TResult Function(_AboutOnChanged value) aboutOnChanged,
     required TResult Function(_BirthdayOnChanged value) birthdayOnChanged,
+    required TResult Function(_PickImage value) pickImage,
   }) {
     return fullNameOnChanged(this);
   }
@@ -810,6 +838,7 @@ class _$_FullNameOnChanged implements _FullNameOnChanged {
     TResult? Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult? Function(_AboutOnChanged value)? aboutOnChanged,
     TResult? Function(_BirthdayOnChanged value)? birthdayOnChanged,
+    TResult? Function(_PickImage value)? pickImage,
   }) {
     return fullNameOnChanged?.call(this);
   }
@@ -828,6 +857,7 @@ class _$_FullNameOnChanged implements _FullNameOnChanged {
     TResult Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult Function(_AboutOnChanged value)? aboutOnChanged,
     TResult Function(_BirthdayOnChanged value)? birthdayOnChanged,
+    TResult Function(_PickImage value)? pickImage,
     required TResult orElse(),
   }) {
     if (fullNameOnChanged != null) {
@@ -921,6 +951,7 @@ class _$_AddressOnChanged implements _AddressOnChanged {
     required TResult Function(String value) phoneNumberOnChanged,
     required TResult Function(String value) aboutOnChanged,
     required TResult Function(Timestamp value) birthdayOnChanged,
+    required TResult Function(ImageSource source) pickImage,
   }) {
     return addressOnChanged(value);
   }
@@ -939,6 +970,7 @@ class _$_AddressOnChanged implements _AddressOnChanged {
     TResult? Function(String value)? phoneNumberOnChanged,
     TResult? Function(String value)? aboutOnChanged,
     TResult? Function(Timestamp value)? birthdayOnChanged,
+    TResult? Function(ImageSource source)? pickImage,
   }) {
     return addressOnChanged?.call(value);
   }
@@ -957,6 +989,7 @@ class _$_AddressOnChanged implements _AddressOnChanged {
     TResult Function(String value)? phoneNumberOnChanged,
     TResult Function(String value)? aboutOnChanged,
     TResult Function(Timestamp value)? birthdayOnChanged,
+    TResult Function(ImageSource source)? pickImage,
     required TResult orElse(),
   }) {
     if (addressOnChanged != null) {
@@ -979,6 +1012,7 @@ class _$_AddressOnChanged implements _AddressOnChanged {
     required TResult Function(_PhoneNumberOnChanged value) phoneNumberOnChanged,
     required TResult Function(_AboutOnChanged value) aboutOnChanged,
     required TResult Function(_BirthdayOnChanged value) birthdayOnChanged,
+    required TResult Function(_PickImage value) pickImage,
   }) {
     return addressOnChanged(this);
   }
@@ -997,6 +1031,7 @@ class _$_AddressOnChanged implements _AddressOnChanged {
     TResult? Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult? Function(_AboutOnChanged value)? aboutOnChanged,
     TResult? Function(_BirthdayOnChanged value)? birthdayOnChanged,
+    TResult? Function(_PickImage value)? pickImage,
   }) {
     return addressOnChanged?.call(this);
   }
@@ -1015,6 +1050,7 @@ class _$_AddressOnChanged implements _AddressOnChanged {
     TResult Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult Function(_AboutOnChanged value)? aboutOnChanged,
     TResult Function(_BirthdayOnChanged value)? birthdayOnChanged,
+    TResult Function(_PickImage value)? pickImage,
     required TResult orElse(),
   }) {
     if (addressOnChanged != null) {
@@ -1109,6 +1145,7 @@ class _$_PositionOnChanged implements _PositionOnChanged {
     required TResult Function(String value) phoneNumberOnChanged,
     required TResult Function(String value) aboutOnChanged,
     required TResult Function(Timestamp value) birthdayOnChanged,
+    required TResult Function(ImageSource source) pickImage,
   }) {
     return positionOnChanged(value);
   }
@@ -1127,6 +1164,7 @@ class _$_PositionOnChanged implements _PositionOnChanged {
     TResult? Function(String value)? phoneNumberOnChanged,
     TResult? Function(String value)? aboutOnChanged,
     TResult? Function(Timestamp value)? birthdayOnChanged,
+    TResult? Function(ImageSource source)? pickImage,
   }) {
     return positionOnChanged?.call(value);
   }
@@ -1145,6 +1183,7 @@ class _$_PositionOnChanged implements _PositionOnChanged {
     TResult Function(String value)? phoneNumberOnChanged,
     TResult Function(String value)? aboutOnChanged,
     TResult Function(Timestamp value)? birthdayOnChanged,
+    TResult Function(ImageSource source)? pickImage,
     required TResult orElse(),
   }) {
     if (positionOnChanged != null) {
@@ -1167,6 +1206,7 @@ class _$_PositionOnChanged implements _PositionOnChanged {
     required TResult Function(_PhoneNumberOnChanged value) phoneNumberOnChanged,
     required TResult Function(_AboutOnChanged value) aboutOnChanged,
     required TResult Function(_BirthdayOnChanged value) birthdayOnChanged,
+    required TResult Function(_PickImage value) pickImage,
   }) {
     return positionOnChanged(this);
   }
@@ -1185,6 +1225,7 @@ class _$_PositionOnChanged implements _PositionOnChanged {
     TResult? Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult? Function(_AboutOnChanged value)? aboutOnChanged,
     TResult? Function(_BirthdayOnChanged value)? birthdayOnChanged,
+    TResult? Function(_PickImage value)? pickImage,
   }) {
     return positionOnChanged?.call(this);
   }
@@ -1203,6 +1244,7 @@ class _$_PositionOnChanged implements _PositionOnChanged {
     TResult Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult Function(_AboutOnChanged value)? aboutOnChanged,
     TResult Function(_BirthdayOnChanged value)? birthdayOnChanged,
+    TResult Function(_PickImage value)? pickImage,
     required TResult orElse(),
   }) {
     if (positionOnChanged != null) {
@@ -1296,6 +1338,7 @@ class _$_CompanyOnChanged implements _CompanyOnChanged {
     required TResult Function(String value) phoneNumberOnChanged,
     required TResult Function(String value) aboutOnChanged,
     required TResult Function(Timestamp value) birthdayOnChanged,
+    required TResult Function(ImageSource source) pickImage,
   }) {
     return companyOnChanged(value);
   }
@@ -1314,6 +1357,7 @@ class _$_CompanyOnChanged implements _CompanyOnChanged {
     TResult? Function(String value)? phoneNumberOnChanged,
     TResult? Function(String value)? aboutOnChanged,
     TResult? Function(Timestamp value)? birthdayOnChanged,
+    TResult? Function(ImageSource source)? pickImage,
   }) {
     return companyOnChanged?.call(value);
   }
@@ -1332,6 +1376,7 @@ class _$_CompanyOnChanged implements _CompanyOnChanged {
     TResult Function(String value)? phoneNumberOnChanged,
     TResult Function(String value)? aboutOnChanged,
     TResult Function(Timestamp value)? birthdayOnChanged,
+    TResult Function(ImageSource source)? pickImage,
     required TResult orElse(),
   }) {
     if (companyOnChanged != null) {
@@ -1354,6 +1399,7 @@ class _$_CompanyOnChanged implements _CompanyOnChanged {
     required TResult Function(_PhoneNumberOnChanged value) phoneNumberOnChanged,
     required TResult Function(_AboutOnChanged value) aboutOnChanged,
     required TResult Function(_BirthdayOnChanged value) birthdayOnChanged,
+    required TResult Function(_PickImage value) pickImage,
   }) {
     return companyOnChanged(this);
   }
@@ -1372,6 +1418,7 @@ class _$_CompanyOnChanged implements _CompanyOnChanged {
     TResult? Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult? Function(_AboutOnChanged value)? aboutOnChanged,
     TResult? Function(_BirthdayOnChanged value)? birthdayOnChanged,
+    TResult? Function(_PickImage value)? pickImage,
   }) {
     return companyOnChanged?.call(this);
   }
@@ -1390,6 +1437,7 @@ class _$_CompanyOnChanged implements _CompanyOnChanged {
     TResult Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult Function(_AboutOnChanged value)? aboutOnChanged,
     TResult Function(_BirthdayOnChanged value)? birthdayOnChanged,
+    TResult Function(_PickImage value)? pickImage,
     required TResult orElse(),
   }) {
     if (companyOnChanged != null) {
@@ -1484,6 +1532,7 @@ class _$_LocationOnChanged implements _LocationOnChanged {
     required TResult Function(String value) phoneNumberOnChanged,
     required TResult Function(String value) aboutOnChanged,
     required TResult Function(Timestamp value) birthdayOnChanged,
+    required TResult Function(ImageSource source) pickImage,
   }) {
     return locationOnChanged(value);
   }
@@ -1502,6 +1551,7 @@ class _$_LocationOnChanged implements _LocationOnChanged {
     TResult? Function(String value)? phoneNumberOnChanged,
     TResult? Function(String value)? aboutOnChanged,
     TResult? Function(Timestamp value)? birthdayOnChanged,
+    TResult? Function(ImageSource source)? pickImage,
   }) {
     return locationOnChanged?.call(value);
   }
@@ -1520,6 +1570,7 @@ class _$_LocationOnChanged implements _LocationOnChanged {
     TResult Function(String value)? phoneNumberOnChanged,
     TResult Function(String value)? aboutOnChanged,
     TResult Function(Timestamp value)? birthdayOnChanged,
+    TResult Function(ImageSource source)? pickImage,
     required TResult orElse(),
   }) {
     if (locationOnChanged != null) {
@@ -1542,6 +1593,7 @@ class _$_LocationOnChanged implements _LocationOnChanged {
     required TResult Function(_PhoneNumberOnChanged value) phoneNumberOnChanged,
     required TResult Function(_AboutOnChanged value) aboutOnChanged,
     required TResult Function(_BirthdayOnChanged value) birthdayOnChanged,
+    required TResult Function(_PickImage value) pickImage,
   }) {
     return locationOnChanged(this);
   }
@@ -1560,6 +1612,7 @@ class _$_LocationOnChanged implements _LocationOnChanged {
     TResult? Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult? Function(_AboutOnChanged value)? aboutOnChanged,
     TResult? Function(_BirthdayOnChanged value)? birthdayOnChanged,
+    TResult? Function(_PickImage value)? pickImage,
   }) {
     return locationOnChanged?.call(this);
   }
@@ -1578,6 +1631,7 @@ class _$_LocationOnChanged implements _LocationOnChanged {
     TResult Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult Function(_AboutOnChanged value)? aboutOnChanged,
     TResult Function(_BirthdayOnChanged value)? birthdayOnChanged,
+    TResult Function(_PickImage value)? pickImage,
     required TResult orElse(),
   }) {
     if (locationOnChanged != null) {
@@ -1672,6 +1726,7 @@ class _$_PhoneNumberOnChanged implements _PhoneNumberOnChanged {
     required TResult Function(String value) phoneNumberOnChanged,
     required TResult Function(String value) aboutOnChanged,
     required TResult Function(Timestamp value) birthdayOnChanged,
+    required TResult Function(ImageSource source) pickImage,
   }) {
     return phoneNumberOnChanged(value);
   }
@@ -1690,6 +1745,7 @@ class _$_PhoneNumberOnChanged implements _PhoneNumberOnChanged {
     TResult? Function(String value)? phoneNumberOnChanged,
     TResult? Function(String value)? aboutOnChanged,
     TResult? Function(Timestamp value)? birthdayOnChanged,
+    TResult? Function(ImageSource source)? pickImage,
   }) {
     return phoneNumberOnChanged?.call(value);
   }
@@ -1708,6 +1764,7 @@ class _$_PhoneNumberOnChanged implements _PhoneNumberOnChanged {
     TResult Function(String value)? phoneNumberOnChanged,
     TResult Function(String value)? aboutOnChanged,
     TResult Function(Timestamp value)? birthdayOnChanged,
+    TResult Function(ImageSource source)? pickImage,
     required TResult orElse(),
   }) {
     if (phoneNumberOnChanged != null) {
@@ -1730,6 +1787,7 @@ class _$_PhoneNumberOnChanged implements _PhoneNumberOnChanged {
     required TResult Function(_PhoneNumberOnChanged value) phoneNumberOnChanged,
     required TResult Function(_AboutOnChanged value) aboutOnChanged,
     required TResult Function(_BirthdayOnChanged value) birthdayOnChanged,
+    required TResult Function(_PickImage value) pickImage,
   }) {
     return phoneNumberOnChanged(this);
   }
@@ -1748,6 +1806,7 @@ class _$_PhoneNumberOnChanged implements _PhoneNumberOnChanged {
     TResult? Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult? Function(_AboutOnChanged value)? aboutOnChanged,
     TResult? Function(_BirthdayOnChanged value)? birthdayOnChanged,
+    TResult? Function(_PickImage value)? pickImage,
   }) {
     return phoneNumberOnChanged?.call(this);
   }
@@ -1766,6 +1825,7 @@ class _$_PhoneNumberOnChanged implements _PhoneNumberOnChanged {
     TResult Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult Function(_AboutOnChanged value)? aboutOnChanged,
     TResult Function(_BirthdayOnChanged value)? birthdayOnChanged,
+    TResult Function(_PickImage value)? pickImage,
     required TResult orElse(),
   }) {
     if (phoneNumberOnChanged != null) {
@@ -1860,6 +1920,7 @@ class _$_AboutOnChanged implements _AboutOnChanged {
     required TResult Function(String value) phoneNumberOnChanged,
     required TResult Function(String value) aboutOnChanged,
     required TResult Function(Timestamp value) birthdayOnChanged,
+    required TResult Function(ImageSource source) pickImage,
   }) {
     return aboutOnChanged(value);
   }
@@ -1878,6 +1939,7 @@ class _$_AboutOnChanged implements _AboutOnChanged {
     TResult? Function(String value)? phoneNumberOnChanged,
     TResult? Function(String value)? aboutOnChanged,
     TResult? Function(Timestamp value)? birthdayOnChanged,
+    TResult? Function(ImageSource source)? pickImage,
   }) {
     return aboutOnChanged?.call(value);
   }
@@ -1896,6 +1958,7 @@ class _$_AboutOnChanged implements _AboutOnChanged {
     TResult Function(String value)? phoneNumberOnChanged,
     TResult Function(String value)? aboutOnChanged,
     TResult Function(Timestamp value)? birthdayOnChanged,
+    TResult Function(ImageSource source)? pickImage,
     required TResult orElse(),
   }) {
     if (aboutOnChanged != null) {
@@ -1918,6 +1981,7 @@ class _$_AboutOnChanged implements _AboutOnChanged {
     required TResult Function(_PhoneNumberOnChanged value) phoneNumberOnChanged,
     required TResult Function(_AboutOnChanged value) aboutOnChanged,
     required TResult Function(_BirthdayOnChanged value) birthdayOnChanged,
+    required TResult Function(_PickImage value) pickImage,
   }) {
     return aboutOnChanged(this);
   }
@@ -1936,6 +2000,7 @@ class _$_AboutOnChanged implements _AboutOnChanged {
     TResult? Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult? Function(_AboutOnChanged value)? aboutOnChanged,
     TResult? Function(_BirthdayOnChanged value)? birthdayOnChanged,
+    TResult? Function(_PickImage value)? pickImage,
   }) {
     return aboutOnChanged?.call(this);
   }
@@ -1954,6 +2019,7 @@ class _$_AboutOnChanged implements _AboutOnChanged {
     TResult Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult Function(_AboutOnChanged value)? aboutOnChanged,
     TResult Function(_BirthdayOnChanged value)? birthdayOnChanged,
+    TResult Function(_PickImage value)? pickImage,
     required TResult orElse(),
   }) {
     if (aboutOnChanged != null) {
@@ -2048,6 +2114,7 @@ class _$_BirthdayOnChanged implements _BirthdayOnChanged {
     required TResult Function(String value) phoneNumberOnChanged,
     required TResult Function(String value) aboutOnChanged,
     required TResult Function(Timestamp value) birthdayOnChanged,
+    required TResult Function(ImageSource source) pickImage,
   }) {
     return birthdayOnChanged(value);
   }
@@ -2066,6 +2133,7 @@ class _$_BirthdayOnChanged implements _BirthdayOnChanged {
     TResult? Function(String value)? phoneNumberOnChanged,
     TResult? Function(String value)? aboutOnChanged,
     TResult? Function(Timestamp value)? birthdayOnChanged,
+    TResult? Function(ImageSource source)? pickImage,
   }) {
     return birthdayOnChanged?.call(value);
   }
@@ -2084,6 +2152,7 @@ class _$_BirthdayOnChanged implements _BirthdayOnChanged {
     TResult Function(String value)? phoneNumberOnChanged,
     TResult Function(String value)? aboutOnChanged,
     TResult Function(Timestamp value)? birthdayOnChanged,
+    TResult Function(ImageSource source)? pickImage,
     required TResult orElse(),
   }) {
     if (birthdayOnChanged != null) {
@@ -2106,6 +2175,7 @@ class _$_BirthdayOnChanged implements _BirthdayOnChanged {
     required TResult Function(_PhoneNumberOnChanged value) phoneNumberOnChanged,
     required TResult Function(_AboutOnChanged value) aboutOnChanged,
     required TResult Function(_BirthdayOnChanged value) birthdayOnChanged,
+    required TResult Function(_PickImage value) pickImage,
   }) {
     return birthdayOnChanged(this);
   }
@@ -2124,6 +2194,7 @@ class _$_BirthdayOnChanged implements _BirthdayOnChanged {
     TResult? Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult? Function(_AboutOnChanged value)? aboutOnChanged,
     TResult? Function(_BirthdayOnChanged value)? birthdayOnChanged,
+    TResult? Function(_PickImage value)? pickImage,
   }) {
     return birthdayOnChanged?.call(this);
   }
@@ -2142,6 +2213,7 @@ class _$_BirthdayOnChanged implements _BirthdayOnChanged {
     TResult Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult Function(_AboutOnChanged value)? aboutOnChanged,
     TResult Function(_BirthdayOnChanged value)? birthdayOnChanged,
+    TResult Function(_PickImage value)? pickImage,
     required TResult orElse(),
   }) {
     if (birthdayOnChanged != null) {
@@ -2158,6 +2230,199 @@ abstract class _BirthdayOnChanged implements ProfileFormEvent {
   Timestamp get value;
   @JsonKey(ignore: true)
   _$$_BirthdayOnChangedCopyWith<_$_BirthdayOnChanged> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_PickImageCopyWith<$Res> {
+  factory _$$_PickImageCopyWith(
+          _$_PickImage value, $Res Function(_$_PickImage) then) =
+      __$$_PickImageCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ImageSource source});
+}
+
+/// @nodoc
+class __$$_PickImageCopyWithImpl<$Res>
+    extends _$ProfileFormEventCopyWithImpl<$Res, _$_PickImage>
+    implements _$$_PickImageCopyWith<$Res> {
+  __$$_PickImageCopyWithImpl(
+      _$_PickImage _value, $Res Function(_$_PickImage) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? source = null,
+  }) {
+    return _then(_$_PickImage(
+      null == source
+          ? _value.source
+          : source // ignore: cast_nullable_to_non_nullable
+              as ImageSource,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_PickImage implements _PickImage {
+  const _$_PickImage(this.source);
+
+  @override
+  final ImageSource source;
+
+  @override
+  String toString() {
+    return 'ProfileFormEvent.pickImage(source: $source)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_PickImage &&
+            (identical(other.source, source) || other.source == source));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, source);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_PickImageCopyWith<_$_PickImage> get copyWith =>
+      __$$_PickImageCopyWithImpl<_$_PickImage>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function(Profile profile) initialized,
+    required TResult Function(Profile profile) saveChangesPressed,
+    required TResult Function(String value) fullNameOnChanged,
+    required TResult Function(String value) addressOnChanged,
+    required TResult Function(String value) positionOnChanged,
+    required TResult Function(String value) companyOnChanged,
+    required TResult Function(String value) locationOnChanged,
+    required TResult Function(String value) phoneNumberOnChanged,
+    required TResult Function(String value) aboutOnChanged,
+    required TResult Function(Timestamp value) birthdayOnChanged,
+    required TResult Function(ImageSource source) pickImage,
+  }) {
+    return pickImage(source);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function(Profile profile)? initialized,
+    TResult? Function(Profile profile)? saveChangesPressed,
+    TResult? Function(String value)? fullNameOnChanged,
+    TResult? Function(String value)? addressOnChanged,
+    TResult? Function(String value)? positionOnChanged,
+    TResult? Function(String value)? companyOnChanged,
+    TResult? Function(String value)? locationOnChanged,
+    TResult? Function(String value)? phoneNumberOnChanged,
+    TResult? Function(String value)? aboutOnChanged,
+    TResult? Function(Timestamp value)? birthdayOnChanged,
+    TResult? Function(ImageSource source)? pickImage,
+  }) {
+    return pickImage?.call(source);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function(Profile profile)? initialized,
+    TResult Function(Profile profile)? saveChangesPressed,
+    TResult Function(String value)? fullNameOnChanged,
+    TResult Function(String value)? addressOnChanged,
+    TResult Function(String value)? positionOnChanged,
+    TResult Function(String value)? companyOnChanged,
+    TResult Function(String value)? locationOnChanged,
+    TResult Function(String value)? phoneNumberOnChanged,
+    TResult Function(String value)? aboutOnChanged,
+    TResult Function(Timestamp value)? birthdayOnChanged,
+    TResult Function(ImageSource source)? pickImage,
+    required TResult orElse(),
+  }) {
+    if (pickImage != null) {
+      return pickImage(source);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Init value) init,
+    required TResult Function(_Initialized value) initialized,
+    required TResult Function(_SaveChangesPressed value) saveChangesPressed,
+    required TResult Function(_FullNameOnChanged value) fullNameOnChanged,
+    required TResult Function(_AddressOnChanged value) addressOnChanged,
+    required TResult Function(_PositionOnChanged value) positionOnChanged,
+    required TResult Function(_CompanyOnChanged value) companyOnChanged,
+    required TResult Function(_LocationOnChanged value) locationOnChanged,
+    required TResult Function(_PhoneNumberOnChanged value) phoneNumberOnChanged,
+    required TResult Function(_AboutOnChanged value) aboutOnChanged,
+    required TResult Function(_BirthdayOnChanged value) birthdayOnChanged,
+    required TResult Function(_PickImage value) pickImage,
+  }) {
+    return pickImage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Init value)? init,
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_SaveChangesPressed value)? saveChangesPressed,
+    TResult? Function(_FullNameOnChanged value)? fullNameOnChanged,
+    TResult? Function(_AddressOnChanged value)? addressOnChanged,
+    TResult? Function(_PositionOnChanged value)? positionOnChanged,
+    TResult? Function(_CompanyOnChanged value)? companyOnChanged,
+    TResult? Function(_LocationOnChanged value)? locationOnChanged,
+    TResult? Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
+    TResult? Function(_AboutOnChanged value)? aboutOnChanged,
+    TResult? Function(_BirthdayOnChanged value)? birthdayOnChanged,
+    TResult? Function(_PickImage value)? pickImage,
+  }) {
+    return pickImage?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Init value)? init,
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_SaveChangesPressed value)? saveChangesPressed,
+    TResult Function(_FullNameOnChanged value)? fullNameOnChanged,
+    TResult Function(_AddressOnChanged value)? addressOnChanged,
+    TResult Function(_PositionOnChanged value)? positionOnChanged,
+    TResult Function(_CompanyOnChanged value)? companyOnChanged,
+    TResult Function(_LocationOnChanged value)? locationOnChanged,
+    TResult Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
+    TResult Function(_AboutOnChanged value)? aboutOnChanged,
+    TResult Function(_BirthdayOnChanged value)? birthdayOnChanged,
+    TResult Function(_PickImage value)? pickImage,
+    required TResult orElse(),
+  }) {
+    if (pickImage != null) {
+      return pickImage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PickImage implements ProfileFormEvent {
+  const factory _PickImage(final ImageSource source) = _$_PickImage;
+
+  ImageSource get source;
+  @JsonKey(ignore: true)
+  _$$_PickImageCopyWith<_$_PickImage> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

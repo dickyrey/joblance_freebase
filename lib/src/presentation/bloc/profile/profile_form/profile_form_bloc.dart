@@ -3,9 +3,11 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:joblance_firebase/src/common/enums.dart';
 import 'package:joblance_firebase/src/domain/entities/profile.dart';
 import 'package:joblance_firebase/src/domain/usecases/profile/change_profile.dart';
+import 'package:joblance_firebase/src/utilities/image_cropper_utils.dart';
 
 part 'profile_form_bloc.freezed.dart';
 part 'profile_form_event.dart';
@@ -15,7 +17,7 @@ class ProfileFormBloc extends Bloc<ProfileFormEvent, ProfileFormState> {
   ProfileFormBloc(this._changeProfile) : super(ProfileFormState.init()) {
     on<ProfileFormEvent>((event, emit) async {
       await event.map(
-        init: (_){
+        init: (_) {
           emit(ProfileFormState.init());
         },
         initialized: (event) {
@@ -38,9 +40,9 @@ class ProfileFormBloc extends Bloc<ProfileFormEvent, ProfileFormState> {
           );
         },
         saveChangesPressed: (event) async {
-          emit(state.copyWith(state: RequestState.loading,isSubmitting: true));
+          emit(state.copyWith(state: RequestState.loading, isSubmitting: true));
           final result = await _changeProfile.execute(
-            Profile(
+            profile: Profile(
               id: event.profile.id,
               email: event.profile.email,
               fullName: state.fullName,
@@ -54,6 +56,7 @@ class ProfileFormBloc extends Bloc<ProfileFormEvent, ProfileFormState> {
               birthday: state.birthday!,
               createdAt: event.profile.createdAt,
             ),
+            imageFile: state.imageFile,
           );
           result.fold(
             (failure) => emit(
@@ -94,6 +97,19 @@ class ProfileFormBloc extends Bloc<ProfileFormEvent, ProfileFormState> {
         },
         birthdayOnChanged: (event) {
           emit(state.copyWith(birthday: event.value));
+        },
+        pickImage: (event) async {
+          final pickedImage = await ImagePicker().pickImage(
+            source: event.source,
+          );
+          if (pickedImage != null) {
+            final croppedImage = await ImageCropperUtils.cropImage(
+              pickedImage.path,
+            );
+            if (croppedImage != null) {
+              emit(state.copyWith(imageFile: File(croppedImage.path)));
+            }
+          }
         },
       );
     });

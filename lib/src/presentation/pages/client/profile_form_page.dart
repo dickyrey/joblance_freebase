@@ -205,21 +205,19 @@ class _EditProfilePageState extends State<ProfileFormPage> {
                           context,
                           onCameraTap: () {
                             Navigator.pop(context);
-                            // TODO(dickyrey): Image
-                            // context.read<ProfileFormBloc>().add(
-                            //       const ProfileFormEvent.pickImage(
-                            //         ImageSource.camera,
-                            //       ),
-                            // );
+                            context.read<ProfileFormBloc>().add(
+                                  const ProfileFormEvent.pickImage(
+                                    ImageSource.camera,
+                                  ),
+                            );
                           },
                           onGalleryTap: () {
-                            // TODO(dickyrey): Image
-                            // Navigator.pop(context);
-                            // context.read<ProfileFormBloc>().add(
-                            //       const ProfileFormEvent.pickImage(
-                            //         ImageSource.gallery,
-                            //       ),
-                            //     );
+                            Navigator.pop(context);
+                            context.read<ProfileFormBloc>().add(
+                                  const ProfileFormEvent.pickImage(
+                                    ImageSource.gallery,
+                                  ),
+                                );
                           },
                         );
                       },

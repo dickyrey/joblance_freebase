@@ -148,6 +148,7 @@ void init() {
   final profileDataSource = ProfileDataSourceImpl(
     firebaseAuth: locator(),
     firestore: locator(),
+    storage: locator(),
   );
   locator.registerLazySingleton<ProfileDataSource>(
     () => profileDataSource,

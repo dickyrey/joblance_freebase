@@ -63,7 +63,7 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
     );
     if (result.user != null) {
       final user = result.user!;
-      await ref.doc(user.uid).set(profile.toMap(user.uid));
+      await ref.doc(user.uid).set(profile.toMap(uid: user.uid));
 
       /// Set [Token] into [SharedPreference]
       ///
@@ -105,7 +105,7 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
             birthday: Timestamp.fromDate(DateTime(1990)),
             createdAt: Timestamp.now(),
           );
-          await applicantCollection.doc(user?.uid).set(profileModel.toMap(user?.uid));
+          await applicantCollection.doc(user?.uid).set(profileModel.toMap(uid: user?.uid));
 
           /// Set [Token] into [SharedPreference]
           ///

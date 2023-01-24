@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dartz/dartz.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:joblance_firebase/src/common/exception.dart';
@@ -16,10 +18,16 @@ class ProfileRepositoryImpl extends ProfileRepository {
   final ProfileDataSource dataSource;
   final NetworkInfo networkInfo;
   @override
-  Future<Either<Failure, void>> changeProfile(Profile profile) async {
+  Future<Either<Failure, void>> changeProfile({
+    required Profile profile,
+    required File? imageFile,
+  }) async {
     if (await networkInfo.isConnected) {
       try {
-        final result = await dataSource.changeProfile(profile.toModel());
+        final result = await dataSource.changeProfile(
+          profileModel: profile.toModel(),
+          imageFile: imageFile,
+        );
         return Right(result);
       } on FirebaseException catch (e) {
         if (e.message!.contains('permission-denied')) {
