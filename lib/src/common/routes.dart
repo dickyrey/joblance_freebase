@@ -23,6 +23,7 @@ const String SETTING = '/setting';
 const String SIGN_IN = '/sign_in';
 const String SIGN_UP = '/sign_up';
 const String LANGUAGE = '/language';
+const String REGISTER_COMPANY = '/register_company';
 
 // Company Side
 const String ACTIVE_JOBS_RECRUITER = '/active_jobs_recruiter';
@@ -30,5 +31,4 @@ const String CHAT_RECRUITER = '/chat_recruiter';
 const String HOME_RECRUITER = '/home_recruiter';
 const String JOB_FORM_RECRUITER = '/job_form_recruiter';
 const String MESSAGES_RECRUITER = '/messages_recruiter';
-const String REGISTER_RECRUITER = '/register_recruiter';
 const String REGISTER_RECRUITER_SUCCESS = '/register_recruiter_success';

@@ -6,6 +6,7 @@ import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:joblance_firebase/src/common/const.dart';
 import 'package:joblance_firebase/src/common/routes.dart';
 import 'package:joblance_firebase/src/presentation/bloc/auth/auth_watcher/auth_watcher_bloc.dart';
+import 'package:joblance_firebase/src/presentation/bloc/company/company_watcher/company_watcher_bloc.dart';
 import 'package:joblance_firebase/src/presentation/bloc/profile/profile_watcher/profile_watcher_bloc.dart';
 import 'package:joblance_firebase/src/presentation/widgets/custom_app_bar.dart';
 import 'package:joblance_firebase/src/presentation/widgets/custom_dialog.dart';
@@ -19,6 +20,7 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     final lang = AppLocalizations.of(context)!;
 
     return BlocListener<AuthWatcherBloc, AuthWatcherState>(
@@ -42,14 +44,115 @@ class ProfilePage extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: Const.margin),
           child: Column(
             children: [
-              _buildProfileTile(context),
+              BlocBuilder<ProfileWatcherBloc, ProfileWatcherState>(
+                builder: (context, state) {
+                  return state.maybeMap(
+                    orElse: () {
+                      return Shimmer.fromColors(
+                        baseColor: Colors.grey.shade300,
+                        highlightColor: Colors.grey.shade100,
+                        child: ListTile(
+                          contentPadding: EdgeInsets.zero,
+                          leading: const CircleAvatar(
+                            radius: 30,
+                          ),
+                          title: buildShimmerContainer(
+                            width: 100,
+                            height: 20,
+                          ),
+                          subtitle: buildShimmerContainer(
+                            width: 80,
+                            height: 12,
+                          ),
+                        ),
+                      );
+                    },
+                    loadSuccess: (state) {
+                      return ListTile(
+                        contentPadding: EdgeInsets.zero,
+                        leading: CircleAvatar(
+                          radius: 30,
+                          backgroundImage:
+                              CachedNetworkImageProvider(state.profile.image),
+                          backgroundColor: theme.disabledColor,
+                        ),
+                        title: Text(
+                          state.profile.fullName,
+                          style: theme.textTheme.headline2,
+                        ),
+                        subtitle: InkWell(
+                          onTap: () {
+                            Navigator.pushNamed(context, PROFILE_DETAIL);
+                          },
+                          child: Text(
+                            lang.view_profile,
+                            style: theme.textTheme.subtitle1?.copyWith(
+                              color: theme.primaryColor,
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                  );
+                },
+              ),
               const SizedBox(height: Const.space25 * 2),
-              _buildListTile(
-                context,
-                icon: IconlyLight.work,
-                title: lang.become_a_recruiter,
-                subtitle: lang.you_can_recruit_freelancers_in_this_app,
-                onTap: () => Navigator.pushNamed(context, REGISTER_RECRUITER),
+              BlocBuilder<ProfileWatcherBloc, ProfileWatcherState>(
+                builder: (context, profileState) {
+                  return profileState.maybeMap(
+                    orElse: () {
+                      return const SizedBox();
+                    },
+                    loadSuccess: (profileState) {
+                      return BlocBuilder<CompanyWatcherBloc,
+                          CompanyWatcherState>(
+                        builder: (context, companyState) {
+                          return companyState.maybeMap(
+                            orElse: () {
+                              return _buildListTile(
+                                context,
+                                icon: IconlyLight.work,
+                                title: lang.become_a_recruiter,
+                                subtitle: lang
+                                    .you_can_recruit_freelancers_in_this_app,
+                                onTap: () {
+                                  Navigator.pushNamed(
+                                    context,
+                                    REGISTER_COMPANY,
+                                  );
+                                },
+                              );
+                            },
+                            loadInSuccess: (companyState) {
+                              return _buildListTile(
+                                context,
+                                icon: IconlyLight.work,
+                                title: lang.become_a_recruiter,
+                                subtitle: lang
+                                    .you_can_recruit_freelancers_in_this_app,
+                                onTap: () {
+                                  if (companyState.company.id != '' &&
+                                      companyState.company.id ==
+                                          profileState.profile.id) {
+                                    Navigator.pushNamed(
+                                      context,
+                                      HOME_RECRUITER,
+                                    );
+                                  } else {
+                                    Navigator.pushNamed(
+                                      context,
+                                      REGISTER_COMPANY,
+                                    );
+                                  }
+                                },
+                              );
+                            },
+                          );
+                        },
+                      );
+                    },
+                  );
+                },
               ),
               _buildListTile(
                 context,
@@ -117,64 +220,6 @@ class ProfilePage extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-
-  Widget _buildProfileTile(BuildContext context) {
-    final theme = Theme.of(context);
-    final lang = AppLocalizations.of(context)!;
-
-    return BlocBuilder<ProfileWatcherBloc, ProfileWatcherState>(
-      builder: (context, state) {
-        return state.maybeMap(
-          orElse: () {
-            return Shimmer.fromColors(
-              baseColor: Colors.grey.shade300,
-              highlightColor: Colors.grey.shade100,
-              child: ListTile(
-                contentPadding: EdgeInsets.zero,
-                leading: const CircleAvatar(
-                  radius: 30,
-                ),
-                title: buildShimmerContainer(
-                  width: 100,
-                  height: 20,
-                ),
-                subtitle: buildShimmerContainer(
-                  width: 80,
-                  height: 12,
-                ),
-              ),
-            );
-          },
-          loadSuccess: (state) {
-            return ListTile(
-              contentPadding: EdgeInsets.zero,
-              leading: CircleAvatar(
-                radius: 30,
-                backgroundImage:
-                    CachedNetworkImageProvider(state.profile.image),
-                backgroundColor: theme.disabledColor,
-              ),
-              title: Text(
-                state.profile.fullName,
-                style: theme.textTheme.headline2,
-              ),
-              subtitle: InkWell(
-                onTap: () {
-                  Navigator.pushNamed(context, PROFILE_DETAIL);
-                },
-                child: Text(
-                  lang.view_profile,
-                  style: theme.textTheme.subtitle1?.copyWith(
-                    color: theme.primaryColor,
-                  ),
-                ),
-              ),
-            );
-          },
-        );
-      },
     );
   }
 

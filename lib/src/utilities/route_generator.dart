@@ -12,8 +12,8 @@ import 'package:joblance_firebase/src/presentation/pages/profile_detail_page.dar
 import 'package:joblance_firebase/src/presentation/pages/profile_form_page.dart';
 import 'package:joblance_firebase/src/presentation/pages/recruiter/job_form_recruiter_page.dart';
 import 'package:joblance_firebase/src/presentation/pages/recruiter/messages_recruiter_page.dart';
-import 'package:joblance_firebase/src/presentation/pages/recruiter/register_recruiter_page.dart';
 import 'package:joblance_firebase/src/presentation/pages/recruiter/register_success_recruiter_page.dart';
+import 'package:joblance_firebase/src/presentation/pages/register_company_page.dart';
 import 'package:joblance_firebase/src/presentation/pages/search_job_page.dart';
 import 'package:joblance_firebase/src/presentation/pages/setting_page.dart';
 import 'package:joblance_firebase/src/presentation/pages/sign_in_page.dart';
@@ -128,9 +128,9 @@ class RouteGenerator {
         return MaterialPageRoute(
           builder: (_) => const RecruiterBottomNavigationBar(index: 3),
         );
-      case REGISTER_RECRUITER:
+      case REGISTER_COMPANY:
         return MaterialPageRoute(
-          builder: (_) => const RegisterRecruiterPage(),
+          builder: (_) => const RegisterCompanyPage(),
         );
       case REGISTER_RECRUITER_SUCCESS:
         return MaterialPageRoute(

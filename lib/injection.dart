@@ -9,6 +9,7 @@ import 'package:joblance_firebase/src/common/network_info.dart';
 import 'package:joblance_firebase/src/data/datasources/applicant_remote_data_source.dart';
 import 'package:joblance_firebase/src/data/datasources/auth_data_source.dart';
 import 'package:joblance_firebase/src/data/datasources/category_remote_data_source.dart';
+import 'package:joblance_firebase/src/data/datasources/company_data_source.dart';
 import 'package:joblance_firebase/src/data/datasources/job_remote_data_source.dart';
 import 'package:joblance_firebase/src/data/datasources/message_remote_data_source.dart';
 import 'package:joblance_firebase/src/data/datasources/notifications_remote_data_source.dart';
@@ -16,6 +17,7 @@ import 'package:joblance_firebase/src/data/datasources/profile_data_source.dart'
 import 'package:joblance_firebase/src/data/repositories/applicant_repository_impl.dart';
 import 'package:joblance_firebase/src/data/repositories/auth_repository_impl.dart';
 import 'package:joblance_firebase/src/data/repositories/category_repository_impl.dart';
+import 'package:joblance_firebase/src/data/repositories/company_repository_impl.dart';
 import 'package:joblance_firebase/src/data/repositories/job_repository_impl.dart';
 import 'package:joblance_firebase/src/data/repositories/message_repository_impl.dart';
 import 'package:joblance_firebase/src/data/repositories/notifications_repository_impl.dart';
@@ -23,6 +25,7 @@ import 'package:joblance_firebase/src/data/repositories/profile_repository_impl.
 import 'package:joblance_firebase/src/domain/repositories/applicant_repository.dart';
 import 'package:joblance_firebase/src/domain/repositories/auth_repository.dart';
 import 'package:joblance_firebase/src/domain/repositories/category_repository.dart';
+import 'package:joblance_firebase/src/domain/repositories/company_repository.dart';
 import 'package:joblance_firebase/src/domain/repositories/job_repository.dart';
 import 'package:joblance_firebase/src/domain/repositories/message_repository.dart';
 import 'package:joblance_firebase/src/domain/repositories/notifications_repository.dart';
@@ -32,6 +35,9 @@ import 'package:joblance_firebase/src/domain/usecases/auth/create_user.dart';
 import 'package:joblance_firebase/src/domain/usecases/auth/sign_in_google.dart';
 import 'package:joblance_firebase/src/domain/usecases/auth/sign_in_user.dart';
 import 'package:joblance_firebase/src/domain/usecases/auth/sign_out_user.dart';
+import 'package:joblance_firebase/src/domain/usecases/company/create_company_profile.dart';
+import 'package:joblance_firebase/src/domain/usecases/company/get_company.dart';
+import 'package:joblance_firebase/src/domain/usecases/company/update_company_profile.dart';
 import 'package:joblance_firebase/src/domain/usecases/get_active_jobs.dart';
 import 'package:joblance_firebase/src/domain/usecases/get_applicants.dart';
 import 'package:joblance_firebase/src/domain/usecases/get_browse_jobs.dart';
@@ -50,6 +56,9 @@ import 'package:joblance_firebase/src/presentation/bloc/auth/auth_watcher/auth_w
 import 'package:joblance_firebase/src/presentation/bloc/auth/sign_in_form/sign_in_form_bloc.dart';
 import 'package:joblance_firebase/src/presentation/bloc/auth/sign_up_form/sign_up_form_bloc.dart';
 import 'package:joblance_firebase/src/presentation/bloc/category/category_watcher/category_watcher_bloc.dart';
+import 'package:joblance_firebase/src/presentation/bloc/company/company_watcher/company_watcher_bloc.dart';
+import 'package:joblance_firebase/src/presentation/bloc/company/create_company/create_company_form_bloc.dart';
+import 'package:joblance_firebase/src/presentation/bloc/company/update_company_form/update_company_form_bloc.dart';
 import 'package:joblance_firebase/src/presentation/bloc/interest/interest_form/interest_form_bloc.dart';
 import 'package:joblance_firebase/src/presentation/bloc/job/active_job_watcher/active_job_watcher_bloc.dart';
 import 'package:joblance_firebase/src/presentation/bloc/job/browse_job_watcher/browse_job_watcher_bloc.dart';
@@ -130,6 +139,15 @@ void init() {
     () => categoryRemoteDataSource,
   );
 
+  final companyDataSource = CompanyDataSourceImpl(
+    firebaseAuth: locator(),
+    firestore: locator(),
+    storage: locator(),
+  );
+  locator.registerLazySingleton<CompanyDataSource>(
+    () => companyDataSource,
+  );
+
   final jobRemoteDataSource = JobRemoteDataSourceImpl();
   locator.registerLazySingleton<JobRemoteDataSource>(
     () => jobRemoteDataSource,
@@ -170,6 +188,11 @@ void init() {
   final categoryRepository = CategoryRepositoryImpl(dataSource: locator());
   locator.registerLazySingleton<CategoryRepository>(
     () => categoryRepository,
+  );
+
+  final companyRepository = CompanyRepositoryImpl(locator());
+  locator.registerLazySingleton<CompanyRepository>(
+    () => companyRepository,
   );
 
   final jobRepository = JobRepositoryImpl(dataSource: locator());
@@ -226,6 +249,23 @@ void init() {
   final signOutUserUseCase = SignOutUser(locator());
   locator.registerLazySingleton(
     () => signOutUserUseCase,
+  );
+
+  /// [Company] Folder
+  ///
+  final createCompanyUseCase = CreateCompany(locator());
+  locator.registerLazySingleton(
+    () => createCompanyUseCase,
+  );
+
+  final getCompanyUseCase = GetCompanyProfile(locator());
+  locator.registerLazySingleton(
+    () => getCompanyUseCase,
+  );
+
+  final updateCompanyUseCase = UpdateCompanyProfile(locator());
+  locator.registerLazySingleton(
+    () => updateCompanyUseCase,
   );
 
   /// [Profile] Folder
@@ -323,7 +363,7 @@ void init() {
   locator.registerLazySingleton(
     () => signUpFormBloc,
   );
-  
+
   ///
   /// [Category BLoC] Folder
   ///
@@ -331,7 +371,25 @@ void init() {
   locator.registerLazySingleton(
     () => categoryWatcherBloc,
   );
-    
+
+  ///
+  /// [Category BLoC] Folder
+  ///
+  final companyWatcherBloc = CompanyWatcherBloc(locator());
+  locator.registerLazySingleton(
+    () => companyWatcherBloc,
+  );
+
+  final createCompanyFormBloc = CreateCompanyFormBloc(locator());
+  locator.registerLazySingleton(
+    () => createCompanyFormBloc,
+  );
+
+  final updateCompanyFormBloc = UpdateCompanyFormBloc(locator());
+  locator.registerLazySingleton(
+    () => updateCompanyFormBloc,
+  );
+
   ///
   /// [Interest BLoC] Folder
   ///
@@ -339,7 +397,7 @@ void init() {
   locator.registerLazySingleton(
     () => interestFormBloc,
   );
-  
+
   ///
   /// [Job BLoC] Folder
   ///

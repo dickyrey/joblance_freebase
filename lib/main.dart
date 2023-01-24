@@ -12,6 +12,9 @@ import 'package:joblance_firebase/src/presentation/bloc/auth/auth_watcher/auth_w
 import 'package:joblance_firebase/src/presentation/bloc/auth/sign_in_form/sign_in_form_bloc.dart';
 import 'package:joblance_firebase/src/presentation/bloc/auth/sign_up_form/sign_up_form_bloc.dart';
 import 'package:joblance_firebase/src/presentation/bloc/category/category_watcher/category_watcher_bloc.dart';
+import 'package:joblance_firebase/src/presentation/bloc/company/company_watcher/company_watcher_bloc.dart';
+import 'package:joblance_firebase/src/presentation/bloc/company/create_company/create_company_form_bloc.dart';
+import 'package:joblance_firebase/src/presentation/bloc/company/update_company_form/update_company_form_bloc.dart';
 import 'package:joblance_firebase/src/presentation/bloc/interest/interest_form/interest_form_bloc.dart';
 import 'package:joblance_firebase/src/presentation/bloc/job/active_job_watcher/active_job_watcher_bloc.dart';
 import 'package:joblance_firebase/src/presentation/bloc/job/browse_job_watcher/browse_job_watcher_bloc.dart';
@@ -44,13 +47,20 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        // BLoCs
+        /// [BlocProvider]
         BlocProvider(create: (context) => di.locator<ApplicantWatcherBloc>()),
         BlocProvider(create: (context) => di.locator<AuthWatcherBloc>()),
         BlocProvider(create: (context) => di.locator<SignInFormBloc>()),
         BlocProvider(create: (context) => di.locator<SignUpFormBloc>()),
+        //*
         BlocProvider(create: (context) => di.locator<CategoryWatcherBloc>()),
+        //*
+        BlocProvider(create: (context) => di.locator<CompanyWatcherBloc>()),
+        BlocProvider(create: (context) => di.locator<CreateCompanyFormBloc>()),
+        BlocProvider(create: (context) => di.locator<UpdateCompanyFormBloc>()),
+        //*
         BlocProvider(create: (context) => di.locator<InterestFormBloc>()),
+        //*
         BlocProvider(create: (context) => di.locator<ActiveJobWatcherBloc>()),
         BlocProvider(create: (context) => di.locator<BrowseJobWatcherBloc>()),
         BlocProvider(create: (context) => di.locator<JobDetailsWatcherBloc>()),

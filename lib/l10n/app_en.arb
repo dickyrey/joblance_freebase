@@ -29,6 +29,8 @@
   "clear_all": "Clear All",
   "code_from_sms": "Code from SMS",
   "company": "Company",
+  "company_email_address": "Company email address",
+  "company_name": "Company name",
   "company_size": "Company Size",
   "completed": "Completed",
   "contact_info": "Contact Info",
@@ -52,6 +54,7 @@
   "enter_location": "Enter Location",
   "enter_salary": "Enter Salary",
   "enter_the_number_of_employees": "Enter the number of employees",
+  "enter_your_company_email_address": "Enter your company email address",
   "enter_your_company_name": "Enter your company name",
   "enter_your_email_address": "Enter Your Email Address",
   "enter_your_mobile_number": "Enter Your Mobile Number",
@@ -192,7 +195,6 @@
   "you_are_successfully_registered": "You are successfully registered!",
   "you_can_find_many_dream_jobs_in_our_organization_that_you_would_like_to_apply_for": "You can find many dream jobs in our organization that you would like to apply for",
   "you_can_recruit_freelancers_in_this_app": "You can recruit freelancers in this app",
-  "your_company_name": "Your company name",
   "your_name": "Your name",
   "your_role_in_the_hiring_process": "Your role in the hiring process"
 }

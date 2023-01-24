@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
+import 'package:joblance_firebase/src/presentation/bloc/company/company_watcher/company_watcher_bloc.dart';
 import 'package:joblance_firebase/src/presentation/bloc/job/popular_job_watcher/popular_job_watcher_bloc.dart';
 import 'package:joblance_firebase/src/presentation/bloc/job/recently_added_job_watcher/recently_added_job_watcher_bloc.dart';
 import 'package:joblance_firebase/src/presentation/bloc/job/saved_job_watcher/saved_job_watcher_bloc.dart';
@@ -31,6 +32,9 @@ class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget> {
     super.initState();
     _controller = PageController(initialPage: widget.index);
     Future.microtask(() {
+      context
+          .read<CompanyWatcherBloc>()
+          .add(const CompanyWatcherEvent.fetchCompany());
       context
           .read<ProfileWatcherBloc>()
           .add(const ProfileWatcherEvent.fetchProfile());

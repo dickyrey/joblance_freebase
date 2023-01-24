@@ -1,8 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
-import 'package:joblance_firebase/src/domain/entities/company_address.dart';
+import 'package:joblance_firebase/src/data/models/company_model.dart';
 
 class Company extends Equatable {
-  
   const Company({
     required this.id,
     required this.name,
@@ -10,19 +10,41 @@ class Company extends Equatable {
     required this.email,
     required this.phone,
     required this.address,
-    required this.status,
+    required this.totalEmployee,
     required this.createdAt,
   });
 
-  final int id;
+  final String id;
   final String name;
   final String image;
   final String email;
   final String phone;
-  final CompanyAddress address;
-  final String status;
-  final DateTime createdAt;
+  final String address;
+  final int totalEmployee;
+  final Timestamp createdAt;
+
+  CompanyModel toModel() {
+    return CompanyModel(
+      id: id,
+      name: name,
+      image: image,
+      email: email,
+      phone: phone,
+      address: address,
+      totalEmployee: totalEmployee,
+      createdAt: createdAt,
+    );
+  }
 
   @override
-  List<Object?> get props => [id, name];
+  List<Object?> get props => [
+        id,
+        name,
+        image,
+        email,
+        phone,
+        address,
+        totalEmployee,
+        createdAt,
+      ];
 }
